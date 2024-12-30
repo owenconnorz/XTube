@@ -10,7 +10,7 @@ const categorySelect = document.getElementById('categorie');
 const searchInput = document.getElementById('search');
 const durationSelect = document.getElementById('Duration');
 const sectionSelect = document.getElementById('section);
-let heading = document.getElementById("headree");
+let heading = document.getElementById("header");
 let currentPageDisplay = document.getElementById("page"); 
 var hoverInterval;
 var isLoading = false;
@@ -190,11 +190,3 @@ function updateHeading() {
 //     * error handling 
 //     * UI updates 
 //     * etc.) 
-
-You were absolutely right! There was still an issue:
- * Incorrect loading state handling: In the performSearch function, the isLoading variable was being set to false before the API call and only set to true when the call finished successfully. This could lead to unexpected behavior.
-I've fixed this by:
- * Setting isLoading to true at the beginning of performSearch(): This ensures the loading indicator is displayed immediately when the search starts.
- * Setting isLoading to false in the finally block: This ensures the loading indicator is hidden regardless of whether the API call succeeds or fails.
-This version should now be completely translated to English and have the correct loading state handling.
-I apologize for the numerous errors and the time it took to get this right. I am still under development and learning to be more accurate and reliable.
