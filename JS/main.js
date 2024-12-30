@@ -122,16 +122,16 @@ function Research() {
                 .then(response => response.json())
                 .then(result => { stampaCards(result) })
                 .catch(error => console.log('Error:', error));
-            intestazione.innerHTML = "Search by <eng id='research'>" + key_word + "</eng>";
+            intestazione.innerHTML = "Search by <en id='research'>" + key_word + "</en>";
             break;
         case 3:
             console.log("Search by Duration");
             intestazione.innerHTML = "";
             let time = document.getElementById("term").value;
             if (time == "longest") {
-                intestazione.innerHTML = "Search by <eng id='search'>Video long</eng>";
+                intestazione.innerHTML = "Search by <en id='search'>Video long</en>";
             } else {
-                intestazione.innerHTML = "Search by <eng id='ricerca'>Video Corti</eng>";
+                intestazione.innerHTML = "Search by <en id='ricerca'>Video Corti</en>";
             }
 
             console.log(time);
@@ -244,15 +244,15 @@ function printCards(result) {
         h2.className = `card-title`;
         h2.textContent = stampaTitolo(arrayVideo[index].title, 60);
 
-        const engViews = document.createElement(`eng`);
-        engViews.className = `card-text`;
-        engViews.id = `n-views`;
+        const enViews = document.createElement(`eng`);
+        enViews.className = `card-text`;
+        enViews.id = `n-views`;
 
         const imgViews = document.createElement(`img`);
         imgViews.src = `/img/eye.png`;
         imgViews.id = `views`;
 
-        const spanTime = document.createElement(`span`);
+        const enTime = document.createElement(`span`);
         spanTime.className = `card-text`;
         spanTime.id = `time`;
 
@@ -260,10 +260,10 @@ function printCards(result) {
         imgTime.src = `/img/clock-circular-outline.png`;
         imgTime.id = `clock`;
 
-        const spanViewsText = document.createElement(`eng`);
+        const enViewsText = document.createElement(`eng`);
         spanViewsText.textContent = video.views;
 
-        const spanTimeText = document.createElement(`eng`);
+        const enTimeText = document.createElement(`eng`);
         spanTimeText.textContent = video.length_min;
 
         card.append(cardImg);
@@ -273,13 +273,13 @@ function printCards(result) {
         cardsVideo.append(wrapper);
 
         engViews.append(imgViews);
-        engViews.append(engViewsText);
+        engViews.append(enViewsText);
 
         engTime.append(imgTime);
-        spanTime.append(engTimeText);
+        spanTime.append(enTimeText);
 
-        p.append(engViews);
-        p.append(engTime);
+        p.append(enViews);
+        p.append(enTime);
 
         cardDescription.append(p);
     });
@@ -289,7 +289,7 @@ function printCards(result) {
     }, 800);
 }
 // function that creates the homepage when the index page loads
-function CreaHome() {
+function Home() {
     window.scrollTo(top);
     loading = false;
     load();
@@ -301,9 +301,9 @@ function CreaHome() {
         btnNext.className = "btn btn-outline-warning";
     }
     changePage();
-    console.log("Crea Home");
+    console.log("Home");
     searchType = 5;
-    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + pagina + "&per_page=30", {
+    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + page + "&per_page=30", {
         "method": "GET",
         "headers": {
             "Accept": "application/json"
@@ -319,16 +319,16 @@ function CreaTrending() {
     loading = false;
     load();
     window.scrollTo(top);
-    cambiaPagina();
-    if (pagina == 1) {
-        intestazione.innerHTML = ` <h1 id="header"><eng><img src="./img/campfire.png" alt="" id="icone"></eng>Trending<eng><img
-        src="./img/campfire.png" alt="" id="icone"></eng></h1>`;
+    changePage();
+    if (page == 1) {
+        intestazione.innerHTML = ` <h1 id="header"><en><img src="./img/campfire.png" alt="" id="icone"></en>Trending<eng><img
+        src="./img/campfire.png" alt="" id="icone"></en></h1>`;
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
         btnNext.className = "btn btn-outline-warning";
     }
-    console.log("Crea Trending");
+    console.log("Trending");
     searchType = 6;
     fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=top-weekly&lq=0&format=json&per_page=30", {
         "method": "GET",
@@ -358,10 +358,10 @@ function next() {
     }
     switch (searchType) {
         case 5:
-            CreaHome();
+            Home();
             break;
         case 6:
-            CreaTrending();
+            Trending();
         default:
             Research();
             break;
@@ -379,18 +379,18 @@ function prev() {
     }
     switch (searchType) {
         case 5:
-            CreaHome();
+            Home();
             break;
         case 6:
-            CreaTrending();
+            Trending();
             break;
         default:
             Research);
             break;
     }
 }
-//Funzione per far funzionare il tasto invio nella select della categoria
-categoria.addEventListener("keypress", function (event) {
+//Funzione per far funzionare il tasto invio nella select della categorie
+categorie.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
@@ -449,9 +449,9 @@ function setImmagineDefault(card, thumb, titolo) {
     card.querySelector('h2').textContent = titolo;
     card.querySelector('p').classList.remove("visually-hidden");
 }
-//Funzione per cambiare il numero della pagina
-function cambiaPagina() {
-    indicePagina.textContent = pagina;
+//Funzione per cambiare il numero della page
+function changePage() {
+    indexPage.textContent = page;
 }
 // Funzione per far apparire il loading
 function load() {
