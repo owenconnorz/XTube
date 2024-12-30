@@ -6,9 +6,9 @@ const btn = document.getElementById('cerca');
 const btnNext = document.getElementById("next");
 const btnPrev = document.getElementById('previous');
 const selectCategorie = document.getElementById('categorie');
-const search = document.getElementById('ricerca');
-const selectDurata = document.getElementById('durata');
-const selectSezione = document.getElementById('section);
+const search = document.getElementById('search);
+const selectDurata = document.getElementById('duration');
+const selectSection = document.getElementById('section);
 let intestazione = document.getElementById("intestazione");
 let listofpagesi = document.getElementById("page");
 var hoverInterval;
@@ -34,8 +34,8 @@ function SwitchInputSelect(num) {
     switch (num) {
         case 1:
             //Filtro Categorie
-            tipoRicerca = 1;
-            pagina = 1
+            searchType= 1;
+            page = 1
             selectCategorie.className = "form-select";
             selectSection.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
@@ -43,23 +43,23 @@ function SwitchInputSelect(num) {
             break;
         case 2:
             //Filtro Parola Chiave (Default)
-            tipoRicerca = 2;
-            pagina = 1
+            searchType = 2;
+            page = 1
             selectCategorie.className = "form-select visually-hidden";
             search.className = "form-control me-2";
             selectSection.className = "form-select visually-hidden";
             search.placeholder = "Cerca";
-            selectDurata.className = "form-select visually-hidden";
+            selectduration.className = "form-select visually-hidden";
             break;
 
         case 3:
-            //Filtro Durata
+            //Filtro Duration
             searchType = 3;
             page = 1
             selectCategoria.className = "form-select visually-hidden";
             selectSezione.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
-            selectDurata.className = "form-select";
+            selectDuration.className = "form-select";
             break;
         case 4:
             //Filtro Sezione
@@ -92,7 +92,7 @@ function Ricerca() {
     switch (searchType) {
         case 1:
             searchType = 1;
-            console.log("Search by Category");
+            console.log("Search by Categorie");
             let categorie = document.getElementById("categorie").value;
             intestazione.innerHTML = "";
             console.log(categorie);
@@ -108,7 +108,7 @@ function Ricerca() {
             intestazione.innerHTML = `Page <span id="categorie">${page}</span>`;
             break;
         case 2:
-            tipoRicerca = 2;
+            searchType = 2;
             intestazione.innerHTML = "";
             console.log("Search by Keyword");
             let key_word = document.getElementById("research").value;
