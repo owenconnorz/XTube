@@ -15,8 +15,8 @@
 <body>
   <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" id="titolo" href="./index.html">Tap &
-        <span id="logo">Fap</span></a>
+      <a class="navbar-brand" id="titolo" href="./index.html">X &
+        <span id="logo">Tube</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,25 +34,25 @@
         <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filtro">
-              Cerca Per
+              aria-expanded="false" id="filter">
+              Search For
             </a>
             <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
-                  Categoria</a></li>
+                  Category</a></li>
               <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
-                  Parola chiave</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Cerca per Durata</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Cerca per Sezione</a></li>
+                  Keyword</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by Duration</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Search by Section</a></li>
             </ul>
           </li>
         </ul>
 
-        <form class="d-flex" role="search" id="form_ricerca">
-          <input class="form-control me-2" type="text" placeholder="Cerca" aria-label="Search" id="ricerca"
-            name="ricerca" onfocus="SwitchInputSelect(2)">
-          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categoria">
-            <option selected id="decorazione" value="0">Seleziona categoria</option>
+        <form class="d-flex" role="search" id="search_form">
+          <input class="form-control me-2" type="text" placeholder="Fence" aria-label="Search" id="research"
+            name="research" onfocus="SwitchInputSelect(2)">
+          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categorie">
+            <option selected id="decoration" value="0">Select category</option>
             <option value="Amateur">Amateurs</option>
             <option value="Anal">Anal</option>
             <option value="Asian">Asiatiche </option>
@@ -102,7 +102,7 @@
       </div>
     </div>
   </nav>
-  <h1 id="intestazione">Ultime uscite</h1>
+  <h1 id="intestazione">Latest releases</h1>
 
   <div class="container-fluid" id="loading">
     <div class="spinner-border text-warning" role="status">
