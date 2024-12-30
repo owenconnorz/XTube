@@ -5,7 +5,7 @@ var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&
 const btn = document.getElementById('cerca');
 const btnNext = document.getElementById("next");
 const btnPrev = document.getElementById('previous');
-const selectCategoria = document.getElementById('categorie);
+const selectCategorie = document.getElementById('categorie);
 const search = document.getElementById('research);
 const selectDurata = document.getElementById('term');
 const selectSezione = document.getElementById('section');
