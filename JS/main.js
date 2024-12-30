@@ -15,8 +15,8 @@ var hoverInterval;
 var loading = false;
 
 selectCategoria.addEventListener("change", resetPage);
-selectDurata.addEventListener("change", resetPage);
-selectSezione.addEventListener("change", resetPage);
+selectDuration.addEventListener("change", resetPage);
+selectSecrion.addEventListener("change", resetPage);
 
 if (btn) {
     btn.addEventListener("click", Research);
