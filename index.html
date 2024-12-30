@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XTube</title>
+  <title>Tap&Fap</title>
   <link rel="icon" type="image/png" href="./img/no-minors.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -15,11 +15,11 @@
 <body>
   <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" id="titolo" href="./index.html">X
-        <en id="logo">Tube</en></a>
+      <a class="navbar-brand" id="titolo" href="./index.html">Tap &
+        <span id="logo">Fap</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <en class="navbar-toggler-icon"></en>
+        <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -34,25 +34,25 @@
         <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filter">
-              Search For
+              aria-expanded="false" id="filtro">
+              Cerca Per
             </a>
             <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
-                  Category</a></li>
+                  Categoria</a></li>
               <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
-                  Keyword</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search By Duration</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Search By Section</a></li>
+                  Parola chiave</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Cerca per Durata</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Cerca per Sezione</a></li>
             </ul>
           </li>
         </ul>
 
-        <form class="d-flex" role="search" id="search_form">
-          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="research"
-            name="research" onfocus="SwitchInputSelect(2)">
-          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categorie">
-            <option selected id="decoration" value="0">Select category</option>
+        <form class="d-flex" role="search" id="form_ricerca">
+          <input class="form-control me-2" type="text" placeholder="Cerca" aria-label="Search" id="ricerca"
+            name="ricerca" onfocus="SwitchInputSelect(2)">
+          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categoria">
+            <option selected id="decorazione" value="0">Seleziona categoria</option>
             <option value="Amateur">Amateurs</option>
             <option value="Anal">Anal</option>
             <option value="Asian">Asiatiche </option>
@@ -85,28 +85,28 @@
             <option value="Romantic">Romantic</option>
             <option value="Cuckhold">Cuckhold</option>
           </select>
-          <select class="form-select visually-hidden" aria-label="section" id="secrion">
-            <option selected id="decoration" value="0">Select Section</option>
+          <select class="form-select visually-hidden" aria-label="sezione" id="sezione">
+            <option selected id="decorazione" value="0">Seleziona Sezione</option>
             <option value="etero">Etero</option>
             <option value="gay">Gay</option>
             <option value="trans">Trans</option>
             <option value="Lesbian">Lesbian</option>
           </select>
           <select class="form-select visually-hidden" aria-label="durata" id="durata">
-            <option selected id="decorazione" value="0">Select Duration</option>
+            <option selected id="decorazione" value="0">Seleziona Durata</option>
             <option value="shortest">Video Corti</option>
-            <option value="longest">Video Long</option>
+            <option value="longest">Video Lunghi</option>
           </select>
           <button class="btn btn-outline-warning" type="button" id="cerca">Cerca</button>
         </form>
       </div>
     </div>
   </nav>
-  <h1 id="intestazione">Latest releases</h1>
+  <h1 id="intestazione">Ultime uscite</h1>
 
   <div class="container-fluid" id="loading">
     <div class="spinner-border text-warning" role="status">
-      <en class="sr-only"></en>
+      <span class="sr-only"></span>
     </div>
   </div>
 
@@ -122,7 +122,7 @@
   <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
     <ul class="pagination">
       <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
-      <li class="page-item">Page <en id="page">1</en></li>
+      <li class="page-item">Pagina <span id="pagina">1</span></li>
       <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
     </ul>
   </nav>
