@@ -8,7 +8,7 @@ const btnPrev = document.getElementById('previous');
 const selectCategorie = document.getElementById('categorie);
 const search = document.getElementById('research);
 const selectDurata = document.getElementById('term');
-const selectSezione = document.getElementById('section');
+const selectSelection = document.getElementById('section');
 let intestazione = document.getElementById("header");
 let indicePagina = document.getElementById("page");
 var hoverInterval;
