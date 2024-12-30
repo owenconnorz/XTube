@@ -1,7 +1,7 @@
 // Variables
 let searchType = 2; // Default: Keyword search
 let currentPage = 1;
-const apiUrl = "https://api.example.com/video/search"; // Replace with your actual API URL
+const apiUrl = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag"; // Replace with your actual API URL
 let searchButton = document.getElementById('searchBtn');
 let nextPageButton = document.getElementById('nextPageBtn');
 let previousPageButton = document.getElementById('previousPageBtn');
