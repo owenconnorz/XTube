@@ -14,11 +14,11 @@ img.card-img-top {
  border-radius: 0%
 };
 
-#pagina {
+#page {
   font-size: large;
 }
 
-span#ricerca,#ricerca,#logo, #categoria, #pagina  {
+eng#research,#research,#logo, #categorie, #page  {
   color: orange;
 }
 
@@ -48,7 +48,7 @@ option {
 
 }
 
-#titolo {
+#title {
   color: white;
   font-size: 150%;
   margin-left: 1.5%;
@@ -135,7 +135,7 @@ p {
   margin-right: 6%;
 }
 
-#form_ricerca {
+#searxh_form {
   margin-right: 2%;
 }
 
@@ -204,7 +204,7 @@ p {
   margin-right: 1.5%;
 }
 
-span#pagina {
+eng#page {
   width: 5%;
   height: 5%;
   font-size: 21px;
