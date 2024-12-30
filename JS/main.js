@@ -1,6 +1,6 @@
 
-var tipoRicerca = 2;
-var pagina = 1;
+var searchType = 2;
+var page = 1;
 var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
 const btn = document.getElementById('cerca');
 const btnNext = document.getElementById("next");
@@ -36,8 +36,8 @@ function SwitchInputSelect(num) {
             //Category filter
             searchtype = 1;
             page = 1
-            selectCategoria.className = "form-select";
-            selectSezione.className = "form-select visually-hidden";
+            selectCategorie.className = "form-select";
+            selectSection.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
             selectDurata.className = "form-select visually-hidden";
             break;
@@ -47,7 +47,7 @@ function SwitchInputSelect(num) {
             page = 1
             selectCategoria.className = "form-select visually-hidden";
             search.className = "form-control me-2";
-            selectSezione.className = "form-select visually-hidden";
+            selectSecrion.className = "form-select visually-hidden";
             search.placeholder = "Cerca";
             selectDurata.className = "form-select visually-hidden";
             break;
@@ -56,8 +56,8 @@ function SwitchInputSelect(num) {
             //Filter Duration
             searchType = 3;
             page = 1
-            selectCategoria.className = "form-select visually-hidden";
-            selectSezione.className = "form-select visually-hidden";
+            selectCategorie.className = "form-select visually-hidden";
+            selectSection.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
             selectDurata.className = "form-select";
             break;
@@ -96,7 +96,7 @@ function Research() {
             let categorie = document.getElementById("categorie").value;
             intestazione.innerHTML = "";
             console.log(categorie);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&lq=1&format=json&per_page=30&query=" + categoria, {
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&lq=1&format=json&per_page=30&query=" + categorie, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -105,7 +105,7 @@ function Research() {
                 .then(response => response.json())
                 .then(result => { stampaCards(result) })
                 .catch(error => console.log('Error:', error));
-            intestazione.innerHTML = `Page <span id="categorie">${page}</eng>`;
+            intestazione.innerHTML = `Page <eng id="categorie">${page}</eng>`;
             break;
         case 2:
             searchType = 2;
@@ -113,7 +113,7 @@ function Research() {
             console.log("Search by Keyword");
             let key_word = document.getElementById("research").value;
             console.log(key_word);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -122,7 +122,7 @@ function Research() {
                 .then(response => response.json())
                 .then(result => { stampaCards(result) })
                 .catch(error => console.log('Error:', error));
-            intestazione.innerHTML = "Search by <span id='research'>" + key_word + "</eng>";
+            intestazione.innerHTML = "Search by <eng id='research'>" + key_word + "</eng>";
             break;
         case 3:
             console.log("Search by Duration");
@@ -164,7 +164,7 @@ function Research() {
 
             } else if (section == "gay") {
     
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&per_page=30&format=json&lq=1&gay=2", {
+                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -174,7 +174,7 @@ function Research() {
                     .then(result => { stampaCards(result) })
                     .catch(error => console.log('Error:', error));
             } else {
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&per_page=30&format=json&lq=1&query=" + sezione, {
+                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&query=" + section, {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -186,12 +186,12 @@ function Research() {
             }
             break;
         default:
-            document.getElementById("ricerca").value = "";
+            document.getElementById("research").value = "";
             break;
     }
 }
-// funzione che mi stampa le cards
-function stampaCards(result) {
+// function that prints the cards for me
+function printCards(result) {
 
     console.log(result);
     let arrayVideo = result.videos;
@@ -244,9 +244,9 @@ function stampaCards(result) {
         h2.className = `card-title`;
         h2.textContent = stampaTitolo(arrayVideo[index].title, 60);
 
-        const spanViews = document.createElement(`span`);
-        spanViews.className = `card-text`;
-        spanViews.id = `n-views`;
+        const engViews = document.createElement(`eng`);
+        engViews.className = `card-text`;
+        engViews.id = `n-views`;
 
         const imgViews = document.createElement(`img`);
         imgViews.src = `/img/eye.png`;
@@ -260,10 +260,10 @@ function stampaCards(result) {
         imgTime.src = `/img/clock-circular-outline.png`;
         imgTime.id = `clock`;
 
-        const spanViewsText = document.createElement(`span`);
+        const spanViewsText = document.createElement(`eng`);
         spanViewsText.textContent = video.views;
 
-        const spanTimeText = document.createElement(`span`);
+        const spanTimeText = document.createElement(`eng`);
         spanTimeText.textContent = video.length_min;
 
         card.append(cardImg);
@@ -272,14 +272,14 @@ function stampaCards(result) {
         wrapper.append(card);
         cardsVideo.append(wrapper);
 
-        spanViews.append(imgViews);
-        spanViews.append(spanViewsText);
+        engViews.append(imgViews);
+        engViews.append(engViewsText);
 
-        spanTime.append(imgTime);
-        spanTime.append(spanTimeText);
+        engTime.append(imgTime);
+        spanTime.append(engTimeText);
 
-        p.append(spanViews);
-        p.append(spanTime);
+        p.append(engViews);
+        p.append(engTime);
 
         cardDescription.append(p);
     });
@@ -288,12 +288,12 @@ function stampaCards(result) {
         load();
     }, 800);
 }
-// funzione che mi crea la homepage quando carica la pagina index
+// function that creates the homepage when the index page loads
 function CreaHome() {
     window.scrollTo(top);
     loading = false;
     load();
-    if (pagina == 1) {
+    if (page == 1) {
         intestazione.innerHTML = "Ultime uscite";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
@@ -350,8 +350,8 @@ function stampaTitolo(testo, numeroParole) {
 function next() {
     window.scrollTo(top);
     intestazione.innerHTML = "";
-    console.log(tipoRicerca);
-    if (pagina > 0 && pagina < 100) {
+    console.log(searchType);
+    if (page > 0 && page < 100) {
         page++;
     } else {
         page = 1;
@@ -367,7 +367,7 @@ function next() {
             break;
     }
 }
-// funzione che mi fa andare alla pagina precedente
+// function that makes me go to the previous page
 function prev() {
     window.scrollTo(top);
     intestazione.innerHTML = "";
@@ -385,7 +385,7 @@ function prev() {
             CreaTrending();
             break;
         default:
-            Ricerca();
+            Research);
             break;
     }
 }
@@ -466,6 +466,6 @@ function load() {
     }
 }
 // Funzione per resettare la pagina
-function resetPagina(){
-    pagina = 1;
+function resetPage(){
+    page = 1;
 }
