@@ -36,6 +36,14 @@
       align-items: center;
     }
 
+    .video {
+      width: 100%;
+      height: auto;
+      background-color: #ccc; /* Placeholder for video */
+      position: relative;
+      cursor: pointer;
+    }
+
     .switch {
       position: relative;
       display: inline-block;
@@ -144,6 +152,13 @@
   <div class="container-fluid visually-hidden" id="graficaCards">
     <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
       <!-• Video content goes here -->
+      <div class="video" id="video1" onmousedown="addToLibrary(event, 'Video Title 1')">
+        <p>Video Title 1</p>
+      </div>
+      <div class="video" id="video2" onmousedown="addToLibrary(event, 'Video Title 2')">
+        <p>Video Title 2</p>
+      </div>
+      <!-• Add more videos as needed -->
     </div>
   </div>
   <br>
@@ -197,7 +212,6 @@
         <option value="shortest">Short Videos</option>
         <option value="longest">Long Videos</option>
       </select>
-      <!-• Removed the bottom search button -->
     </form>
   </div>
 
@@ -221,6 +235,14 @@
       var element = document.body;
       element.classList.toggle("dark-mode");
     }
+
+    function addToLibrary(event, title) {
+      event.preventDefault();
+      alert(title + " has been added to your library!");
+      // Here you might want to store the video info in local storage or send it to a server
+      console.log('Added to library:', title);
+    }
+
     CreaHome();
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
