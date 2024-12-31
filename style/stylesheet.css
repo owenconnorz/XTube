@@ -18,7 +18,7 @@ img.card-img-top {
   font-size: large;
 }
 
-span#ricerca,#ricerca,#logo, #categoria, #page  {
+span#search,#search,#logo, #categorie, #page  {
   color: orange;
 }
 
@@ -48,7 +48,7 @@ option {
 
 }
 
-#titolo {
+#title {
   color: white;
   font-size: 150%;
   margin-left: 1.5%;
@@ -135,7 +135,7 @@ p {
   margin-right: 6%;
 }
 
-#form_ricerca {
+#search_form {
   margin-right: 2%;
 }
 
@@ -379,7 +379,7 @@ span#page {
     width: 7%;
   }
 
-  #titolo {
+  #title {
     margin-left: 6%;
   }
 
