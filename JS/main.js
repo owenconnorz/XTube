@@ -125,13 +125,13 @@ function Search() {
             intestazione.innerHTML = "Search by<span id='search'>" + key_word + "</span>";
             break;
         case 3:
-            console.log("Ricerca per Durata");
+            console.log("Search by Duration");
             intestazione.innerHTML = "";
-            let time = document.getElementById("durata").value;
+            let time = document.getElementById("duration").value;
             if (time == "longest") {
-                intestazione.innerHTML = "Ricerca per <span id='ricerca'>Video lunghi</span>";
+                intestazione.innerHTML = "Search by <span id='search'>Video lunghi</span>";
             } else {
-                intestazione.innerHTML = "Ricerca per <span id='ricerca'>Video Corti</span>";
+                intestazione.innerHTML = "Search by <span id='search'>Video Corti</span>";
             }
 
             console.log(time);
@@ -294,7 +294,7 @@ function Home() {
     loading = false;
     load();
     if (page == 1) {
-        intestazione.innerHTML = "Ultime uscite";
+        intestazione.innerHTML = "Latest releases";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
@@ -350,7 +350,7 @@ function stampaTitolo(testo, numeroParole) {
 function next() {
     window.scrollTo(top);
     intestazione.innerHTML = "";
-    console.log(tipoRicerca);
+    console.log(searchType);
     if (page > 0 && page < 100) {
         page++;
     } else {
@@ -389,8 +389,8 @@ function prev() {
             break;
     }
 }
-//Funzione per far funzionare il tasto invio nella select della categoria
-categoria.addEventListener("keypress", function (event) {
+//Funzione per far funzionare il tasto invio nella select della categorie
+categorie.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
@@ -404,7 +404,7 @@ search.addEventListener("keypress", function (event) {
     }
 });
 
-selectDurata.addEventListener("keypress", function (event) {
+selectDuration.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
