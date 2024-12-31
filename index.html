@@ -41,7 +41,6 @@
             width: 100%;
             height: auto;
             background-color: #ccc;
-            /* Placeholder for video */
             position: relative;
             cursor: pointer;
             text-align: center;
@@ -157,12 +156,12 @@
     <div class="container-fluid visually-hidden" id="graficaCards">
         <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
             <div class="col">
-                <div class="video" id="video1" onmousedown="openAddToLibraryModal('Video Title 1')">
+                <div class="video" id="video1" onmousedown="startHold(event, 'Video Title 1')" onmouseup="stopHold()" onmouseleave="stopHold()">
                     <p>Video Title 1</p>
                 </div>
             </div>
             <div class="col">
-                <div class="video" id="video2" onmousedown="openAddToLibraryModal('Video Title 2')">
+                <div class="video" id="video2" onmousedown="startHold(event, 'Video Title 2')" onmouseup="stopHold()" onmouseleave="stopHold()">
                     <p>Video Title 2</p>
                 </div>
             </div>
@@ -271,9 +270,21 @@
     </script>
     <script src="./JS/main.js"></script>
     <script>
+        let holdTimer;
+
         function changeMode() {
             var element = document.body;
             element.classList.toggle("dark-mode");
+        }
+
+        function startHold(event, title) {
+            holdTimer = setTimeout(() => {
+                openAddToLibraryModal(title);
+            }, 600); // Open modal after 600ms hold
+        }
+
+        function stopHold() {
+            clearTimeout(holdTimer); // Clear the timer if mouse is released
         }
 
         function openAddToLibraryModal(title) {
@@ -297,13 +308,6 @@
             var modal = bootstrap.Modal.getInstance(document.getElementById('addToLibraryModal'));
             modal.hide();
         });
-
-        // Example function to add video to library (for holding)
-        function addToLibrary(event, title) {
-            event.preventDefault();
-            alert(title + " has been added to your library!");
-            console.log('Added to library:', title);
-        }
 
         CreaHome();
     </script>
