@@ -1,15 +1,11 @@
 
-// Define search type and page number
-var searchType = 2;
-var page = 1;
+var searchType = 2; // Default search type (keyword)
+var page = 1; // Current page
+var apiUrlGetAll = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_page=30"; // Base API URL
 
-// API URL to get all videos
-var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
-
-// Get HTML elements by their IDs
-const searchButton = document.getElementById('cerca');
-const nextButton = document.getElementById("next");
-const prevButton = document.getElementById('previous');
+const searchBtn = document.getElementById('cerca');
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById('previous');
 const categorySelect = document.getElementById('categoria');
 const searchInput = document.getElementById('ricerca');
 const durationSelect = document.getElementById('durata');
@@ -19,33 +15,32 @@ let pageIndex = document.getElementById("pagina");
 var hoverInterval;
 var loading = false;
 
-// Add event listeners to reset the page when selections change
 categorySelect.addEventListener("change", resetPage);
 durationSelect.addEventListener("change", resetPage);
 sectionSelect.addEventListener("change", resetPage);
 
-// Add event listeners for buttons if they exist
-if (searchButton) {
- searchButton.addEventListener("click", search);
+if (searchBtn) {
+ searchBtn.addEventListener("click", performSearch);
 }
 
-if (prevButton) {
- prevButton.addEventListener("click", prev);
+if (prevBtn) {
+ prevBtn.addEventListener("click", previousPage);
 }
 
-if (nextButton) {
- nextButton.addEventListener("click", next);
+if (nextBtn) {
+ nextBtn.addEventListener("click", nextPage);
 }
 
-// Function to switch the search filter
-function SwitchInputSelect(num) {
+// Function to change the search filter
+function switchInputSelect(num) {
  switch (num) {
  case 1:
  // Category Filter
  searchType = 1;
  page = 1;
  categorySelect.className = "form-select";
- sectionSelect.className = "form-select visually-hidden";
+ sectionSelect.className = orySelect.className = "form-select";
+ sectionSelect.className = lassName = "form-select visually-hidden";
  searchInput.className = "form-control me-2 visually-hidden";
  durationSelect.className = "form-select visually-hidden";
  break;
@@ -54,10 +49,7 @@ function SwitchInputSelect(num) {
  searchType = 2;
  page = 1;
  categorySelect.className = "form-select visually-hidden";
- searchInput.className = "form-control searchType = 2;
- page = 1;
- categorySelect.className = "form-select visually-hidden";
- searchInput.className = "form-control searchInput.className = "form-control ontrol me-2";
+ searchInput.className = "form-control me-2";
  sectionSelect.className = "form-select visually-hidden";
  searchInput.placeholder = "Search";
  durationSelect.className = "form-select visually-hidden";
@@ -67,6 +59,15 @@ function SwitchInputSelect(num) {
  searchType = 3;
  page = 1;
  categorySelect.className = "form-select visually-hidden";
+ ";
+ break;
+ case 3:
+ // Duration Filter
+ searchType = 3;
+ page = 1;
+ categorySelect.className = "form-select visually-hidden";
+ categorySelect.className = "form-select visually-hidden";
+ ;
  sectionSelect.className = "form-select visually-hidden";
  searchInput.className = "form-control me-2 visually-hidden";
  durationSelect.className = "form-select";
@@ -86,30 +87,45 @@ function SwitchInputSelect(num) {
  }
 }
 
-// Function to perform a search based on the selected filter
-function search() {
- loading = false;
+// Function to perform the search based on the selected filter
+function performSearch() {
+ loading = true;
  load();
- changePage();
- if (page == 1) {
- header.innerHTML = "Latest Releases";
- prevButton.className = "btn btn-outline-warning disabled";
- } else {
- prevButton.className = "btn btn-outline-warning";
- nextButton.className = "btn btn-outline-warning";
- }
+ updatePageControls();
+
  switch (searchType) {
  case 1:
- console.log("Search by Category");
- let category = document.getElementById("categoria").value;
- header.innerHTML = "";
- console.log(category);
- fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&per_page=30&query=" + category, {
- "method": "GET",
- "headers": {
- "Accept": "application/json"
- }
- })
- .then(response => response.json())
- .then(result => { printCards(result) })
- .catch(error =>
+ console.log("Searching by category");
+ let category = categorySelect.value;
+ fetch(apiUrlGetAll + "&query=" + category + "&page=" + page)
+ ols();
+
+ switch (searchType) {
+ case 1:
+ console.log("Searching by category");
+ let category = categorySelect.value;
+ fetch(apiUrlGetAll + "&query=" + category + "&page=" + page)
+ + "&query=" + category + "&page=" + page)
+ .then(handleResponse)
+ .then(result => { displayCards(result) })
+ .catch(handleError);
+ header.innerHTML = "Category search for: <span id='search'>" + category + "</span>";
+ break;
+ case 2:
+ console.log("Searching by keyword");
+ let keyword = searchInput.value;
+ fetch(apiUrlGetAll + "&query=" + keyword + "&page=" + page)
+ .then(handleResponse)
+ .then(result => { displayCards(result) })
+ .catch(handleError);
+ header.innerHTML = "Keyword search for: <span id='search'>" + keyword + "</span>";
+ break;
+ case 3:
+ console.log("Searching by duration");
+ let duration = durationSelect.value;
+ fetch(apiUrlGetAll + "&order=" + duration >" + keyword + "</span>";
+ break;
+ case 3:
+ console.log("Searching by duration");
+ let duration = durationSelect.value;
+ fetch(apiUrlGetAll + "&order=" + duration fetch(apiUrlGetAll + "&order=" + duration
