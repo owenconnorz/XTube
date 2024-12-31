@@ -34,12 +34,12 @@
         <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filtro">
-              Cerca Per
+              aria-expanded="false" id="filter">
+              Search for
             </a>
             <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
               <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
-                  Categoria</a></li>
+                  Categorie</a></li>
               <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
                   Keyword</a></li>
               <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by Duration</a></li>
@@ -48,11 +48,11 @@
           </li>
         </ul>
 
-        <form class="d-flex" role="search" id="form_ricerca">
-          <input class="form-control me-2" type="text" placeholder="Cerca" aria-label="Search" id="ricerca"
-            name="ricerca" onfocus="SwitchInputSelect(2)">
-          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categoria">
-            <option selected id="decorazione" value="0">Seleziona categoria</option>
+        <form class="d-flex" role="search" id="search_form">
+          <input class="form-control me-2" type="text" placeholder="search" aria-label="Search" id="search"
+            name="search" onfocus="SwitchInputSelect(2)">
+          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categorie">
+            <option selected id="decorazione" value="0">Select categorie</option>
             <option value="Amateur">Amateurs</option>
             <option value="Anal">Anal</option>
             <option value="Asian">Asiatiche </option>
@@ -85,24 +85,24 @@
             <option value="Romantic">Romantic</option>
             <option value="Cuckhold">Cuckhold</option>
           </select>
-          <select class="form-select visually-hidden" aria-label="sezione" id="sezione">
-            <option selected id="decorazione" value="0">Seleziona Sezione</option>
+          <select class="form-select visually-hidden" aria-label="section" id="section">
+            <option selected id="decorazione" value="0">Select section</option>
             <option value="etero">Etero</option>
             <option value="gay">Gay</option>
             <option value="trans">Trans</option>
             <option value="Lesbian">Lesbian</option>
           </select>
           <select class="form-select visually-hidden" aria-label="durata" id="durata">
-            <option selected id="decorazione" value="0">Seleziona Durata</option>
+            <option selected id="decorazione" value="0">Select Durata</option>
             <option value="shortest">Video Corti</option>
             <option value="longest">Video Lunghi</option>
           </select>
-          <button class="btn btn-outline-warning" type="button" id="cerca">Cerca</button>
+          <button class="btn btn-outline-warning" type="button" id="search">Search</button>
         </form>
       </div>
     </div>
   </nav>
-  <h1 id="intestazione">Ultime uscite</h1>
+  <h1 id="intestazione">Latest releases</h1>
 
   <div class="container-fluid" id="loading">
     <div class="spinner-border text-warning" role="status">
