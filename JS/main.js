@@ -211,8 +211,11 @@ function printCards(result) { // Translated from 'stampaCards'
         wrapper.className = `col`;
 
         const card = document.createElement(`div`);
-        card.className = `card`;
-        card.addEventListener(`click`, (ev) => window.open(video.embed));
+        card.className = `video`;
+        card.id = `video${index + 1}`; // Assign unique IDs
+        card.onmousedown = (event) => startHold(event, video.title);
+        card.onmouseup = stopHold;
+        card.onmouseleave = stopHold;
 
         const p = document.createElement(`p`);
         p.className = `card-text`;
@@ -220,11 +223,6 @@ function printCards(result) { // Translated from 'stampaCards'
         const cardImg = document.createElement(`img`);
         cardImg.src = video.default_thumb.src;
         cardImg.className = `card-img-top`;
-
-        // Implement startHold and stopHold functions
-        card.onmousedown = (event) => startHold(event, video.title);
-        card.onmouseup = stopHold;
-        card.onmouseleave = stopHold;
 
         const cardDescription = document.createElement(`div`);
         cardDescription.className = `card-description`;
@@ -370,7 +368,7 @@ function next() {
             break;
         case 6:
             CreaTrending();
-            break; // Added break
+            break;
         default:
             searchFunction(); // Translated from 'Ricerca'
             break;
