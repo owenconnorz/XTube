@@ -13,68 +13,68 @@
   <link rel="stylesheet" href="./style/stylesheet.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background: #f7f0e9;
-  transition: .6s;
-}
-h1 {
-  font-size: 5em;
-  color: #3d3935;
-}
-#container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-.switch input {
-  display: none;
-}
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #ccc;
-  border-radius: 34px;
-  transition: .4s;
-}
-.slider:before {
-  content: "";
-  position: absolute;
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background: #fff;
-  border-radius: 50%;
-  transition: .4s;
-}
-input:checked + .slider {
-  background: #b892ff;
-}
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-.dark-mode {
-  background: #0b0a14;
-}
-.dark-mode h1 {
-  color: #f7f0e9;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #f7f0e9;
+      transition: .6s;
+    }
+    h1 {
+      font-size: 5em;
+      color: #3d3935;
+    }
+    #container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    .switch input {
+      display: none;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ccc;
+      border-radius: 34px;
+      transition: .4s;
+    }
+    .slider:before {
+      content: "";
+      position: absolute;
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background: #fff;
+      border-radius: 50%;
+      transition: .4s;
+    }
+    input:checked + .slider {
+      background: #b892ff;
+    }
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    .dark-mode {
+      background: #0b0a14;
+    }
+    .dark-mode h1 {
+      color: #f7f0e9;
+    }
   </style>
 </head>
 
@@ -97,21 +97,6 @@ input:checked + .slider:before {
           </li>
         </ul>
 
-        <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filtro">
-              Search By
-            </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(1)">Category</a></li>
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(2)">Keyword</a></li>
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(3)">Search by Duration</a></li>
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(4)">Search by Section</a></li>
-            </ul>
-          </li>
-        </ul>
-
         <!-• Day/Night Toggle -->
         <label class="switch ms-2">
           <input type="checkbox" onclick="changeMode()">
@@ -119,10 +104,17 @@ input:checked + .slider:before {
         </label>
       </div>
     </div>
-    
+
     <!-• Search Bar positioned below the navbar -->
     <div class="container-fluid">
       <form class="d-flex justify-content-center my-2" role="search" id="form_ricerca">
+        <select class="form-select me-2" aria-label="Search By" id="searchBy" onchange="SwitchInputSelect(this.value)">
+          <option value="0">Search By</option>
+          <option value="1">Category</option>
+          <option value="2">Keyword</option>
+          <option value="3">Search by Duration</option>
+          <option value="4">Search by Section</option>
+        </select>
         <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
           name="ricerca" onfocus="SwitchInputSelect(2)">
         <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
