@@ -157,15 +157,13 @@
     <div class="container-fluid visually-hidden" id="graficaCards">
         <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
             <div class="col">
-                <div class="video" id="video1">
+                <div class="video" id="video1" onmousedown="openAddToLibraryModal('Video Title 1')">
                     <p>Video Title 1</p>
-                    <button class="btn btn-outline-warning" onclick="openAddToLibraryModal('Video Title 1')">Add to Library</button>
                 </div>
             </div>
             <div class="col">
-                <div class="video" id="video2">
+                <div class="video" id="video2" onmousedown="openAddToLibraryModal('Video Title 2')">
                     <p>Video Title 2</p>
-                    <button class="btn btn-outline-warning" onclick="openAddToLibraryModal('Video Title 2')">Add to Library</button>
                 </div>
             </div>
             <!-• Add more videos as needed -->
@@ -300,7 +298,7 @@
             modal.hide();
         });
 
-        // Example function to add video to library
+        // Example function to add video to library (for holding)
         function addToLibrary(event, title) {
             event.preventDefault();
             alert(title + " has been added to your library!");
