@@ -221,22 +221,10 @@ function printCards(result) { // Translated from 'stampaCards'
         cardImg.src = video.default_thumb.src;
         cardImg.className = `card-img-top`;
 
-        card.onmouseover = function () {
-            clearInterval(hoverInterval);
-            ChangeImageOnHover(this, videoArray[index].thumbs[0].src); // Translated from 'CambiaImmagineOnHover'
-        };
-        card.onmouseleave = function () {
-            clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65)); // Translated from 'setImmagineDefault' and 'stampaTitolo'
-        };
-        card.ontouchstart = function () {
-            clearInterval(hoverInterval);
-            ChangeImageOnHover(this, videoArray[index].thumbs[0].src);
-        };
-        card.ontouchend = function () {
-            clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65)); // Translated from 'setImmagineDefault' and 'stampaTitolo'
-        };
+        // Implement startHold and stopHold functions
+        card.onmousedown = (event) => startHold(event, video.title);
+        card.onmouseup = stopHold;
+        card.onmouseleave = stopHold;
 
         const cardDescription = document.createElement(`div`);
         cardDescription.className = `card-description`;
@@ -288,6 +276,21 @@ function printCards(result) { // Translated from 'stampaCards'
     setTimeout(function () {
         load();
     }, 800);
+}
+
+// Hold functionality
+let holdTimer;
+
+function startHold(event, title) {
+    console.log("Hold started on:", title);
+    holdTimer = setTimeout(() => {
+        openAddToLibraryModal(title);
+    }, 600); // Open modal after 600ms hold
+}
+
+function stopHold() {
+    console.log("Hold stopped");
+    clearTimeout(holdTimer); // Clear the timer if mouse is released
 }
 
 // Function to create the homepage when the index page loads
