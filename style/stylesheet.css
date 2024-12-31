@@ -20,7 +20,7 @@ img.card-img-top {
 }
 
 span#ricerca, #ricerca, #logo, #categoria, #pagina {
-  color: orange;
+  color: blue;
 }
 
 body {
@@ -99,7 +99,7 @@ nav#pagination a {
 
 nav#pagination a:hover {
   background-color: black;
-  border-color: orange;
+  border-color: blue;
 }
 
 div.card:hover {
