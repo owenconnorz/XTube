@@ -1,150 +1,113 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="./img/campfire.png" />
-  <title>Trending</title> 
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/png" href="./img/campfire.png" />
+ <title>Trending</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style/stylesheet.css">
-
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+ integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ <link rel="stylesheet" onymous">
+ <link rel="stylesheet" href="./style/stylesheet.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark"> 
-    <div class="container-fluid"> 
-      <a class="navbar-brand" id="title" href="./index.html">X
-        <span id="logo">Tube</span></a> </div> 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"> 
-            <a class="nav-link " aria-current="page" href="./index.html">Home</a> 
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="./best.html">Trending</a> 
-          </li>
-        </ul>
+ <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
+ <div class="container-fluid">
+ <a class="navbar-brand" id="title" href="./index.html">X
+ <span id="logo">Tube</span></a>
+ <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+ aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ <li class="nav-item">
+ <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+ </li>
+ <li class="nav-item">
+ <a class="nav-link active" href="./best.html">Trending</a>
+ </li>
+ </ul>
 
-        <ul class="navbar-nav me-1 my-2 my-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filter">
-              Search for 
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
-                  Category</a></li> 
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(2)">Keyword</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)">Search by Duration</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)">Search by Section</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex" role="search" id="search_form">
-          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="search"
-            name="search" onfocus="SwitchInputSelect(2)">
-          <select class="form-select visually-hidden me-2" aria-label="Categories" id="categorie">
-            <option selected id="decorazione" value="0">Select Category</option>
-            <option value="Amateur">Amateurs</option>
-            <option value="Anal">Anal</option>
-            <option value="Asian">Asian</option>
-            <option value="Big Ass">Big Ass</option>
-            <option value="Big Tits">Big Tits</option>
-            <option value="Blowjob">Blowjob</option>
-            <option value="Blonde">Blonde</option>
-            <option value="Brunette">Brunette</option>
-            <option value="Casting">Casting</option>
-            <option value="Compilation">Compilation</option>
-            <option value="Creampie">Creampie</option>
-            <option value="Cumshots">Cumshot</option>
-            <option value="Facials">Facials</option>
-            <option value="Latina">Latina</option>
-            <option value="Milf">Milf</option>
-            <option value="POV">POV</option>
-            <option value="Redhead">Redhead</option>
-            <option value="Teens">Teens</option>
-            <option value="Threesome">Threesome</option>
-            <option value="Small Tits">Small Tits</option>
-            <option value="Deepthroat">Deepthroat</option>
-            <option value="69">69</option>
-            <option value="Petite">Petite</option>
-            <option value="Hentai">Hentai</option>
-            <option value="Ebony">Ebony</option>
-            <option value="Interracial">Interracial</option>
-            <option value="Orgy">Orgy</option>
-            <option value="Babysitter">Babysitter</option>
-            <option value="College">College</option>
-            <option value="Romantic">Romantic</option>
-            <option value="Cuckhold">Cuckhold</option>
-          </select>
-          <select class="form-select visually-hidden" aria-label="section" id="section">
-            <option selected id="decorazione" value="0">Select Section</option>
-            <option value="etero">Heterosexual</option> 
-            <option value="gay">Gay</option>
-            <option value="trans">Transgender</option> 
-            <option value="Lesbian">Lesbian</option>
-          </select>
-          <select class="form-select visually-hidden" aria-label="duration" id="duration">
-            <option selected id="decorazione" value="0">Select Duration</option>
-            <option value="shortest">Short Videos</option> 
-            <option value="longest">Long Videos</option> 
-          </select>
-          <button class="btn btn-outline-warning" type="button" id="search">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+ <ul class="navbar-nav me-1 my-2 my-lg-0">
+ <li class="nav-item dropdown">
+ <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+ aria-expanded="false" id="filter">
+ Search for
+ </a>
+ <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+ <li><a class="dropdown-item" onclick="SwitchInputSelect(1)">Category</a></li>
+ <li><a rch for
+ </a>
+ <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+ <li><a class="dropdown-item" onclick="SwitchInputSelect(1)">Category</a></li>
+ <li><a lect(1)">Category</a></li>
+ <li><a <li><a li><a class="dropdown-item" onclick="SwitchInputSelect(2)">Keyword</a></li>
+ <li><a class="dropdown-item" onclick="SwitchInputSelect(3)">Search by Duration</a></li>
+ <li><a class="dropdown-item" onclick="SwitchInputSelect(4)">Search by Section</a></li>
+ </ul>
+ </li>
+ </ul>
+ <form class="d-flex" role="search" id="search_form">
+ <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="search"
+ name="search" onfocus="SwitchInputSelect(2)">
+ <select class="form-select visually-hidden me-2" aria-label="Categories" id="categorie">
+ <option selected id="decorazioneCategorie" value="0">Select Category</option>
+ <!-• Add additional options -->
+ </select>
+ <select class="form-select visually-hidden" aria-label="section" id="section">
+ <option selected id="decorazioneSection" value="0">Select Section</option>
+ <!-• Add additional options -->
+ </select>
+ <select class="form-select visually-hidden" aria-label="duration" id="duration">
+ <option selected id="decorazioneDuration" value="0">Select Duration</option>
+ <!-• Add additional options -->
+ </select>
+ <button class="btn btn-outline-warning" type="button" id="search">Search</button>
+ </form>
+ ration" value="0">Select Duration</option>
+ <!-• Add additional options -->
+ </select>
+ <button class="btn btn-outline-warning" type="button" id="search">Search</button>
+ </form>
+ h">Search</button>
+ </form>
+ form>
+ </div>
+ </div>
+ </nav>
 
-  <h1 id="intestazione"><span><img src="./img/campfire.png" alt="" id="icone"></span>Trending<span><img
-          src="./img/campfire.png" alt="" id="icone"></span></h1>
-      <div class="container-fluid" id="loading">
-        <div class="spinner-border text-warning" role="status">
-          <span class="sr-only"></span>
-        </div>
-      </div>
+ <h1 id="intestazione"><span><img src="./img/campfire.png" alt="" id="icone"></span>Trending<span><img
+ src="./img/campfire.png" alt="" id="icone"></span></h1>
+ <div class="container-fluid" id="loading">
+ <div class="spinner-border text-warning" role="status">
+ <span class="sr-only">Loading...</span>
+ </div>
+ </div>
 
-      <div class="container-fluid visually-hidden" id="graficaCards">
-        <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
-          </div>
-      </div>
-      <br>
-    </body>
-    <br>
+ <div class="container-fluid visually-hidden" id="graficaCards">
+ <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
+ </div>
+ </div>
 
-    <footer>
-      <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
-        <ul class="pagination">
-          <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
-          <li class="page-item">Page <span id="page">1</span></li> 
-          <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
-        </ul>
-      </nav>
-      <br>
-    </footer>
+ <footer>
+ <nav aria-label="Page navigation fixed-bottom" id="pagination" navigation fixed-bottom" id="pagination" data-bs-theme="dark">
+ <ul class="pagination">
+ <li class="page-item">
+ <button type="button" class="btn btn-outline-warning" id="previous">&laquo;</button>
+ </li>
+ <li class="page-item">Page <span id="page">1</span></li>
+ <li class="page-item">
+ <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
+ </li>
+ </ul>
+ </nav>
+ </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-      </script>
-    <script src="./JS/main.js"> </script>
-    <script>
-      CreaTrending() 
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2342057939760254"
-         crossorigin="
-
- * https://en.wikipedia.org/wiki/Barnsley_fern
- * https://cloudinary.com/blog/building_a_camera_app_with_webrtc_vue_js_and_cloudinary
- * https://github.com/Darwin1337/tsiw-discovid
- * https://github.com/Lucalorenzo04/Tap-fap
- * https://stackoverflow.com/questions/71264702/using-libman-to-add-bootstrap-5-to-a-razorpages-project
- * https://github.com/Kimberlynn01/Laravel_Portfolio
- * https://github.com/ayazmirza54/text-code-util.aiprod
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+ ivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
