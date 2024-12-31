@@ -118,6 +118,11 @@
                     <input type="checkbox" onclick="changeMode()" checked> <!-• Default checked for dark mode -->
                     <span class="slider"></span>
                 </label>
+
+                <div class="ms-3">
+                    <button id="loginBtn" class="btn btn-outline-warning" onclick="login()">Login</button>
+                    <button id="logoutBtn" class="btn btn-outline-warning d-none" onclick="logout()">Logout</button>
+                </div>
             </div>
         </div>
 
@@ -262,6 +267,7 @@
     <script src="./JS/main.js"></script>
     <script>
         let holdTimer;
+        let loggedIn = false; // User login state
 
         // Initialize dark mode
         document.body.classList.add("dark-mode");
@@ -312,6 +318,20 @@
             var modal = bootstrap.Modal.getInstance(document.getElementById('addToLibraryModal'));
             modal.hide();
         });
+
+        function login() {
+            loggedIn = true; // Update login state
+            document.getElementById('loginBtn').classList.add('d-none');
+            document.getElementById('logoutBtn').classList.remove('d-none');
+            alert("Logged in successfully!");
+        }
+
+        function logout() {
+            loggedIn = false; // Update login state
+            document.getElementById('logoutBtn').classList.add('d-none');
+            document.getElementById('loginBtn').classList.remove('d-none');
+            alert("Logged out successfully!");
+        }
 
         // Call your CreaHome or other functions here to load initial content
         CreaHome();
