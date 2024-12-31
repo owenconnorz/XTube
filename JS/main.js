@@ -1,6 +1,6 @@
 
 var tipoRicerca = 2;
-var pagina = 1;
+var page = 1;
 var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
 const btn = document.getElementById('cerca');
 const btnNext = document.getElementById("next");
@@ -10,13 +10,13 @@ const search = document.getElementById('ricerca');
 const selectDurata = document.getElementById('durata');
 const selectSezione = document.getElementById('sezione');
 let intestazione = document.getElementById("intestazione");
-let indicePagina = document.getElementById("pagina");
+let indicePage = document.getElementById("page");
 var hoverInterval;
 var loading = false;
 
-selectCategoria.addEventListener("change", resetPagina);
-selectDurata.addEventListener("change", resetPagina);
-selectSezione.addEventListener("change", resetPagina);
+selectCategoria.addEventListener("change", resetPage);
+selectDurata.addEventListener("change", resetPage);
+selectSezione.addEventListener("change", resetPage);
 
 if (btn) {
     btn.addEventListener("click", Ricerca);
@@ -35,7 +35,7 @@ function SwitchInputSelect(num) {
         case 1:
             //Filtro Categorie
             tipoRicerca = 1;
-            pagina = 1
+            page = 1
             selectCategoria.className = "form-select";
             selectSezione.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
@@ -44,7 +44,7 @@ function SwitchInputSelect(num) {
         case 2:
             //Filtro Parola Chiave (Default)
             tipoRicerca = 2;
-            pagina = 1
+            page = 1
             selectCategoria.className = "form-select visually-hidden";
             search.className = "form-control me-2";
             selectSezione.className = "form-select visually-hidden";
@@ -55,7 +55,7 @@ function SwitchInputSelect(num) {
         case 3:
             //Filtro Durata
             tipoRicerca = 3;
-            pagina = 1
+            page = 1
             selectCategoria.className = "form-select visually-hidden";
             selectSezione.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
@@ -63,7 +63,7 @@ function SwitchInputSelect(num) {
             break;
         case 4:
             //Filtro Sezione
-            pagina = 1
+            page = 1
             tipoRicerca = 4;
             
             selectSezione.className = "form-select";
@@ -81,7 +81,7 @@ function SwitchInputSelect(num) {
 function Ricerca() {
     loading = false;
     load();
-    cambiaPagina();
+    cambiaPage();
     if (pagina == 1) {
         intestazione.innerHTML = "Ultime uscite";
         btnPrev.className = "btn btn-outline-warning disabled";
@@ -105,7 +105,7 @@ function Ricerca() {
                 .then(response => response.json())
                 .then(result => { stampaCards(result) })
                 .catch(error => console.log('Error:', error));
-            intestazione.innerHTML = `Pagina <span id="categoria">${pagina}</span>`;
+            intestazione.innerHTML = `Page <span id="categoria">${page}</span>`;
             break;
         case 2:
             tipoRicerca = 2;
@@ -113,7 +113,7 @@ function Ricerca() {
             console.log("Ricerca per Parola Chiave");
             let key_word = document.getElementById("ricerca").value;
             console.log(key_word);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -135,7 +135,7 @@ function Ricerca() {
             }
 
             console.log(time);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&order=" + time + "&lq=0&format=json&per_page=30", {
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=" + time + "&lq=0&format=json&per_page=30", {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -152,7 +152,7 @@ function Ricerca() {
             let sezione = document.getElementById("sezione").value;
             console.log(sezione);
             if (sezione == "etero") {
-                fetch("https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + pagina, {
+                fetch("https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + page, {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -164,7 +164,7 @@ function Ricerca() {
 
             } else if (sezione == "gay") {
     
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&per_page=30&format=json&lq=1&gay=2", {
+                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -174,7 +174,7 @@ function Ricerca() {
                     .then(result => { stampaCards(result) })
                     .catch(error => console.log('Error:', error));
             } else {
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&per_page=30&format=json&lq=1&query=" + sezione, {
+                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&query=" + sezione, {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -288,12 +288,12 @@ function stampaCards(result) {
         load();
     }, 800);
 }
-// funzione che mi crea la homepage quando carica la pagina index
+// funzione che mi crea la homepage quando carica la page index
 function CreaHome() {
     window.scrollTo(top);
     loading = false;
     load();
-    if (pagina == 1) {
+    if (page == 1) {
         intestazione.innerHTML = "Ultime uscite";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
@@ -303,7 +303,7 @@ function CreaHome() {
     cambiaPagina();
     console.log("Crea Home");
     tipoRicerca = 5;
-    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + pagina + "&per_page=30", {
+    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + page + "&per_page=30", {
         "method": "GET",
         "headers": {
             "Accept": "application/json"
@@ -312,14 +312,14 @@ function CreaHome() {
         .then(response => response.json())
         .then(result => { stampaCards(result) })
         .catch(error => console.log('Error:', error));
-    cambiaPagina();
+    cambiaPage();
 }
 // funzione che mi crea la pagina trending quando carica la pagina trending
 function CreaTrending() {
     loading = false;
     load();
     window.scrollTo(top);
-    cambiaPagina();
+    cambiaPage();
     if (pagina == 1) {
         intestazione.innerHTML = ` <h1 id="intestazione"><span><img src="./img/campfire.png" alt="" id="icone"></span>Trending<span><img
         src="./img/campfire.png" alt="" id="icone"></span></h1>`;
@@ -330,7 +330,7 @@ function CreaTrending() {
     }
     console.log("Crea Trending");
     tipoRicerca = 6;
-    fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&order=top-weekly&lq=0&format=json&per_page=30", {
+    fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=top-weekly&lq=0&format=json&per_page=30", {
         "method": "GET",
         "headers": {
             "Accept": "application/json"
@@ -351,10 +351,10 @@ function next() {
     window.scrollTo(top);
     intestazione.innerHTML = "";
     console.log(tipoRicerca);
-    if (pagina > 0 && pagina < 100) {
-        pagina++;
+    if (page > 0 && page < 100) {
+        page++;
     } else {
-        pagina = 1;
+        page = 1;
     }
     switch (tipoRicerca) {
         case 5:
@@ -371,10 +371,10 @@ function next() {
 function prev() {
     window.scrollTo(top);
     intestazione.innerHTML = "";
-    if (pagina > 1 && pagina < 100) {
-        pagina--;
+    if (pagina > 1 && page < 100) {
+        pag3--;
     } else {
-        pagina = 1;
+        page = 1;
 
     }
     switch (tipoRicerca) {
@@ -449,9 +449,9 @@ function setImmagineDefault(card, thumb, titolo) {
     card.querySelector('h2').textContent = titolo;
     card.querySelector('p').classList.remove("visually-hidden");
 }
-//Funzione per cambiare il numero della pagina
-function cambiaPagina() {
-    indicePagina.textContent = pagina;
+//Funzione per cambiare il numero della page
+function cambiaPage() {
+    indicePage.textContent = page;
 }
 // Funzione per far apparire il loading
 function load() {
@@ -465,7 +465,7 @@ function load() {
         gridVideo.className = "container-fluid visually-hidden";
     }
 }
-// Funzione per resettare la pagina
-function resetPagina(){
-    pagina = 1;
+// Funzione per resettare la page
+function resetPage(){
+    page = 1;
 }
