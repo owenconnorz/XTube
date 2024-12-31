@@ -2,7 +2,7 @@
 var searchType = 2;
 var page = 1;
 var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
-const btn = document.getElementById('cerca');
+const btn = document.getElementById('near');
 const btnNext = document.getElementById("next");
 const btnPrev = document.getElementById('previous');
 const selectCategorie = document.getElementById('categorie');
@@ -39,7 +39,7 @@ function SwitchInputSelect(num) {
             selectCategorie.className = "form-select";
             selectSection.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
-            selectDurata.className = "form-select visually-hidden";
+            selectDuration.className = "form-select visually-hidden";
             break;
         case 2:
             //Filtro Parola Chiave (Default)
@@ -48,18 +48,18 @@ function SwitchInputSelect(num) {
             selectCategorie.className = "form-select visually-hidden";
             search.className = "form-control me-2";
             selectSection.className = "form-select visually-hidden";
-            search.placeholder = "Cerca";
-            selectDurata.className = "form-select visually-hidden";
+            search.placeholder = "Near";
+            selectDuration.className = "form-select visually-hidden";
             break;
 
         case 3:
-            //Filtro Durata
+            //Filter Duration
             searchType = 3;
             page = 1
             selectCategorie.className = "form-select visually-hidden";
             selectSection.className = "form-select visually-hidden";
             search.className = "form-control me-2 visually-hidden";
-            selectDurata.className = "form-select";
+            selectDuration.className = "form-select";
             break;
         case 4:
             //Filer Section
@@ -69,7 +69,7 @@ function SwitchInputSelect(num) {
             selectSection.className = "form-select";
             search.className = "form-control me-2 visually-hidden";
             selectCategoria.className = "form-select visually-hidden";
-            selectDurata.className = "form-select visually-hidden";
+            selectDuration.className = "form-select visually-hidden";
             break;
         default:
             searchType = 2;
@@ -83,7 +83,7 @@ function Search() {
     load();
     changePage();
     if (page == 1) {
-        intestazione.innerHTML = "Ultime uscite";
+        intestazione.innerHTML = "Last uscite";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
@@ -385,7 +385,7 @@ function prev() {
             Trending();
             break;
         default:
-            Searxh();
+            Search();
             break;
     }
 }
