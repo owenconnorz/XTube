@@ -1,115 +1,51 @@
 
-// Define search type and page number
-var searchType = 2;
-var page = 1;
+<!DOCTYPE html>
+<html lang="en">
 
-// API URL to get all videos
-var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tap&Fap</title>
+ <link rel="icon" type="image/png" href="./img/no-minors.png" .png" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+ integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+ <link rel="stylesheet" href="./style/stylesheet.css">
+</head>
 
-// Get HTML elements by their IDs
-const searchButton = document.getElementById('cerca');
-const nextButton = document.getElementById("next");
-const prevButton = document.getElementById('previous');
-const categorySelect = document.getElementById('categoria');
-const searchInput = document.getElementById('ricerca');
-const durationSelect = document.getElementById('durata');
-const sectionSelect = document.getElementById('sezione');
-let header = document.getElementById("intestazione");
-let pageIndex = document.getElementById("pagina");
-var hoverInterval;
-var loading = false;
+<body>
+ <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
+ <div class="container-fluid">
+ <a class="navbar-brand" id="title" href="./index.html">Tap &
+ <span id="logo">Fap</span></a>
+ <button </span></a>
+ <button tton class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+ aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ <li class="nav-item">
+ <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+ </li>
+ <li class="nav-item">
+ <a class="nav-link" href="./best.html">Trending</a>
+ </li>
+ </ul>
 
-// Add event listeners to reset the page when selections change
-categorySelect.addEventListener("change", resetPage);
-durationSelect.addEventListener("change", resetPage);
-sectionSelect.addEventListener("change", resetPage);
-
-// Add event listeners for buttons if they exist
-if (searchButton) {
- searchButton.addEventListener("click", search);
-}
-
-if (prevButton) {
- prevButton.addEventListener("click", prev);
-}
-
-if (nextButton) {
- nextButton.addEventListener("click", next);
-}
-
-// Function to switch the search filter
-function SwitchInputSelect(num) {
- switch (num) {
- case 1:
- // Category Filter
- searchType = 1;
- page = 1;
- categorySelect.className = "form-select";
- sectionSelect.className = "form-select visually-hidden";
- searchInput.className = "form-control me-2 visually-hidden";
- durationSelect.className = "form-select visually-hidden";
- break;
- case 2:
- // Keyword Filter (Default)
- searchType = 2;
- page = 1;
- categorySelect.className = "form-select visually-hidden";
- searchInput.className = "form-control searchType = 2;
- page = 1;
- categorySelect.className = "form-select visually-hidden";
- searchInput.className = "form-control searchInput.className = "form-control ontrol me-2";
- sectionSelect.className = "form-select visually-hidden";
- searchInput.placeholder = "Search";
- durationSelect.className = "form-select visually-hidden";
- break;
- case 3:
- // Duration Filter
- searchType = 3;
- page = 1;
- categorySelect.className = "form-select visually-hidden";
- sectionSelect.className = "form-select visually-hidden";
- searchInput.className = "form-control me-2 visually-hidden";
- durationSelect.className = "form-select";
- break;
- case 4:
- // Section Filter
- page = 1;
- searchType = 4;
- sectionSelect.className = "form-select";
- searchInput.className = "form-control me-2 visually-hidden";
- categorySelect.className = "form-select visually-hidden";
- durationSelect.className = "form-select visually-hidden";
- break;
- default:
- searchType = 2;
- break;
- }
-}
-
-// Function to perform a search based on the selected filter
-function search() {
- loading = false;
- load();
- changePage();
- if (page == 1) {
- header.innerHTML = "Latest Releases";
- prevButton.className = "btn btn-outline-warning disabled";
- } else {
- prevButton.className = "btn btn-outline-warning";
- nextButton.className = "btn btn-outline-warning";
- }
- switch (searchType) {
- case 1:
- console.log("Search by Category");
- let category = document.getElementById("categoria").value;
- header.innerHTML = "";
- console.log(category);
- fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&per_page=30&query=" + category, {
- "method": "GET",
- "headers": {
- "Accept": "application/json"
- }
- })
- .then(response => response.json())
- .then(result => { printCards(result) })
- .catch(error =>
+ <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
+ <li class="nav-item dropdown ">
+ <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+ aria-expanded="false" id="filter">
+ Search By
+ </a>
+ <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
+ <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
+ Category</a></li>
+ <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
+ Keyword</a></li>
+ <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by chInputSelect(1)>
+ Category</a></li>
+ <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
+ Keyword</a></li>
+ <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by
