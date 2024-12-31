@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,13 +19,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background: #f7f0e9;
+            background: #0b0a14; /* Dark mode background */
+            color: #FFFFFF; /* Default text color for dark mode */
             transition: .6s;
         }
 
         h1 {
             font-size: 5em;
-            color: #3d3935;
+            color: #FFFFFF; /* Header color for dark mode */
         }
 
         #container {
@@ -101,7 +102,7 @@
     </style>
 </head>
 
-<body>
+<body class="dark-mode"> <!-• Set dark mode as default -->
     <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" id="titolo" href="./index.html">X <span id="logo">Tube</span></a>
@@ -123,7 +124,7 @@
                 </ul>
 
                 <label class="switch ms-2">
-                    <input type="checkbox" onclick="changeMode()">
+                    <input type="checkbox" onclick="changeMode()" checked> <!-• Default checked for dark mode -->
                     <span class="slider"></span>
                 </label>
             </div>
@@ -232,7 +233,6 @@
         <br>
     </footer>
 
-    <!-• Modal -->
     <div class="modal fade" id="addToLibraryModal" tabindex="-1" aria-labelledby="addToLibraryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -272,18 +272,23 @@
     <script>
         let holdTimer;
 
+        // Initialize dark mode
+        document.body.classList.add("dark-mode");
+
         function changeMode() {
             var element = document.body;
             element.classList.toggle("dark-mode");
         }
 
         function startHold(event, title) {
+            console.log("Hold started on:", title);
             holdTimer = setTimeout(() => {
                 openAddToLibraryModal(title);
-            }, 1); // Open modal after 1ms hold
+            }, 600); // Open modal after 600ms hold
         }
 
         function stopHold() {
+            console.log("Hold stopped");
             clearTimeout(holdTimer); // Clear the timer if mouse is released
         }
 
@@ -309,11 +314,9 @@
             modal.hide();
         });
 
+        // Call your CreaHome or other functions here to load initial content
         CreaHome();
     </script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2342057939760254"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
