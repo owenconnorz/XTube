@@ -7,7 +7,7 @@ const btnNext = document.getElementById("next");
 const btnPrev = document.getElementById('previous');
 const selectCategorie = document.getElementById('categorie');
 const search = document.getElementById('search');
-const selectDurata = document.getElementById('duration');
+const selectDuration = document.getElementById('duration');
 const selectSection = document.getElementById('select);
 let intestazione = document.getElementById("header");
 let indexPage = document.getElementById("page");
@@ -15,7 +15,7 @@ var hoverInterval;
 var loading = false;
 
 selectCategorie.addEventListener("change", resetPage);
-selectDurata.addEventListener("change", resetPage);
+selectDuration.addEventListener("change", resetPage);
 selectSection.addEventListener("change", resetPage);
 
 if (btn) {
