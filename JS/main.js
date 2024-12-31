@@ -91,102 +91,90 @@ function searchFunction() {
     }
     switch (searchType) {
         case 1:
-            searchType = 1;
             console.log("Search by category"); // Translated from 'Ricerca per categoria'
             let category = document.getElementById("categoria").value;
-            header.innerHTML = "";
-            console.log(category);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&per_page=30&query=" + category, {
-                "method": "GET",
-                "headers": {
-                    "Accept": "application/json"
-                }
-            })
-                .then(response => response.json())
-                .then(result => { printCards(result) }) // Translated from 'stampaCards'
-                .catch(error => console.log('Error:', error));
-            header.innerHTML = `Page <span id="categoria">${page}</span>`; // Translated from 'Pagina'
+            fetchVideosByCategory(category);
             break;
         case 2:
-            searchType = 2;
-            header.innerHTML = "";
             console.log("Search by Keyword"); // Translated from 'Ricerca per Parola Chiave'
             let keyWord = document.getElementById("ricerca").value; // Translated from 'key_word'
-            console.log(keyWord);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + keyWord, {
-                "method": "GET",
-                "headers": {
-                    "Accept": "application/json"
-                }
-            })
-                .then(response => response.json())
-                .then(result => { printCards(result) }) // Translated from 'stampaCards'
-                .catch(error => console.log('Error:', error));
-            header.innerHTML = "Search by <span id='ricerca'>" + keyWord + "</span>"; // Translated from 'Ricerca per Parola Chiave'
+            fetchVideosByKeyword(keyWord);
             break;
         case 3:
             console.log("Search by Duration"); // Translated from 'Ricerca per Durata'
-            header.innerHTML = "";
             let time = document.getElementById("durata").value; // Translated from 'durata'
-            if (time == "longest") {
-                header.innerHTML = "Search by <span id='ricerca'>Long Videos</span>"; // Translated from 'Video Lunghi'
-            } else {
-                header.innerHTML = "Search by <span id='ricerca'>Short Videos</span>"; // Translated from 'Video Corti'
-            }
-            console.log(time);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=" + time + "&lq=0&format=json&per_page=30", {
-                "method": "GET",
-                "headers": {
-                    "Accept": "application/json"
-                }
-            })
-                .then(response => response.json())
-                .then(result => { printCards(result) }) // Translated from 'stampaCards'
-                .catch(error => console.log('Error:', error));
+            fetchVideosByDuration(time);
             break;
-
         case 4:
             console.log("Search by Section"); // Translated from 'Ricerca per Sezione'
-            header.innerHTML = "";
             let section = document.getElementById("sezione").value; // Translated from 'sezione'
-            console.log(section);
-            if (section == "hetero") { // Translated from 'etero'
-                fetch("https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + page, {
-                    "method": "GET",
-                    "headers": {
-                        "Accept": "application/json",
-                    }
-                })
-                    .then(response => response.json())
-                    .then(result => { printCards(result) }) // Translated from 'stampaCards'
-                    .catch(error => console.log('Error:', error));
-
-            } else if (section == "gay") {
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
-                    "method": "GET",
-                    "headers": {
-                        "Accept": "application/json",
-                    }
-                })
-                    .then(response => response.json())
-                    .then(result => { printCards(result) }) // Translated from 'stampaCards'
-                    .catch(error => console.log('Error:', error));
-            } else {
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&query=" + section, {
-                    "method": "GET",
-                    "headers": {
-                        "Accept": "application/json",
-                    }
-                })
-                    .then(response => response.json())
-                    .then(result => { printCards(result) }) // Translated from 'stampaCards'
-                    .catch(error => console.log('Error:', error));
-            }
+            fetchVideosBySection(section);
             break;
         default:
             document.getElementById("ricerca").value = ""; // Translated from 'ricerca'
             break;
     }
+}
+
+// Fetch videos by category
+function fetchVideosByCategory(category) {
+    fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&per_page=30&query=${category}`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(result => { printCards(result) }) // Translated from 'stampaCards'
+    .catch(error => console.log('Error:', error));
+}
+
+// Fetch videos by keyword
+function fetchVideosByKeyword(keyWord) {
+    fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&order=latest&per_page=30&query=${keyWord}`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(result => { printCards(result) }) // Translated from 'stampaCards'
+    .catch(error => console.log('Error:', error));
+}
+
+// Fetch videos by duration
+function fetchVideosByDuration(time) {
+    fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&order=${time}&lq=0&format=json&per_page=30`, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(result => { printCards(result) }) // Translated from 'stampaCards'
+    .catch(error => console.log('Error:', error));
+}
+
+// Fetch videos by section
+function fetchVideosBySection(section) {
+    let url;
+    if (section === "hetero") {
+        url = `https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=${page}`;
+    } else if (section === "gay") {
+        url = `https://www.eporner.com/api/v2/video/search/?page=${page}&per_page=30&format=json&lq=1&gay=2`;
+    } else {
+        url = `https://www.eporner.com/api/v2/video/search/?page=${page}&per_page=30&format=json&lq=1&query=${section}`;
+    }
+
+    fetch(url, {
+        method: "GET",
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(result => { printCards(result) }) // Translated from 'stampaCards'
+    .catch(error => console.log('Error:', error));
 }
 
 // Function that prints the cards
@@ -211,7 +199,7 @@ function printCards(result) { // Translated from 'stampaCards'
         const card = document.createElement(`div`);
         card.className = `video`;
         card.id = `video${index + 1}`; // Assign unique IDs
-        card.onmousedown = (event) => startHold(event, video.title);
+        card.onmousedown = (event) => startHold(event, video.title); // Hold function
         card.onmouseup = stopHold;
         card.onmouseleave = stopHold;
 
