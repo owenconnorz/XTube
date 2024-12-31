@@ -12,69 +12,54 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   <link rel="stylesheet" href="./style/stylesheet.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background: #f7f0e9;
-  transition: .6s;
-}
-h1 {
-  font-size: 5em;
-  color: #3d3935;
-}
-#container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-.switch input {
-  display: none;
-}
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #ccc;
-  border-radius: 34px;
-  transition: .4s;
-}
-.slider:before {
-  content: "";
-  position: absolute;
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background: #fff;
-  border-radius: 50%;
-  transition: .4s;
-}
-input:checked + .slider {
-  background: #b892ff;
-}
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-.dark-mode {
-  background: #0b0a14;
-}
-.dark-mode h1 {
-  color: #f7f0e9;
-}
+    /* CSS for dark mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
   </style>
 </head>
 
@@ -113,11 +98,20 @@ input:checked + .slider:before {
         </ul>
 
         <!-• Day/Night Toggle -->
-        <label class="switch">
+        <label class="switch ms-2">
           <input type="checkbox" onclick="changeMode()">
           <span class="slider"></span>
         </label>
       </div>
+    </div>
+    
+    <!-• Search Bar positioned below the navbar -->
+    <div class="container-fluid">
+      <form class="d-flex justify-content-center my-2" role="search" id="form_ricerca">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
+          name="ricerca" onfocus="SwitchInputSelect(2)">
+        <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
+      </form>
     </div>
   </nav>
 
