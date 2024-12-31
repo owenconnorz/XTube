@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,8 +15,8 @@
 <body>
   <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" id="title" href="./index.html">X
-        <span id="logo">Tube</span></a>
+      <a class="navbar-brand" id="titolo" href="./index.html">Tap &
+        <span id="logo">Fap</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,28 +34,28 @@
         <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filter">
-              Search By
+              aria-expanded="false" id="filtro">
+              Cerca Per
             </a>
             <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(1)">
-                  Category</a></li>
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(2)">
-                  Keyword</a></li>
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(3)">Search by Duration</a></li>
-              <li><a class="dropdown-item" onclick="SwitchInputSelect(4)">Search by Section</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
+                  Categoria</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
+                  Parola chiave</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Cerca per Durata</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Cerca per Sezione</a></li>
             </ul>
           </li>
         </ul>
 
-        <form class="d-flex" role="search" id="search_form">
-          <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="search"
-            name="search" onfocus="SwitchInputSelect(2)">
-          <select class="form-select visually-hidden me-2" aria-label="Categories" id="category">
-            <option selected id="decoration" value="0">Select category</option>
+        <form class="d-flex" role="search" id="form_ricerca">
+          <input class="form-control me-2" type="text" placeholder="Cerca" aria-label="Search" id="ricerca"
+            name="ricerca" onfocus="SwitchInputSelect(2)">
+          <select class="form-select visually-hidden me-2" aria-label="Categorie" id="categoria">
+            <option selected id="decorazione" value="0">Seleziona categoria</option>
             <option value="Amateur">Amateurs</option>
             <option value="Anal">Anal</option>
-            <option value="Asian">Asians</option>
+            <option value="Asian">Asiatiche </option>
             <option value="Big Ass">Big Ass</option>
             <option value="Big Tits">Big Tits</option>
             <option value="Blowjob">Blowjob</option>
@@ -84,26 +83,26 @@
             <option value="Babysitter">Babysitter</option>
             <option value="College">College</option>
             <option value="Romantic">Romantic</option>
-            <option value="Cuckhold">Cuckold</option>
+            <option value="Cuckhold">Cuckhold</option>
           </select>
-          <select class="form-select visually-hidden" aria-label="section" id="section">
-            <option selected id="decoration" value="0">Select Section</option>
-            <option value="hetero">Hetero</option>
+          <select class="form-select visually-hidden" aria-label="sezione" id="sezione">
+            <option selected id="decorazione" value="0">Seleziona Sezione</option>
+            <option value="etero">Etero</option>
             <option value="gay">Gay</option>
             <option value="trans">Trans</option>
-            <option value="lesbian">Lesbian</option>
+            <option value="Lesbian">Lesbian</option>
           </select>
-          <select class="form-select visually-hidden" aria-label="duration" id="duration">
-            <option selected id="decoration" value="0">Select Duration</option>
-            <option value="shortest">Short Videos</option>
-            <option value="longest">Long Videos</option>
+          <select class="form-select visually-hidden" aria-label="durata" id="durata">
+            <option selected id="decorazione" value="0">Seleziona Durata</option>
+            <option value="shortest">Video Corti</option>
+            <option value="longest">Video Lunghi</option>
           </select>
-          <button class="btn btn-outline-warning" type="button" id="search">Search</button>
+          <button class="btn btn-outline-warning" type="button" id="cerca">Cerca</button>
         </form>
       </div>
     </div>
   </nav>
-  <h1 id="header">Latest Releases</h1>
+  <h1 id="intestazione">Ultime uscite</h1>
 
   <div class="container-fluid" id="loading">
     <div class="spinner-border text-warning" role="status">
@@ -111,7 +110,7 @@
     </div>
   </div>
 
-  <div class="container-fluid visually-hidden" id="graphicCards">
+  <div class="container-fluid visually-hidden" id="graficaCards">
     <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
 
     </div>
@@ -123,7 +122,7 @@
   <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
     <ul class="pagination">
       <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
-      <li class="page-item">Page <span id="page">1</span></li>
+      <li class="page-item">Pagina <span id="page">1</span></li>
       <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
     </ul>
   </nav>
@@ -132,11 +131,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-</script>
+  </script>
 <script src="./JS/main.js"></script>
 <script>
-  createHome()
-</script>
+  CreaHome()</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2342057939760254"
      crossorigin="anonymous"></script>
