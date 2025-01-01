@@ -2,72 +2,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
 body {
- margin: 0;
- padding: 0;
- font-family: 'Roboto', sans-serif;
- background: #0b0a14; nd: #0b0a14; /* Dark mode background */
- color: #FFFFFF; /* Default text color for dark mode */
- transition: background 0.6s, color 0.6s; /* Smooth transition */
+    background-color: #121212; /* Dark background */
+    color: #ffffff; /* White text */
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #000; /* Black navbar */
+}
+
+.navbar-brand,
+.nav-link {
+    color: #ffffff !important; /* White text for links */
+}
+
+.nav-link:hover {
+    color: #ff0000 !important; /* Red text on hover */
 }
 
 h1 {
- font-size: 3em; /* Adjusted for categories page */
- color: #FFFFFF; /* Header color for dark mode */
- text-align: center;
- margin: 20px 0;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2.5em; /* Adjust as needed */
 }
 
-.category {
- background-color: #333;
- border: 1px solid #444;
- border-radius: 5px;
- padding: 15px;
- margin: 10px;
- text-align: center;
- cursor: pointer;
- transition: background 0.3s;
+.category-card {
+    background-color: #222; /* Dark background for cards */
+    border: 1px solid #444; /* Dark border */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
 }
 
-.category:hover {
- background-color: #444;
+.category-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
 }
 
-/* Navbar styles */
-.navbar {
- background-color: #212529; /* Dark navbar {
- background-color: #212529; /* Dark rk background for navbar */
+.category-thumbnail {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-.nav-link {
- color: #ffffff; /* White text for nav links */
-}
-
-.nav-link.active {
- font-weight: bold; /* Highlight active link */
-}
-
-.navbar-toggler {
- border-color: rgba(255, 255, 255, 0.1); /* Toggler border color */
-}
-
-.navbar-toggler-icon {
- background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); /* Custom toggler icon */
-}
-
-.bg-body-tertiary {
- background-color: #212529; /* Dark background for body */
-}
-
-body {
-    font-family: Arial, sans-serif;
-}
-#categories {
-    display: flex;
-    flex-wrap: wrap;
-}
-.category {
-    margin: 10px;
+.category-title {
     padding: 10px;
-    border: 1px solid #ccc;
-    width: 200px;
+    font-size: 1.5em; /* Adjust title size */
+    text-align: center;
+}
+
+.footer {
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.profile-img {
+    width: 40px; /* Set the width of the image */
+    height: 40px; /* Set the height of the image */
+    border-radius: 50%; /* Make it circular */
+    margin-left: 10px; /* Space between the button and image */
+    vertical-align: middle; /* Align the image vertically with the text */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em; /* Smaller heading on mobile */
+    }
+
+    .category-title {
+        font-size: 1.2em; /* Smaller title on mobile */
+    }
 }
