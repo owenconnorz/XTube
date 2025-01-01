@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
         body {
             background-color: #121212; /* Dark background */
             color: #ffffff; /* White text */
@@ -110,7 +112,6 @@
                 <div class="ms-auto">
                     <button id="loginBtn" class="btn btn-outline-warning" onclick="login()">Login</button>
                     <button id="logoutBtn" class="btn btn-outline-warning d-none" onclick="logout()">Logout</button>
-                    <!-• Add Google profile image -->
                     <img src="https://www.example.com/path-to-your-google-profile-image.jpg" alt="Profile Image" class="profile-img">
                 </div>
             </div>
@@ -120,7 +121,7 @@
     <h1>Categories</h1>
 
     <div class="container">
-        <div class="row">
+        <div class="row" id="video">
             <div class="col-md-4">
                 <div class="category-card">
                     <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
@@ -139,24 +140,6 @@
                     <div class="category-title">Asians</div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
-                    <div class="category-title">Big Ass</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
-                    <div class="category-title">Blowjob</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
-                    <div class="category-title">Creampie</div>
-                </div>
-            </div>
             <!-• Add more categories as needed -->
         </div>
     </div>
@@ -167,6 +150,261 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var searchType = 2; // Translated from 'tipoRicerca'
+        var page = 1; // Translated from 'pagina'
+        var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
+        const btn = document.getElementById('cerca'); // Translated from 'cerca'
+        const btnNext = document.getElementById("next");
+        const btnPrev = document.getElementById('previous');
+        const selectCategory = document.getElementById('categoria'); // Translated from 'categoria'
+        const search = document.getElementById('ricerca'); // Translated from 'ricerca'
+        const selectDuration = document.getElementById('durata'); // Translated from 'durata'
+        const selectSection = document.getElementById('sezione'); // Translated from 'sezione'
+        let header = document.getElementById("intestazione"); // Translated from 'intestazione'
+        let pageIndex = document.getElementById("pagina"); // Translated from 'pagina'
+        var hoverInterval;
+        var loading = false;
+
+        selectCategory.addEventListener("change", resetPage); // Translated from 'resetPagina'
+        selectDuration.addEventListener("change", resetPage); // Translated from 'resetPagina'
+        selectSection.addEventListener("change", resetPage); // Translated from 'resetPagina'
+
+        if (btn) {
+            btn.addEventListener("click", searchFunction); // Translated from 'Ricerca'
+        }
+
+        if (btnPrev) {
+            btnPrev.addEventListener("click", prev);
+        }
+
+        if (btnNext) {
+            btnNext.addEventListener("click", next);
+        }
+
+        // Function that changes the search filter
+        function SwitchInputSelect(num) {
+            switch (num) {
+                case 1:
+                    // Category Filter
+                    searchType = 1;
+                    page = 1;
+                    selectCategory.className = "form-select";
+                    selectSection.className = "form-select visually-hidden";
+                    search.className = "form-control me-2 visually-hidden";
+                    selectDuration.className = "form-select visually-hidden";
+                    break;
+                case 2:
+                    // Keyword Filter (Default)
+                    searchType = 2;
+                    page = 1;
+                    selectCategory.className = "form-select visually-hidden";
+                    search.className = "form-control me-2";
+                    selectSection.className = "form-select visually-hidden";
+                    search.placeholder = "Search"; // Translated from 'Cerca'
+                    selectDuration.className = "form-select visually-hidden";
+                    break;
+
+                case 3:
+                    // Duration Filter
+                    searchType = 3;
+                    page = 1;
+                    selectCategory.className = "form-select visually-hidden";
+                    selectSection.className = "form-select visually-hidden";
+                    search.className = "form-control me-2 visually-hidden";
+                    selectDuration.className = "form-select";
+                    break;
+                case 4:
+                    // Section Filter
+                    page = 1;
+                    searchType = 4;
+
+                    selectSection.className = "form-select";
+                    search.className = "form-control me-2 visually-hidden";
+                    selectCategory.className = "form-select visually-hidden";
+                    selectDuration.className = "form-select visually-hidden";
+                    break;
+                default:
+                    searchType = 2;
+                    break;
+            }
+        }
+
+        // Function that performs the search based on the selected filter
+        function searchFunction() {
+            loading = false;
+            load();
+            changePage(); // Translated from 'cambiaPagina'
+            if (page == 1) {
+                header.innerHTML = "Latest Releases"; // Translated from 'Ultime uscite'
+                btnPrev.className = "btn btn-outline-warning disabled";
+            } else {
+                btnPrev.className = "btn btn-outline-warning";
+                btnNext.className = "btn btn-outline-warning";
+            }
+            switch (searchType) {
+                case 1:
+                    searchType = 1;
+                    console.log("Search by category"); // Translated from 'Ricerca per categoria'
+                    let category = document.getElementById("categoria").value;
+                    header.innerHTML = "";
+                    console.log(category);
+                    fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&per_page=30&query=" + category, {
+                        "method": "GET",
+                        "headers": {
+                            "Accept": "application/json"
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(result => { printCards(result) }) // Translated from 'stampaCards'
+                        .catch(error => console.log('Error:', error));
+                    header.innerHTML = `Page <span id="categoria">${page}</span>`; // Translated from 'Pagina'
+                    break;
+                case 2:
+                    searchType = 2;
+                    header.innerHTML = "";
+                    console.log("Search by Keyword"); // Translated from 'Ricerca per Parola Chiave'
+                    let keyWord = document.getElementById("ricerca").value; // Translated from 'key_word'
+                    console.log(keyWord);
+                    fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + keyWord, {
+                        "method": "GET",
+                        "headers": {
+                            "Accept": "application/json"
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(result => { printCards(result) }) // Translated from 'stampaCards'
+                        .catch(error => console.log('Error:', error));
+                    header.innerHTML = "Search by <span id='ricerca'>" + keyWord + "</span>"; // Translated from 'Ricerca per Parola Chiave'
+                    break;
+                case 3:
+                    console.log("Search by Duration"); // Translated from 'Ricerca per Durata'
+                    header.innerHTML = "";
+                    let time = document.getElementById("durata").value; // Translated from 'durata'
+                    if (time == "longest") {
+                        header.innerHTML = "Search by <span id='ricerca'>Long Videos</span>"; // Translated from 'Video Lunghi'
+                    } else {
+                        header.innerHTML = "Search by <span id='ricerca'>Short Videos</span>"; // Translated from 'Video Corti'
+                    }
+
+                    console.log(time);
+                    fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=" + time + "&lq=0&format=json&per_page=30", {
+                        "method": "GET",
+                        "headers": {
+                            "Accept": "application/json"
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(result => { printCards(result) }) // Translated from 'stampaCards'
+                        .catch(error => console.log('Error:', error));
+                    break;
+
+                case 4:
+                    console.log("Search by Section"); // Translated from 'Ricerca per Sezione'
+                    header.innerHTML = "";
+                    let section = document.getElementById("sezione").value; // Translated from 'sezione'
+                    console.log(section);
+                    if (section == "hetero") { // Translated from 'etero'
+                        fetch("https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + page, {
+                            "method": "GET",
+                            "headers": {
+                                "Accept": "application/json",
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(result => { printCards(result) }) // Translated from 'stampaCards'
+                            .catch(error => console.log('Error:', error));
+
+                    } else if (section == "gay") {
+                        fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
+                            "method": "GET",
+                            "headers": {
+                                "Accept": "application/json",
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(result => { printCards(result) }) // Translated from 'stampaCards'
+                            .catch(error => console.log('Error:', error));
+                    } else {
+                        fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&query=" + section, {
+                            "method": "GET",
+                            "headers": {
+                                "Accept": "application/json",
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(result => { printCards(result) }) // Translated from 'stampaCards'
+                            .catch(error => console.log('Error:', error));
+                    }
+                    break;
+                default:
+                    document.getElementById("ricerca").value = ""; // Translated from 'ricerca'
+                    break;
+            }
+        }
+
+        // Function that prints the cards
+        function printCards(result) { // Translated from 'stampaCards'
+            console.log(result);
+            let videoArray = result.videos; // Translated from 'arrayVideo'
+            let cardsVideo = document.getElementById('video');
+
+            cardsVideo.innerHTML = "";
+            if (videoArray.length == 0) {
+                header.innerHTML = "No results found"; // Translated from 'Nessun risultato trovato'
+                return;
+            }
+
+            // Printing the cards
+            videoArray.forEach((video) => {
+                const wrapper = document.createElement(`div`);
+                wrapper.className = `col-md-4`;
+
+                const card = document.createElement(`div`);
+                card.className = `category-card`;
+
+                const cardImg = document.createElement(`img`);
+                cardImg.src = video.default_thumb.src; // Replace with actual thumbnail URL
+                cardImg.className = `category-thumbnail`;
+
+                const title = document.createElement(`div`);
+                title.className = `category-title`;
+                title.textContent = video.title; // Replace with actual title
+
+                card.append(cardImg);
+                card.append(title);
+                wrapper.append(card);
+                cardsVideo.append(wrapper);
+            });
+        }
+
+        // Function to enable the Enter key in the category select
+        selectCategory.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                btn.click();
+            }
+        });
+
+        search.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                btn.click();
+            }
+        });
+
+        selectDuration.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                btn.click();
+            }
+        });
+
+        // Function to reset the page
+        function resetPage() { // Translated from 'resetPagina'
+            page = 1;
+        }
+    </script>
 </body>
 
 </html>
