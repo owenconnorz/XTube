@@ -1,454 +1,368 @@
 
-@font-face {
-  font-family: Generale;
-  src: url("./../fonts/Gotham-Black.otf");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: title; /* Translated from 'intitolazione' */
-  src: url("./../fonts/PTSans-Bold.ttf");
-  font-display: swap;
-}
-
-img.card-img-top {
-  border-radius: 0%;
-}
-
-#pagina {
-  font-size: medium;
-}
-
-span#ricerca, #ricerca, #logo, #categoria, #pagina {
-  color: blue;
-}
-
-body {
-  /* background-color: rgb(33, 37, 41); */
-  background-color: rgb(0, 0, 0);
-  font-family: Generale;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-.dropdown-item:hover {
-  cursor: pointer;
-  color: white;
-  background-color: rgb(41, 48, 54);
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-}
-
-option {
-  color: white;
-  background-color: rgb(41, 48, 54);
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-}
-
-.navbar {
-  background-color: #161616f5!important;
-}
-
-#titolo {
-  color: white;
-  font-size: 100%;
-  margin-left: 1.5%;
-}
-
-h1 {
-  color: white;
-  text-align: center;
-  margin-top: 1.5%;
-  margin-bottom: 2%;
-}
-
-li.page-item {
-  font-size: 15px;
-}
-
-.navbar-toggler {
-  color: rgb(221, 118, 21);
-  margin-right: 6.1%;
-}
-
-nav#pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#loading {
-  display: flex;
-  justify-content: center;
-  margin-top: 4%;
-}
-
-.spinner-border {
-  color: rgb(0, 136, 255)!important;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 70%;
-}
-
-nav#pagination a {
-  color: rgb(255, 119, 0);
-  background-color: #1d1d1d;
-  border-color: rgba(255, 255, 255, 0.341);
-}
-
-nav#pagination a:hover {
-  background-color: black;
-  border-color: blue;
-}
-
-div.card:hover {
-  cursor: pointer;
-}
-
-.container-fluid {
-  width: 98% !important;
-}
-
-#icone {
-  width: 3%;
-  margin-left: 0.3%;
-  margin-right: 0.1%;
-}
-
-select {
-  margin-right: 0.5rem;
-}
-
-.card {
-  text-shadow: 0 0 2px #000000;
-  align-items: center;
-  border: none;
-  border-radius: 0%;
-}
-
-p {
-  display: flex;
-}
-
-#clock {
-  width: 20px;
-  margin-bottom: 0.8%;
-  margin-right: 6%;
-}
-
-#form_ricerca {
-  margin-right: 2%;
-}
-
-#time {
-  font-size: large;
-  color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
-  margin-right: 4%;
-}
-
-#views {
-  width: 10%;
-  margin-bottom: 0.5%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-top: 1%;
-}
-
-#n-views {
-  display: flex;
-  align-items: center;
-  margin-left: 2%;
-}
-
-.card-description {
-  position: absolute;
-  bottom: 0%;
-  width: 100%;
-}
-
-.card-description h2 {
-  font-size: 140%;
-  text-align: center;
-  align-items: center;
-  color: #ffffff;
-  font-family: title; /* Translated from 'intitolazione' */
-  padding: 0% 2% 0% 2%;
-  margin-bottom: 0.5%;
-}
-
-.card-description p {
-  font-size: 20px;
-  text-align: center;
-  align-items: center;
-  color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-}
-
-.row {
-  margin-bottom: 1%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#star {
-  width: 2%;
-  margin-right: 0.5%;
-}
-
-.btn#next {
-  width: 8%;
-  margin-left: 1.5%;
-}
-
-.btn#previous {
-  width: 8%;
-  margin-right: 1.5%;
-}
-
-span#pagina {
-  width: 5%;
-  height: 5%;
-  font-size: 21px;
-  background-color: transparent !important;
-}
-
-.pagination {
-  width: 100%;
-  display: contents;
-}
-
-@media screen and (max-width: 1250px) {
-  .card-description h2 {
-    font-size: 100%;
-    text-align: center;
-    align-items: center;
-  }
-
-  .card-description p {
-    font-size: 120%;
-    text-align: center;
-    align-items: center;
-  }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
-  }
-
-  #views {
-    width: 15%;
-    margin-right: 5%;
-  }
-
-  #clock {
-    width: 25%;
-  }
-
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
-  }
-
-  #n-views {
-    font-size: 70%;
-  }
-
-  #time {
-    font-size: 70%;
-    margin-right: 5%;
-  }
-}
-
-@media screen and (max-width: 725px) {
-  .card-description h2 {
-    font-size: 10px;
-    text-align: center;
-    align-items: center;
-  }
-
-  .card-description p {
-    font-size: 15px;
-    text-align: center;
-    align-items: center;
-  }
-
-  .btn#next {
-    width: 15%;
-  }
-
-  .btn#previous {
-    width: 15%;
-  }
-
-  .pagination {
-    width: 100%;
-    display: contents;
-  }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
-  }
-
-  #views {
-    width: 22px;
-    margin-bottom: 0.5%;
-    margin-right: 10%;
-    margin-left: 10%;
-  }
-
-  #time {
-    font-size: 15px;
-    margin-right: 5%;
-  }
-
-  #clock {
-    width: 18px;
-  }
-
-  #n-views {
-    font-size: 70%;
-  }
-
-  #time {
-    font-size: 70%;
-    margin-right: 5%;
-  }
-
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .card-description h2 {
-    font-size: 100%;
-  }
-
-  .card-description p {
-    font-size: 120%;
-  }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  nav {
-    width: auto;
-  }
-
-  h1 {
-    margin-top: 4%;
-    margin-bottom: 4.5%;
-    font-size: 28px;
-  }
-
-  .btn#next {
-    width: 20%;
-  }
-
-  .btn#previous {
-    width: 20%;
-  }
-
-  img#icone {
-    width: 7%;
-  }
-
-  #titolo {
-    margin-left: 6%;
-  }
-
-  .btn#next {
-    margin-left: 5%;
-  }
-
-  .btn#previous {
-    margin-right: 5%;
-  }
-
-  li.page-item {
-    font-size: 20px;
-  }
-
-  #pagina {
-    font-size: 21px;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-/* Firefox */
-* {
-  scrollbar-color: #424242;
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 16px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #353535;
-  border-radius: 0px;
-  border: 5px solid transparent;
-}
-
-/* Google Sign-In Button Styles */
-.g_id_signin {
-    margin-left: 1rem; /* Adjust as needed for spacing */
-}
-
-/* Style adjustments for the Google Sign-In button */
-.g_id_signin .g_id_button {
-    background-color: #4285F4; /* Google blue */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.g_id_signin .g_id_button:hover {
-    background-color: #357AE8; /* Darker blue on hover */
-}
-
-.g_id_signin .g_id_button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XTube</title>
+    <link rel="icon" type="image/png" href="./img/no-minors.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #0b0a14; /* Dark mode background */
+            color: #FFFFFF; /* Default text color for dark mode */
+            transition: background 0.6s, color 0.6s; /* Smooth transition */
+        }
+
+        h1 {
+            font-size: 3em; /* Adjusted to a smaller size */
+            color: #FFFFFF; /* Header color for dark mode */
+            text-align: center; /* Center the heading */
+            margin: 20px 0; /* Add some margin for spacing */
+        }
+
+        .video {
+            width: 100%;
+            height: auto;
+            background-color: #ccc;
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px; /* Space between videos */
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #ccc;
+            border-radius: 34px;
+            transition: .4s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background: #fff;
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background: #b892ff;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .dark-mode {
+            background: #0b0a14;
+        }
+
+        .dark-mode h1 {
+            color: #FFFFFF;
+        }
+
+        /* Custom button styles */
+        .btn-outline-warning {
+            color: #0d6efd; /* Bootstrap primary color (blue) */
+            border-color: #0d6efd; /* Change border color to blue */
+        }
+
+        .btn-outline-warning:hover {
+            background-color: #0d6efd; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+        }
+
+        /* Profile image styles */
+        .profile-img {
+            width: 40px; /* Set the width of the image */
+            height: 40px; /* Set the height of the image */
+            border-radius: 50%; /* Make it circular */
+            margin-left: 10px; /* Space between the button and image */
+            vertical-align: middle; /* Align the image vertically with the text */
+        }
+    </style>
+</head>
+
+<body class="dark-mode"> <!-• Set dark mode as default -->
+    <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="titolo" href="./index.html">X <span id="logo">Tube</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./addtolibrary.html">Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./best.html">Trending</a>
+                    </li>
+                </ul>
+
+                <label class="switch ms-2">
+                    <input type="checkbox" onclick="changeMode()" checked> <!-• Default checked for dark mode -->
+                    <span class="slider"></span>
+                </label>
+
+                <div class="ms-3">
+                    <button id="loginBtn" class="btn btn-outline-warning" onclick="login()">Login</button>
+                    <button id="logoutBtn" class="btn btn-outline-warning d-none" onclick="logout()">Logout</button>
+                    <!-• Add Google profile image -->
+                    <img src="https://www.example.com/path-to-your-google-profile-image.jpg" alt="Profile Image" class="profile-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <form class="d-flex justify-content-center my-2" role="search" id="form_ricerca">
+                <select class="form-select me-2" aria-label="Search By" id="searchBy" onchange="SwitchInputSelect(this.value)">
+                    <option value="0">Search By</option>
+                    <option value="1">Category</option>
+                    <option value="2">Keyword</option>
+                    <option value="3">Search by Duration</option>
+                    <option value="4">Search by Section</option>
+                </select>
+                <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
+                    name="ricerca" onfocus="SwitchInputSelect(2)">
+                <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h1 id="intestazione">Latest Releases</h1>
+
+    <div class="container-fluid" id="loading">
+        <div class="spinner-border text-warning" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div class="container-fluid visually-hidden" id="graficaCards">
+        <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
+            <div class="col">
+                <div class="video" id="video1" onmousedown="startHold(event, 'Video Title 1')" onmouseup="stopHold()" onmouseleave="stopHold()">
+                    <p>Video Title 1</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="video" id="video2" onmousedown="startHold(event, 'Video Title 2')" onmouseup="stopHold()" onmouseleave="stopHold()">
+                    <p>Video Title 2</p>
+                </div>
+            </div>
+            <!-• Add more videos as needed -->
+        </div>
+    </div>
+    <br>
+
+    <div class="container-fluid">
+        <form class="d-flex" role="search" id="form_ricerca_extra">
+            <select class="form-select visually-hidden me-2" aria-label="Categories" id="categoria">
+                <option selected id="decorazione" value="0">Select Category</option>
+                <option value="Amateur">Amateurs</option>
+                <option value="Anal">Anal</option>
+                <option value="Asian">Asians</option>
+                <option value="Big Ass">Big Ass</option>
+                <option value="Big Tits">Big Tits</option>
+                <option value="Blowjob">Blowjob</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Brunette">Brunette</option>
+                <option value="Casting">Casting</option>
+                <option value="Compilation">Compilation</option>
+                <option value="Creampie">Creampie</option>
+                <option value="Cumshots">Cumshot</option>
+                <option value="Facials">Facials</option>
+                <option value="Latina">Latina</option>
+                <option value="Milf">Milf</option>
+                <option value="POV">POV</option>
+                <option value="Redhead">Redhead</option>
+                <option value="Teens">Teens</option>
+                <option value="Threesome">Threesome</option>
+                <option value="Small Tits">Small Tits</option>
+                <option value="Deepthroat">Deepthroat</option>
+                <option value="69">69</option>
+                <option value="Petite">Petite</option>
+                <option value="Hentai">Hentai</option>
+                <option value="Ebony">Ebony</option>
+                <option value="Interracial">Interracial</option>
+                <option value="Orgy">Orgy</option>
+                <option value="Babysitter">Babysitter</option>
+                <option value="College">College</option>
+                <option value="Romantic">Romantic</option>
+                <option value="Cuckhold">Cuckhold</option>
+            </select>
+            <select class="form-select visually-hidden" aria-label="section" id="sezione">
+                <option selected id="decorazione" value="0">Select Section</option>
+                <option value="hetero">Heterosexual</option>
+                <option value="gay">Gay</option>
+                <option value="trans">Trans</option>
+                <option value="lesbian">Lesbian</option>
+            </select>
+            <select class="form-select visually-hidden" aria-label="duration" id="durata">
+                <option selected id="decorazione" value="0">Select Duration</option>
+                <option value="shortest">Short Videos</option>
+                <option value="longest">Long Videos</option>
+            </select>
+        </form>
+    </div>
+
+    <footer>
+        <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
+            <ul class="pagination">
+                <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
+                <li class="page-item">Page <span id="pagina">1</span></li>
+                <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
+            </ul>
+        </nav>
+        <br>
+    </footer>
+
+    <div class="modal fade" id="addToLibraryModal" tabindex="-1" aria-labelledby="addToLibraryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addToLibraryModalLabel">Add to Library</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addToVideoLibraryForm">
+                        <div class="mb-3">
+                            <label for="videoTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="videoTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="videoUrl" class="form-label">Video URL</label>
+                            <input type="url" class="form-control" id="videoUrl" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="duration" class="form-label">Duration (in minutes)</label>
+                            <input type="number" class="form-control" id="duration" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="videoDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="videoDescription" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-outline-warning">Add to Video Library</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+    </script>
+    <script src="./JS/main.js"></script>
+    <script>
+        let holdTimer;
+        let loggedIn = false; // User login state
+
+        // Initialize dark mode
+        document.body.classList.add("dark-mode");
+
+        function changeMode() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+            // Toggle the background and text color
+            if (element.classList.contains("dark-mode")) {
+                element.style.background = "#0b0a14";
+                element.style.color = "#FFFFFF";
+            } else {
+                element.style.background = "#f7f0e9"; // Light mode background
+                element.style.color = "#000000"; // Light mode text color
+            }
+        }
+
+        function startHold(event, title) {
+            console.log("Hold started on:", title);
+            holdTimer = setTimeout(() => {
+                openAddToLibraryModal(title);
+            }, 600); // Open modal after 600ms hold
+        }
+
+        function stopHold() {
+            console.log("Hold stopped");
+            clearTimeout(holdTimer); // Clear the timer if mouse is released
+        }
+
+        function openAddToLibraryModal(title) {
+            document.getElementById('videoTitle').value = title; // Set the title in the modal
+            var modal = new bootstrap.Modal(document.getElementById('addToLibraryModal'));
+            modal.show();
+        }
+
+        document.getElementById('addToVideoLibraryForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const title = document.getElementById('videoTitle').value;
+            const url = document.getElementById('videoUrl').value;
+            const duration = document.getElementById('duration').value;
+            const description = document.getElementById('videoDescription').value;
+
+            console.log('Added to Video Library:', { title, url, duration, description });
+            alert(title + " has been added to your library!");
+
+            // Reset the form and close the modal
+            event.target.reset();
+            var modal = bootstrap.Modal.getInstance(document.getElementById('addToLibraryModal'));
+            modal.hide();
+        });
+
+        function login() {
+            loggedIn = true; // Update login state
+            document.getElementById('loginBtn').classList.add('d-none');
+            document.getElementById('logoutBtn').classList.remove('d-none');
+            alert("Logged in successfully!");
+        }
+
+        function logout() {
+            loggedIn = false; // Update login state
+            document.getElementById('logoutBtn').classList.add('d-none');
+            document.getElementById('loginBtn').classList.remove('d-none');
+            alert("Logged out successfully!");
+        }
+
+        // Call your CreaHome or other functions here to load initial content
+        CreaHome();
+    </script>
+</body>
+
+</html>
