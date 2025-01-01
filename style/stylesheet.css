@@ -16,7 +16,7 @@ img.card-img-top {
 }
 
 #pagina {
-  font-size: large;
+  font-size: medium;
 }
 
 span#ricerca, #ricerca, #logo, #categoria, #pagina {
@@ -51,7 +51,7 @@ option {
 
 #titolo {
   color: white;
-  font-size: 150%;
+  font-size: 100%;
   margin-left: 1.5%;
 }
 
@@ -63,7 +63,7 @@ h1 {
 }
 
 li.page-item {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .navbar-toggler {
