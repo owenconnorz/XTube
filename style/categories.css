@@ -1,0 +1,14 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+#categories {
+    display: flex;
+    flex-wrap: wrap;
+}
+.category {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
