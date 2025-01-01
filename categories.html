@@ -1,17 +1,198 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Categories</title>
-    <link rel="stylesheet" href="categories.css">
+    <title>XTube • Categories</title>
+    <link rel="icon" type="image/png" href="./img/no-minors.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #0b0a14; /* Dark mode background */
+            color: #FFFFFF; /* Default text color for dark mode */
+            transition: background 0.6s, color 0.6s; /* Smooth transition */
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #FFFFFF; /* Header color for dark mode */
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .category {
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .category:hover {
+            background-color: #444;
+        }
+    </style>
 </head>
-<body>
-    <h1>Video Categories</h1>
-    <div id="categories">
-        <!-• Categories will be injected here -->
+
+<body class="dark-mode">
+    <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="titolo" href="./index.html">X <span id="logo">Tube</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./addtolibrary.html">Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./best.html">Trending</a>
+                    </li>
+                </ul>
+                <div class="ms-3">
+                    <button id="loginBtn" class="btn btn-outline-warning" onclick="login()">Login</button>
+                    <button id="logoutBtn" class="btn btn-outline-warning d-none" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Categories</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Amateur')">Amateurs</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Anal')">Anal</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Asian')">Asians</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Big Ass')">Big Ass</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Big Tits')">Big Tits</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Blowjob')">Blowjob</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Blonde')">Blonde</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Brunette')">Brunette</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Casting')">Casting</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Compilation')">Compilation</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Creampie')">Creampie</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Cumshots')">Cumshot</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Facials')">Facials</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Latina')">Latina</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Milf')">Milf</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('POV')">POV</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Redhead')">Redhead</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Teens')">Teens</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Threesome')">Threesome</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Small Tits')">Small Tits</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Deepthroat')">Deepthroat</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('69')">69</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Petite')">Petite</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Hentai')">Hentai</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Ebony')">Ebony</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Interracial')">Interracial</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Orgy')">Orgy</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Babysitter')">Babysitter</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('College')">College</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Romantic')">Romantic</div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="category" onclick="selectCategory('Cuckhold')">Cuckhold</div>
+            </div>
+        </div>
     </div>
-    <script src="categories.js"></script>
+
+    <script>
+        function selectCategory(category) {
+            alert("You selected the " + category + " category!");
+            // Here you can add functionality to navigate to the selected category page or fetch videos for that category
+        }
+
+        function login() {
+            // Add your login functionality here
+        }
+
+        function logout() {
+            // Add your logout functionality here
+        }
+    </script>
 </body>
+
 </html>
