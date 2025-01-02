@@ -24,7 +24,6 @@ span#ricerca, #ricerca, #logo, #categoria, #pagina {
 }
 
 body {
-  /* background-color: rgb(33, 37, 41); */
   background-color: rgb(0, 0, 0);
   font-family: Generale;
   color: white;
@@ -49,17 +48,12 @@ option {
   background-color: #161616f5!important;
 }
 
-#titolo {
-  color: white;
-  font-size: 100%;
-  margin-left: 20%;
-}
-
 h1 {
   color: white;
-  text-align: center;
+  text-align: center; /* Center the title */
   margin-top: 1.5%;
   margin-bottom: 2%;
+  font-size: 3em; /* Make the title larger */
 }
 
 li.page-item {
@@ -430,25 +424,25 @@ html {
 
 /* Google Sign-In Button Styles */
 .g_id_signin {
-    margin-left: 1rem; /* Adjust as needed for spacing */
+  margin-left: 1rem; /* Adjust as needed for spacing */
 }
 
 /* Style adjustments for the Google Sign-In button */
 .g_id_signin .g_id_button {
-    background-color: #4285F4; /* Google blue */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
+  background-color: #4285F4; /* Google blue */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
 }
 
 .g_id_signin .g_id_button:hover {
-    background-color: #357AE8; /* Darker blue on hover */
+  background-color: #357AE8; /* Darker blue on hover */
 }
 
 .g_id_signin .g_id_button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
