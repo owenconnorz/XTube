@@ -3,293 +3,142 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XTube • Video Hub</title>
-    <link rel="icon" type="image/png" href="./img/no-minors.png" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="manifest" href="manifest.json"> <!-• Link to the manifest file -->
-    <style>
-        body {
-            background-color: #121212; /* Dark background */
-            color: #ffffff; /* White text */
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-        }
-
-        .navbar {
-            background-color: #000; /* Black navbar */
-        }
-
-        .navbar-brand,
-        .nav-link {
-            color: #ffffff !important; /* White text for links */
-        }
-
-        .nav-link:hover {
-            color: #ff0000 !important; /* Red text on hover */
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 2.5em; /* Adjust as needed */
-        }
-
-        .category-card {
-            background-color: #222; /* Dark background for cards */
-            border: 1px solid #444; /* Dark border */
-            border-radius: 5px;
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-        }
-
-        .category-card:hover {
-            transform: scale(1.05); /* Scale effect on hover */
-        }
-
-        .category-thumbnail {
-            width: 100%;
-            height: auto;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-        }
-
-        .category-title {
-            padding: 10px;
-            font-size: 1.5em; /* Adjust title size */
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        /* Profile image styles */
-        .profile-img {
-            width: 40px; /* Set the width of the image */
-            height: 40px; /* Set the height of the image */
-            border-radius: 50%; /* Make it circular */
-            margin-left: 10px; /* Space between the button and image */
-            vertical-align: middle; /* Align the image vertically with the text */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XTube</title>
+  <link rel="icon" type="image/png" href="./img/no-minors.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style/stylesheet.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">XTube</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a> <!-• Changed href to index.html -->
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Library</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="categories.html">Categories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Trending</a>
-                    </li>
-                </ul>
-                <div class="ms-auto">
-                    <button id="loginBtn" class="btn btn-outline-warning" onclick="login()">Login</button>
-                    <button id="logoutBtn" class="btn btn-outline-warning d-none" onclick="logout()">Logout</button>
-                    <img src="https://www.example.com/path-to-your-google-profile-image.jpg" alt="Profile Image" class="profile-img">
-                </div>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" id="titolo" href="./index.html">X
+        <span id="logo">Tube</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./best.html">Trending</a>
+          </li>
+        </ul>
 
-    <h1>Latest Releases</h1>
-
-    <div class="container">
-        <div class="row" id="video">
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
-                    <div class="category-title">Amateurs</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
-                    <div class="category-title">Anal</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="category-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Category Thumbnail" class="category-thumbnail">
-                    <div class="category-title">Asians</div>
-                </div>
-            </div>
-            <!-• Add more categories as needed -->
-        </div>
+        <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false" id="filtro">
+              Search By
+            </a>
+            <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
+                  Category</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
+                  Keyword</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by Duration</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Search by Section</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <footer class="footer">
-        <p>&copy; 2023 XTube. All rights reserved.</p>
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-    </footer>
+  <!-• Move the search form here -->
+  <form class="d-flex justify-content-center my-3" role="search" id="form_ricerca">
+    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
+      name="ricerca" onfocus="SwitchInputSelect(2)">
+    <select class="form-select visually-hidden me-2" aria-label="Categories" id="categoria">
+      <option selected id="decorazione" value="0">Select Category</option>
+      <option value="Amateur">Amateurs</option>
+      <option value="Anal">Anal</option>
+      <option value="Asian">Asians</option>
+      <option value="Big Ass">Big Ass</option>
+      <option value="Big Tits">Big Tits</option>
+      <option value="Blowjob">Blowjob</option>
+      <option value="Blonde">Blonde</option>
+      <option value="Brunette">Brunette</option>
+      <option value="Casting">Casting</option>
+      <option value="Compilation">Compilation</option>
+      <option value="Creampie">Creampie</option>
+      <option value="Cumshots">Cumshots</option>
+      <option value="Facials">Facials</option>
+      <option value="Latina">Latina</option>
+      <option value="Milf">Milf</option>
+      <option value="POV">POV</option>
+      <option value="Redhead">Redhead</option>
+      <option value="Teens">Teens</option>
+      <option value="Threesome">Threesome</option>
+      <option value="Small Tits">Small Tits</option>
+      <option value="Deepthroat">Deepthroat</option>
+      <option value="69">69</option>
+      <option value="Petite">Petite</option>
+      <option value="Hentai">Hentai</option>
+      <option value="Ebony">Ebony</option>
+      <option value="Interracial">Interracial</option>
+      <option value="Orgy">Orgy</option>
+      <option value="Babysitter">Babysitter</option>
+      <option value="College">College</option>
+      <option value="Romantic">Romantic</option>
+      <option value="Cuckhold">Cuckhold</option>
+    </select>
+    <select class="form-select visually-hidden" aria-label="Section" id="sezione">
+      <option selected id="decorazione" value="0">Select Section</option>
+      <option value="hetero">Hetero</option>
+      <option value="gay">Gay</option>
+      <option value="trans">Trans</option>
+      <option value="lesbian">Lesbian</option>
+    </select>
+    <select class="form-select visually-hidden" aria-label="Duration" id="durata">
+      <option selected id="decorazione" value="0">Select Duration</option>
+      <option value="shortest">Short Videos</option>
+      <option value="longest">Long Videos</option>
+    </select>
+    <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
+  </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        var searchType = 2; // Translated from 'tipoRicerca'
-        var page = 1; // Translated from 'pagina'
-        var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_page=30"; // Corrected API URL
-        const btn = document.getElementById('cerca'); // Ensure this button exists in your HTML
-        const btnNext = document.getElementById("next"); // Ensure this button exists in your HTML
-        const btnPrev = document.getElementById('previous'); // Ensure this button exists in your HTML
-        const selectCategory = document.getElementById('categoria'); // Ensure this select exists in your HTML
-        const search = document.getElementById('ricerca'); // Ensure this input exists in your HTML
-        const selectDuration = document.getElementById('durata'); // Ensure this select exists in your HTML
-        const selectSection = document.getElementById('sezione'); // Ensure this select exists in your HTML
-        let header = document.getElementById("intestazione"); // Ensure this element exists in your HTML
-        let pageIndex = document.getElementById("pagina"); // Ensure this element exists in your HTML
-        var hoverInterval;
-        var loading = false;
+  <h1 id="intestazione">Latest Releases</h1>
 
-        selectCategory.addEventListener("change", resetPage);
-        selectDuration.addEventListener("change", resetPage);
-        selectSection.addEventListener("change", resetPage);
+  <div class="container-fluid" id="loading">
+    <div class="spinner-border text-warning" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
 
-        if (btn) {
-            btn.addEventListener("click", searchFunction);
-        }
-
-        if (btnPrev) {
-            btnPrev.addEventListener("click", prev);
-        }
-
-        if (btnNext) {
-            btnNext.addEventListener("click", next);
-        }
-
-        // Implement login and logout functions
-        function login() {
-            console.log("Login function called");
-            // Implement login logic here
-        }
-
-        function logout() {
-            console.log("Logout function called");
-            // Implement logout logic here
-        }
-
-        function resetPage() {
-            page = 1;
-        }
-
-        function searchFunction() {
-            loading = false;
-            load(); // You need to define this function
-            changePage(); // You need to define this function
-            if (page == 1) {
-                header.innerHTML = "Latest Releases"; // You need to define this element
-                btnPrev.className = "btn btn-outline-warning disabled";
-            } else {
-                btnPrev.className = "btn btn-outline-warning";
-                btnNext.className = "btn btn-outline-warning";
-            }
-            switch (searchType) {
-                case 1:
-                    // Implement search by category
-                    let category = selectCategory.value;
-                    fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&per_page=30&query=${category}`)
-                        .then(response => response.json())
-                        .then(result => printCards(result))
-                        .catch(error => console.log('Error:', error));
-                    break;
-                case 2:
-                    let keyWord = search.value;
-                    fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&order=latest&per_page=30&query=${keyWord}`)
-                        .then(response => response.json())
-                        .then(result => printCards(result))
-                        .catch(error => console.log('Error:', error));
-                    break;
-                case 3:
-                    // Implement search by duration
-                    break;
-                case 4:
-                    // Implement search by section
-                    break;
-                default:
-                    search.value = "";
-                    break;
-            }
-        }
-
-        function printCards(result) {
-            console.log(result);
-            let videoArray = result.videos; // Assuming the API returns videos in this structure
-            let cardsVideo = document.getElementById('video');
-
-            cardsVideo.innerHTML = "";
-            if (videoArray.length == 0) {
-                header.innerHTML = "No results found"; // You need to define this element
-                return;
-            }
-
-            // Printing the cards
-            videoArray.forEach((video) => {
-                const wrapper = document.createElement(`div`);
-                wrapper.className = `col-md-4`;
-
-                const card = document.createElement(`div`);
-                card.className = `category-card`;
-
-                const cardImg = document.createElement(`img`);
-                cardImg.src = video.default_thumb.src; // Replace with actual thumbnail URL
-                cardImg.className = `category-thumbnail`;
-
-                const title = document.createElement(`div`);
-                title.className = `category-title`;
-                title.textContent = video.title; // Replace with actual title
-
-                card.append(cardImg);
-                card.append(title);
-                wrapper.append(card);
-                cardsVideo.append(wrapper);
-            });
-        }
-
-        function load() {
-            // Implement your loading logic here
-        }
-
-        function changePage() {
-            // Implement your page change logic here
-        }
-
-        // Implement previous and next button functions
-        function prev() {
-            if (page > 1) {
-                page--;
-                searchFunction();
-            }
-        }
-
-        function next() {
-            page++;
-            searchFunction();
-        }
-    </script>
+  <div class="container-fluid visually-hidden" id="graficaCards">
+    <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
+    </div>
+  </div>
+  <br>
 </body>
 
+<footer>
+  <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
+    <ul class="pagination">
+      <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
+      <li class="page-item">Page <span id="pagina">1</span></li>
+      <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
+    </ul>
+  </nav>
+  <br>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
+</script>
+<script src="./JS/main.js"></script>
+<script>
+  CreaHome()
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2342057939760254"
+     crossorigin="anonymous"></script>
 </html>
