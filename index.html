@@ -43,23 +43,6 @@
             <a class="nav-link" href="./best.html">Trending</a>
           </li>
         </ul>
-
-        <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
-          <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" id="filtro">
-              Search By
-            </a>
-            <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
-                  Category</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
-                  Keyword</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by Duration</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Search by Section</a></li>
-            </ul>
-          </li>
-        </ul>
       </div>
     </div>
   </nav>
@@ -74,56 +57,63 @@
         </div>
         <div class="modal-body">
           <form class="d-flex" role="search" id="form_ricerca">
+            <select class="form-select me-2" aria-label="Search By" id="filtro" onchange="SwitchInputSelect(this.value)">
+              <option selected value="0">Search By</option>
+              <option value="1">Category</option>
+              <option value="2">Keyword</option>
+              <option value="3">Search by Duration</option>
+              <option value="4">Search by Section</option>
+            </select>
             <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
               name="ricerca" onfocus="SwitchInputSelect(2)">
-            <select class="form-select visually-hidden me-2" aria-label="Categories" id="categoria">
-              <option selected id="decorazione" value="0">Select Category</option>
-              <option value="Amateur">Amateurs</option>
-              <option value="Anal">Anal</option>
-              <option value="Asian">Asians</option>
-              <option value="Big Ass">Big Ass</option>
-              <option value="Big Tits">Big Tits</option>
-              <option value="Blowjob">Blowjob</option>
-              <option value="Blonde">Blonde</option>
-              <option value="Brunette">Brunette</option>
-              <option value="Casting">Casting</option>
-              <option value="Compilation">Compilation</option>
-              <option value="Creampie">Creampie</option>
-              <option value="Cumshots">Cumshots</option>
-              <option value="Facials">Facials</option>
-              <option value="Latina">Latina</option>
-              <option value="Milf">Milf</option>
-              <option value="POV">POV</option>
-              <option value="Redhead">Redhead</option>
-              <option value="Teens">Teens</option>
-              <option value="Threesome">Threesome</option>
-              <option value="Small Tits">Small Tits</option>
-              <option value="Deepthroat">Deepthroat</option>
-              <option value="69">69</option>
-              <option value="Petite">Petite</option>
-              <option value="Hentai">Hentai</option>
-              <option value="Ebony">Ebony</option>
-              <option value="Interracial">Interracial</option>
-              <option value="Orgy">Orgy</option>
-              <option value="Babysitter">Babysitter</option>
-              <option value="College">College</option>
-              <option value="Romantic">Romantic</option>
-              <option value="Cuckhold">Cuckhold</option>
-            </select>
-            <select class="form-select visually-hidden" aria-label="Section" id="sezione">
-              <option selected id="decorazione" value="0">Select Section</option>
-              <option value="hetero">Hetero</option>
-              <option value="gay">Gay</option>
-              <option value="trans">Trans</option>
-              <option value="lesbian">Lesbian</option>
-            </select>
-            <select class="form-select visually-hidden" aria-label="Duration" id="durata">
-              <option selected id="decorazione" value="0">Select Duration</option>
-              <option value="shortest">Short Videos</option>
-              <option value="longest">Long Videos</option>
-            </select>
             <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
           </form>
+          <select class="form-select visually-hidden" aria-label="Categories" id="categoria">
+            <option selected id="decorazione" value="0">Select Category</option>
+            <option value="Amateur">Amateurs</option>
+            <option value="Anal">Anal</option>
+            <option value="Asian">Asians</option>
+            <option value="Big Ass">Big Ass</option>
+            <option value="Big Tits">Big Tits</option>
+            <option value="Blowjob">Blowjob</option>
+            <option value="Blonde">Blonde</option>
+            <option value="Brunette">Brunette</option>
+            <option value="Casting">Casting</option>
+            <option value="Compilation">Compilation</option>
+            <option value="Creampie">Creampie</option>
+            <option value="Cumshots">Cumshots</option>
+            <option value="Facials">Facials</option>
+            <option value="Latina">Latina</option>
+            <option value="Milf">Milf</option>
+            <option value="POV">POV</option>
+            <option value="Redhead">Redhead</option>
+            <option value="Teens">Teens</option>
+            <option value="Threesome">Threesome</option>
+            <option value="Small Tits">Small Tits</option>
+            <option value="Deepthroat">Deepthroat</option>
+            <option value="69">69</option>
+            <option value="Petite">Petite</option>
+            <option value="Hentai">Hentai</option>
+            <option value="Ebony">Ebony</option>
+            <option value="Interracial">Interracial</option>
+            <option value="Orgy">Orgy</option>
+            <option value="Babysitter">Babysitter</option>
+            <option value="College">College</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Cuckhold">Cuckhold</option>
+          </select>
+          <select class="form-select visually-hidden" aria-label="Section" id="sezione">
+            <option selected id="decorazione" value="0">Select Section</option>
+            <option value="hetero">Hetero</option>
+            <option value="gay">Gay</option>
+            <option value="trans">Trans</option>
+            <option value="lesbian">Lesbian</option>
+          </select>
+          <select class="form-select visually-hidden" aria-label="Duration" id="durata">
+            <option selected id="decorazione" value="0">Select Duration</option>
+            <option value="shortest">Short Videos</option>
+            <option value="longest">Long Videos</option>
+          </select>
         </div>
       </div>
     </div>
