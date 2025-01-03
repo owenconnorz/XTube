@@ -1,5 +1,4 @@
 
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,9 +44,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-dark sticky-top">
+  <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand text-white" id="title" href="./index.html">Tap & <span id="logo">Fap</span></a>
+      <a class="navbar-brand" id="title" href="./index.html">Tap & <span id="logo">Fap</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -55,23 +54,86 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="./index.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="./best.html">Trending</a>
+            <a class="nav-link" href="./best.html">Trending</a>
           </li>
         </ul>
+
+        <ul class="navbar-nav me-1 my-2 my-lg-0 dropdown-center">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false" id="filter">
+              Search By
+            </a>
+            <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>Category</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>Keyword</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Search by Duration</a></li>
+              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Search by Section</a></li>
+            </ul>
+          </li>
+        </ul>
+
         <form class="d-flex" role="search" id="search_form">
           <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="search"
-            name="search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+            name="search" onfocus="SwitchInputSelect(2)">
+          <select class="form-select visually-hidden me-2" aria-label="Categories" id="category">
+            <option selected id="decoration" value="0">Select category</option>
+            <option value="Amateur">Amateurs</option>
+            <option value="Anal">Anal</option>
+            <option value="Asian">Asians</option>
+            <option value="Big Ass">Big Ass</option>
+            <option value="Big Tits">Big Tits</option>
+            <option value="Blowjob">Blowjob</option>
+            <option value="Blonde">Blonde</option>
+            <option value="Brunette">Brunette</option>
+            <option value="Casting">Casting</option>
+            <option value="Compilation">Compilation</option>
+            <option value="Creampie">Creampie</option>
+            <option value="Cumshots">Cumshots</option>
+            <option value="Facials">Facials</option>
+            <option value="Latina">Latina</option>
+            <option value="Milf">Milf</option>
+            <option value="POV">POV</option>
+            <option value="Redhead">Redhead</option>
+            <option value="Teens">Teens</option>
+            <option value="Threesome">Threesome</option>
+            <option value="Small Tits">Small Tits</option>
+            <option value="Deepthroat">Deepthroat</option>
+            <option value="69">69</option>
+            <option value="Petite">Petite</option>
+            <option value="Hentai">Hentai</option>
+            <option value="Ebony">Ebony</option>
+            <option value="Interracial">Interracial</option>
+            <option value="Orgy">Orgy</option>
+            <option value="Babysitter">Babysitter</option>
+            <option value="College">College</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Cuckold">Cuckold</option>
+          </select>
+          <select class="form-select visually-hidden" aria-label="section" id="section">
+            <option selected id="decoration" value="0">Select Section</option>
+            <option value="hetero">Hetero</option>
+            <option value="gay">Gay</option>
+            <option value="trans">Trans</option>
+            <option value="Lesbian">Lesbian</option>
+          </select>
+          <select class="form-select visually-hidden" aria-label="duration" id="duration">
+            <option selected id="decoration" value="0">Select Duration</option>
+            <option value="short">Less than 5 minutes</option>
+            <option value="medium">5-15 minutes</option>
+            <option value="long">More than 15 minutes</option>
+          </select>
+          <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
     </div>
   </nav>
 
   <div class="container mt-4">
-    <!-- Video Player Section -->
+    <!-• Video Player Section -->
     <div class="video-player">
       <video width="100%" controls>
         <source src="video.mp4" type="video/mp4">
@@ -79,7 +141,7 @@
       </video>
     </div>
 
-    <!-- Thumbnails Section -->
+    <!-• Thumbnails Section -->
     <h2 class="text-center">Featured Videos</h2>
     <div class="thumbnails">
       <div class="thumbnail">
@@ -101,17 +163,3 @@
 </body>
 
 </html>
-```
-
-### Key Features of This HTML Code:
-- **Responsive Design**: The layout is designed to be mobile-friendly, suitable for phone screens.
-- **Video Player**: A central video player to showcase the main content.
-- **Thumbnails**: A few featured video thumbnails below the player, each with a title.
-- **Material Design Style**: The styling uses rounded corners, shadows, and a clean aesthetic.
-
-### Notes:
-- Replace `"video.mp4"` with the actual path to your video file.
-- Replace the thumbnail image paths (`thumbnail1.jpg`, etc.) with the actual paths to your thumbnail images.
-- You can adjust the number of thumbnails as needed.
-
-Let me know if you need any further modifications or additional features!
