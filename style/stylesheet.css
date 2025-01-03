@@ -125,6 +125,7 @@ select {
   align-items: center;
   border: none;
   border-radius: 0%;
+  width: 100%; /* Ensures the card takes full width of grid cell */
 }
 
 p {
@@ -189,6 +190,9 @@ p {
 }
 
 .row {
+  display: grid; /* Use grid layout */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 10px; /* Space between cards */
   margin-bottom: 1%;
   margin-left: auto;
   margin-right: auto;
