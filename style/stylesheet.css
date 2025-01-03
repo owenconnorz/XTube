@@ -128,15 +128,16 @@ select {
     position: relative;
     margin-top: 10px; /* Space between video and title */
     text-align: center; /* Center the title */
+    background-color: black; /* Set background color to black */
+    padding: 10px; /* Add padding to the description area */
 }
 
 .card-description h2 {
     font-size: 140%;
     color: #ffffff;
     font-family: title; /* Translated from 'intitolazione' */
-    padding: 0% 2% 0% 2%; /* Adjust padding as needed */
+    padding: 0% 2%; /* Adjust padding as needed */
     margin-bottom: 0.5%;
-    background-color: black; /* Set background color to black */
 }
 
 .card-description p {
