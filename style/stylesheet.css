@@ -171,18 +171,30 @@ p {
   bottom: 0%;
   width: 100%;
   padding: 10px; /* Add padding for better spacing */
+  text-align: center; /* Center the content */
+  overflow: hidden; /* Hide overflow */
 }
 
 .card-description h2 {
   font-size: 140%;
-  text-align: center;
-  align-items: center;
   color: #ffffff;
   font-family: Title;
   margin: 0; /* Remove margin for better fit */
   white-space: nowrap; /* Prevent text wrapping */
   overflow: hidden; /* Hide overflow */
   text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  display: inline-block; /* Required for scroll effect */
+  max-width: 100%; /* Prevent overflow */
+  animation: scroll 10s linear infinite; /* Scroll effect */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%); /* Start off to the right */
+  }
+  100% {
+    transform: translateX(-100%); /* End off to the left */
+  }
 }
 
 .card-description p {
