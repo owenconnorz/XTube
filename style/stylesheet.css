@@ -134,8 +134,9 @@ select {
     font-size: 140%;
     color: #ffffff;
     font-family: title; /* Translated from 'intitolazione' */
-    padding: 0% 2% 0% 2%;
+    padding: 0% 2% 0% 2%; /* Adjust padding as needed */
     margin-bottom: 0.5%;
+    background-color: black; /* Set background color to black */
 }
 
 .card-description p {
