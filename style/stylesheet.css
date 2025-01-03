@@ -128,14 +128,13 @@ select {
 }
 
 .card-description {
-    position: relative;
-    margin-top: 10px; /* Space between video and title */
-    text-align: left; /* Align title to the left */
-    background-color: black; /* Ensure the background is black */
-    padding: 10px; /* Add padding to the description area */
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space out elements */
     align-items: center; /* Center items vertically */
+    margin-top: 10px; /* Space between video and title */
+    background-color: black; /* Ensure the background is black */
+    padding: 10px; /* Add padding to the description area */
+    color: #ffffff; /* Text color */
 }
 
 .card-description h2 {
@@ -153,7 +152,6 @@ select {
 .video-info {
     display: flex; /* Use flexbox for the views and duration */
     align-items: center; /* Center items vertically */
-    color: #ffffff; /* Text color */
     font-size: 0.9em; /* Adjust font size for info */
 }
 
