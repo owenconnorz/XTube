@@ -1,38 +1,36 @@
 
-var searchType = 2; // Set the default search type
-var page = 1; // Initialize the page number
-var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag"; 
-const btn = document.getElementById('search'); // Search button
-const btnNext = document.getElementById("next"); // Next button
-const btnPrev = document.getElementById('previous'); // Previous button
-const selectCategory = document.getElementById('category'); // Category select element
-const search = document.getElementById('search'); // Search input
-const selectDuration = document.getElementById('duration'); // Duration select element
-const selectSection = document.getElementById('section'); // Section select element
-let header = document.getElementById("header"); // Header element
-let pageIndex = document.getElementById("page"); // Page index element
-var hoverInterval; // Variable for hover interval
-var loading = false; // Loading state
+var searchType = 2;
+var page = 1;
+var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
+const btn = document.getElementById('search');
+const btnNext = document.getElementById("next");
+const btnPrev = document.getElementById('previous');
+const selectCategory = document.getElementById('category');
+const searchInput = document.getElementById('search');
+const selectDuration = document.getElementById('duration');
+const selectSection = document.getElementById('section');
+let header = document.getElementById("header");
+let pageIndex = document.getElementById("page");
+var hoverInterval;
+var loading = false;
 
-// Reset page when category, duration or section is changed
 selectCategory.addEventListener("change", resetPage);
 selectDuration.addEventListener("change", resetPage);
 selectSection.addEventListener("change", resetPage);
 
-// Event listeners for buttons
 if (btn) {
-    btn.addEventListener("click", searchVideos);
+    btn.addEventListener("click", search);
 }
 
 if (btnPrev) {
-    btnPrev.addEventListener("click", previousPage);
+    btnPrev.addEventListener("click", prev);
 }
 
 if (btnNext) {
-    btnNext.addEventListener("click", nextPage);
+    btnNext.addEventListener("click", next);
 }
 
-// Function to switch search filter
+// Function to change the search filter
 function SwitchInputSelect(num) {
     switch (num) {
         case 1:
@@ -41,7 +39,7 @@ function SwitchInputSelect(num) {
             page = 1;
             selectCategory.className = "form-select";
             selectSection.className = "form-select visually-hidden";
-            search.className = "form-control me-2 visually-hidden";
+            searchInput.className = "form-control me-2 visually-hidden";
             selectDuration.className = "form-select visually-hidden";
             break;
         case 2:
@@ -49,9 +47,9 @@ function SwitchInputSelect(num) {
             searchType = 2;
             page = 1;
             selectCategory.className = "form-select visually-hidden";
-            search.className = "form-control me-2";
+            searchInput.className = "form-control me-2";
             selectSection.className = "form-select visually-hidden";
-            search.placeholder = "Search";
+            searchInput.placeholder = "Search";
             selectDuration.className = "form-select visually-hidden";
             break;
 
@@ -61,7 +59,7 @@ function SwitchInputSelect(num) {
             page = 1;
             selectCategory.className = "form-select visually-hidden";
             selectSection.className = "form-select visually-hidden";
-            search.className = "form-control me-2 visually-hidden";
+            searchInput.className = "form-control me-2 visually-hidden";
             selectDuration.className = "form-select";
             break;
         case 4:
@@ -70,7 +68,7 @@ function SwitchInputSelect(num) {
             searchType = 4;
 
             selectSection.className = "form-select";
-            search.className = "form-control me-2 visually-hidden";
+            searchInput.className = "form-control me-2 visually-hidden";
             selectCategory.className = "form-select visually-hidden";
             selectDuration.className = "form-select visually-hidden";
             break;
@@ -81,7 +79,7 @@ function SwitchInputSelect(num) {
 }
 
 // Function to perform the search based on the selected filter
-function searchVideos() {
+function search() {
     loading = false;
     load();
     changePage();
@@ -114,9 +112,9 @@ function searchVideos() {
             searchType = 2;
             header.innerHTML = "";
             console.log("Search by Keyword");
-            let keyWord = document.getElementById("search").value;
-            console.log(keyWord);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + keyWord, {
+            let key_word = document.getElementById("search").value;
+            console.log(key_word);
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -125,16 +123,16 @@ function searchVideos() {
                 .then(response => response.json())
                 .then(result => { printCards(result) })
                 .catch(error => console.log('Error:', error));
-            header.innerHTML = "Search by <span id='search'>" + keyWord + "</span>";
+            header.innerHTML = "Search for <span id='search'>" + key_word + "</span>";
             break;
         case 3:
             console.log("Search by Duration");
             header.innerHTML = "";
             let time = document.getElementById("duration").value;
             if (time == "longest") {
-                header.innerHTML = "Search by <span id='search'>Long Videos</span>";
+                header.innerHTML = "Search for <span id='search'>Long Videos</span>";
             } else {
-                header.innerHTML = "Search by <span id='search'>Short Videos</span>";
+                header.innerHTML = "Search for <span id='search'>Short Videos</span>";
             }
 
             console.log(time);
@@ -166,6 +164,7 @@ function searchVideos() {
                     .catch(error => console.log('Error:', error));
 
             } else if (section == "gay") {
+
                 fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
                     "method": "GET",
                     "headers": {
@@ -193,7 +192,7 @@ function searchVideos() {
     }
 }
 
-// Function to print the video cards
+// Function to print the cards
 function printCards(result) {
     console.log(result);
     let videoArray = result.videos;
@@ -206,7 +205,7 @@ function printCards(result) {
         btnNext.className = "btn btn-outline-warning disabled";
         return;
     }
-    // Print the cards
+    // Printing the cards
     videoArray.forEach((video, index) => {
         const wrapper = document.createElement(`div`);
         wrapper.className = `col`;
@@ -224,19 +223,19 @@ function printCards(result) {
 
         card.onmouseover = function () {
             clearInterval(hoverInterval);
-            changeImageOnHover(this, videoArray[index].thumbs[0].src);
+            changeImageOnHover(this, videoArray[index].thumbs[0].src)
         };
         card.onmouseleave = function () {
             clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65));
+            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65))
         };
         card.ontouchstart = function () {
             clearInterval(hoverInterval);
-            changeImageOnHover(this, videoArray[index].thumbs[0].src);
+            changeImageOnHover(this, videoArray[index].thumbs[0].src)
         };
         card.ontouchend = function () {
             clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65));
+            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65))
         };
 
         const cardDescription = document.createElement(`div`);
@@ -292,7 +291,7 @@ function printCards(result) {
 }
 
 // Function to create the homepage when loading the index page
-function createHome() {
+function CreateHome() {
     window.scrollTo(top);
     loading = false;
     load();
@@ -319,14 +318,14 @@ function createHome() {
 }
 
 // Function to create the trending page when loading the trending page
-function createTrending() {
+function CreateTrending() {
     loading = false;
     load();
     window.scrollTo(top);
     changePage();
     if (page == 1) {
-        header.innerHTML = ` <h1 id="header"><span><img src="./img/campfire.png" alt="" id="icons"></span>Trending<span><img
-        src="./img/campfire.png" alt="" id="icons"></span></h1>`;
+        header.innerHTML = ` <h1 id="header"><span><img src="./img/campfire.png" alt="" id="icon"></span>Trending<span><img
+        src="./img/campfire.png" alt="" id="icon"></span></h1>`;
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
@@ -346,14 +345,14 @@ function createTrending() {
 }
 
 // Function to print the video title limiting the characters
-function printTitle(text, numberOfWords) {
+function printTitle(text, wordLimit) {
     let words = text.split('');
-    let wordsToPrint = words.slice(0, numberOfWords).join('');
+    let wordsToPrint = words.slice(0, wordLimit).join('');
     return wordsToPrint;
 }
 
 // Function to go to the next page
-function nextPage() {
+function next() {
     window.scrollTo(top);
     header.innerHTML = "";
     console.log(searchType);
@@ -364,18 +363,18 @@ function nextPage() {
     }
     switch (searchType) {
         case 5:
-            createHome();
+            CreateHome();
             break;
         case 6:
-            createTrending();
+            CreateTrending();
         default:
-            searchVideos();
+            search();
             break;
     }
 }
 
 // Function to go to the previous page
-function previousPage() {
+function prev() {
     window.scrollTo(top);
     header.innerHTML = "";
     if (page > 1 && page < 100) {
@@ -385,18 +384,18 @@ function previousPage() {
     }
     switch (searchType) {
         case 5:
-            createHome();
+            CreateHome();
             break;
         case 6:
-            createTrending();
+            CreateTrending();
             break;
         default:
-            searchVideos();
+            search();
             break;
     }
 }
 
-// Function to make the Enter key work in the category select
+// Function to make the enter key work in the category select
 category.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -404,7 +403,7 @@ category.addEventListener("keypress", function (event) {
     }
 });
 
-search.addEventListener("keypress", function (event) {
+searchInput.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
@@ -418,7 +417,7 @@ selectDuration.addEventListener("keypress", function (event) {
     }
 });
 
-// Function to make the Enter key work in the section select
+// Function to make the enter key work in the section select
 selectSection.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -426,7 +425,7 @@ selectSection.addEventListener("keypress", function (event) {
     }
 });
 
-// Function to change the image of the card when the mouse enters the card
+// Function to change the card image when the mouse enters the card
 function changeImageOnHover(cardElement, thumbBase) {
     let i = 2;
     let prev = 1;
@@ -444,6 +443,7 @@ function changeImageOnHover(cardElement, thumbBase) {
             prev = 1;
             thumbBase = start;
             cardElement.querySelector('img').src = thumbBase;
+
         } else {
             cardElement.querySelector('img').src = thumbBase.replace(prev + "_", i + "_");
             i++;
@@ -459,14 +459,14 @@ function setDefaultImage(card, thumb, title) {
     card.querySelector('p').classList.remove("visually-hidden");
 }
 
-// Function to change the page number display
+// Function to change the page number
 function changePage() {
     pageIndex.textContent = page;
 }
 
-// Function to show the loading state
+// Function to show loading
 function load() {
-    let gridVideo = document.getElementById('graphicCards');
+    let gridVideo = document.getElementById('graphicsCards');
     let loadingDiv = document.getElementById("loading");
     if (loading == true) {
         loadingDiv.className = "container-fluid visually-hidden";
