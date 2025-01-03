@@ -1,0 +1,34 @@
+
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      • main  # Change this to your main branch if it's different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    • name: Checkout repository
+      uses: actions/checkout@v2
+
+    • name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify your Node.js version
+
+    • name: Install dependencies
+      run: npm install  # Change this command if you use a different package manager
+
+    • name: Build project
+      run: npm run build  # Adjust this command based on your build script
+
+    • name: Deploy to Netlify
+      env:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      run: |
+        npm install netlify-cli -g
+        netlify deploy --prod --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --dir=build  # Change 'build' to your output directory
