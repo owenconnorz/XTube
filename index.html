@@ -3,156 +3,184 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XTube</title>
-  <link rel="icon" type="image/png" href="./img/no-minors.png" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style/stylesheet.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    .navbar-toggler {
-      margin-right: auto; /* Push the button to the left */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XTube</title>
+    <link rel="icon" type="image/png" href="./img/no-minors.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style/stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="navbar-brand" id="titolo" href="./index.html">X
-        <span id="logo">Tube</span></a>
-
-      <!-• Search Icon Next to Menu Button -->
-      <button class="btn btn-outline-warning ms-2" id="search-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
-        <i class="fas fa-search"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./best.html">Trending</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-• Modal for Search -->
-  <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="searchModalLabel">Search</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" id="titolo" href="./index.html">X <span id="logo">Tube</span></a>
+            <button class="btn btn-outline-warning ms-2" id="search-icon" data-bs-toggle="modal" data-bs-target="#searchModal">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./best.html">Trending</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="modal-body">
-          <form class="d-flex" role="search" id="form_ricerca">
-            <select class="form-select me-2" aria-label="Filter" id="filtro" onchange="SwitchInputSelect(this.value)">
-              <option selected value="0">Search By</option>
-              <option value="1">Category</option>
-              <option value="2">Keyword</option>
-              <option value="3">Search by Duration</option>
-              <option value="4">Search by Section</option>
-            </select>
-            <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
-              name="ricerca" onfocus="SwitchInputSelect(2)">
-            <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
-          </form>
-          <select class="form-select visually-hidden" aria-label="Categories" id="categoria">
-            <option selected id="decorazione" value="0">Select Category</option>
-            <option value="Amateur">Amateurs</option>
-            <option value="Anal">Anal</option>
-            <option value="Asian">Asians</option>
-            <option value="Big Ass">Big Ass</option>
-            <option value="Big Tits">Big Tits</option>
-            <option value="Blowjob">Blowjob</option>
-            <option value="Blonde">Blonde</option>
-            <option value="Brunette">Brunette</option>
-            <option value="Casting">Casting</option>
-            <option value="Compilation">Compilation</option>
-            <option value="Creampie">Creampie</option>
-            <option value="Cumshots">Cumshots</option>
-            <option value="Facials">Facials</option>
-            <option value="Latina">Latina</option>
-            <option value="Milf">Milf</option>
-            <option value="POV">POV</option>
-            <option value="Redhead">Redhead</option>
-            <option value="Teens">Teens</option>
-            <option value="Threesome">Threesome</option>
-            <option value="Small Tits">Small Tits</option>
-            <option value="Deepthroat">Deepthroat</option>
-            <option value="69">69</option>
-            <option value="Petite">Petite</option>
-            <option value="Hentai">Hentai</option>
-            <option value="Ebony">Ebony</option>
-            <option value="Interracial">Interracial</option>
-            <option value="Orgy">Orgy</option>
-            <option value="Babysitter">Babysitter</option>
-            <option value="College">College</option>
-            <option value="Romantic">Romantic</option>
-            <option value="Cuckhold">Cuckhold</option>
-          </select>
-          <select class="form-select visually-hidden" aria-label="Section" id="sezione">
-            <option selected id="decorazione" value="0">Select Section</option>
-            <option value="hetero">Hetero</option>
-            <option value="gay">Gay</option>
-            <option value="trans">Trans</option>
-            <option value="lesbian">Lesbian</option>
-          </select>
-          <select class="form-select visually-hidden" aria-label="Duration" id="durata">
-            <option selected id="decorazione" value="0">Select Duration</option>
-            <option value="shortest">Short Videos</option>
-            <option value="longest">Long Videos</option>
-          </select>
+    </nav>
+
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="d-flex" role="search" id="form_ricerca">
+                        <select class="form-select me-2" aria-label="Filter" id="filtro" onchange="SwitchInputSelect(this.value)">
+                            <option selected value="0">Search By</option>
+                            <option value="1">Category</option>
+                            <option value="2">Keyword</option>
+                            <option value="3">Search by Duration</option>
+                            <option value="4">Search by Section</option>
+                        </select>
+                        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" id="ricerca"
+                            name="ricerca" onfocus="SwitchInputSelect(2)">
+                        <button class="btn btn-outline-warning" type="button" id="cerca">Search</button>
+                    </form>
+                    <select class="form-select visually-hidden" aria-label="Categories" id="categoria">
+                        <option selected id="decorazione" value="0">Select Category</option>
+                        <option value="Amateur">Amateurs</option>
+                        <option value="Anal">Anal</option>
+                        <option value="Asian">Asians</option>
+                        <option value="Big Ass">Big Ass</option>
+                        <option value="Big Tits">Big Tits</option>
+                        <option value="Blowjob">Blowjob</option>
+                        <option value="Blonde">Blonde</option>
+                        <option value="Brunette">Brunette</option>
+                        <option value="Casting">Casting</option>
+                        <option value="Compilation">Compilation</option>
+                        <option value="Creampie">Creampie</option>
+                        <option value="Cumshots">Cumshots</option>
+                        <option value="Facials">Facials</option>
+                        <option value="Latina">Latina</option>
+                        <option value="Milf">Milf</option>
+                        <option value="POV">POV</option>
+                        <option value="Redhead">Redhead</option>
+                        <option value="Teens">Teens</option>
+                        <option value="Threesome">Threesome</option>
+                        <option value="Small Tits">Small Tits</option>
+                        <option value="Deepthroat">Deepthroat</option>
+                        <option value="69">69</option>
+                        <option value="Petite">Petite</option>
+                        <option value="Hentai">Hentai</option>
+                        <option value="Ebony">Ebony</option>
+                        <option value="Interracial">Interracial</option>
+                        <option value="Orgy">Orgy</option>
+                        <option value="Babysitter">Babysitter</option>
+                        <option value="College">College</option>
+                        <option value="Romantic">Romantic</option>
+                        <option value="Cuckhold">Cuckhold</option>
+                    </select>
+                    <select class="form-select visually-hidden" aria-label="Section" id="sezione">
+                        <option selected id="decorazione" value="0">Select Section</option>
+                        <option value="hetero">Hetero</option>
+                        <option value="gay">Gay</option>
+                        <option value="trans">Trans</option>
+                        <option value="lesbian">Lesbian</option>
+                    </select>
+                    <select class="form-select visually-hidden" aria-label="Duration" id="durata">
+                        <option selected id="decorazione" value="0">Select Duration</option>
+                        <option value="shortest">Short Videos</option>
+                        <option value="longest">Long Videos</option>
+                    </select>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <h1 id="intestazione">Latest Releases</h1>
+    <h1 id="intestazione">Latest Releases</h1>
 
-  <div class="container-fluid" id="loading">
-    <div class="spinner-border text-warning" role="status">
-      <span class="sr-only"></span>
+    <div class="container-fluid" id="loading">
+        <div class="spinner-border text-warning" role="status">
+            <span class="sr-only"></span>
+        </div>
     </div>
-  </div>
 
-  <div class="container-fluid visually-hidden" id="graficaCards">
-    <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
+    <div class="container-fluid visually-hidden" id="graficaCards">
+        <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
+            <!-• Dynamic video cards will be injected here by JavaScript -->
+        </div>
     </div>
-  </div>
-  <br>
+    <br>
+
+    <footer>
+        <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
+            <ul class="pagination">
+                <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
+                <li class="page-item">Page <span id="pagina">1</span></li>
+                <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
+            </ul>
+        </nav>
+        <br>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="./JS/main.js"></script>
+    <script>
+        function CreaHome() {
+            const videoContainer = document.getElementById('video');
+            const videos = [
+                { src: 'video1.mp4', title: 'Video 1', description: 'Description for Video 1' },
+                { src: 'video2.mp4', title: 'Video 2', description: 'Description for Video 2' },
+                // Add more video objects as needed
+            ];
+
+            videos.forEach(video => {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col';
+
+                const cardDiv = document.createElement('div');
+                cardDiv.className = 'card';
+
+                const videoElement = document.createElement('video');
+                videoElement.className = 'card-img-top';
+                videoElement.src = video.src;
+                videoElement.controls = true;
+
+                const descriptionDiv = document.createElement('div');
+                descriptionDiv.className = 'card-description';
+                
+                const titleElement = document.createElement('h2');
+                titleElement.textContent = video.title;
+
+                const descElement = document.createElement('p');
+                descElement.textContent = video.description;
+
+                descriptionDiv.appendChild(titleElement);
+                descriptionDiv.appendChild(descElement);
+
+                cardDiv.appendChild(videoElement);
+                cardDiv.appendChild(descriptionDiv);
+                colDiv.appendChild(cardDiv);
+                videoContainer.appendChild(colDiv);
+            });
+        }
+
+        // Call the function to create video cards
+        CreaHome();
+    </script>
 </body>
 
-<footer>
-  <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
-    <ul class="pagination">
-      <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
-      <li class="page-item">Page <span id="pagina">1</span></li>
-      <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
-    </ul>
-  </nav>
-  <br>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-</script>
-<script src="./JS/main.js"></script>
-<script>
-  CreaHome()
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2342057939760254"
-     crossorigin="anonymous"></script>
 </html>
