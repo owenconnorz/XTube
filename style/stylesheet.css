@@ -1,12 +1,12 @@
 
 @font-face {
-  font-family: General;
+  font-family: Generale;
   src: url("./../fonts/Gotham-Black.otf");
   font-display: swap;
 }
 
 @font-face {
-  font-family: Title;
+  font-family: intitolazione; /* Title */
   src: url("./../fonts/PTSans-Bold.ttf");
   font-display: swap;
 }
@@ -15,18 +15,17 @@ img.card-img-top {
   border-radius: 0%;
 }
 
-#page {
+#page { /* Changed from #pagina to #page */
   font-size: large;
 }
 
-span#search, #search, #logo, #category, #page {
+span#search, #search, #logo, #category, #page { /* Changed from #ricerca to #search */
   color: orange;
 }
 
 body {
-  /* background-color: rgb(33, 37, 41); */
-  background-color: rgb(0, 0, 0);
-  font-family: General;
+  background-color: rgb(0, 0, 0); /* Black background */
+  font-family: Generale;
   color: white;
   margin: 0;
   padding: 0;
@@ -35,21 +34,21 @@ body {
 .dropdown-item:hover {
   cursor: pointer;
   color: white;
-  background-color: rgb(41, 48, 54);
+  background-color: rgb(41, 48, 54); /* Dark background on hover */
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
 
 option {
   color: white;
-  background-color: rgb(41, 48, 54);
+  background-color: rgb(41, 48, 54); /* Dark background for options */
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
 
 .navbar {
-  background-color: #161616f5 !important;
+  background-color: #161616f5 !important; /* Dark navbar */
 }
 
-#title {
+#title { /* Changed from #titolo to #title */
   color: white;
   font-size: 150%;
   margin-left: 1.5%;
@@ -67,7 +66,7 @@ li.page-item {
 }
 
 .navbar-toggler {
-  color: rgb(221, 118, 21);
+  color: rgb(221, 118, 21); /* Orange color */
   margin-right: 6.1%;
 }
 
@@ -85,21 +84,21 @@ nav#pagination {
 }
 
 .spinner-border {
-  color: rgb(255, 119, 0) !important;
+  color: rgb(255, 119, 0) !important; /* Orange spinner */
   width: 3rem;
   height: 3rem;
   margin-bottom: 70%;
 }
 
 nav#pagination a {
-  color: rgb(255, 119, 0);
-  background-color: #1d1d1d;
+  color: rgb(255, 119, 0); /* Orange color for pagination links */
+  background-color: #1d1d1d; /* Dark background */
   border-color: rgba(255, 255, 255, 0.341);
 }
 
 nav#pagination a:hover {
-  background-color: black;
-  border-color: orange;
+  background-color: black; /* Dark background on hover */
+  border-color: orange; /* Orange border on hover */
 }
 
 div.card:hover {
@@ -107,21 +106,21 @@ div.card:hover {
 }
 
 .container-fluid {
-  width: 98% !important;
+  width: 98% !important; /* Full width */
 }
 
-#icons {
+#icons { /* Changed from #icone to #icons */
   width: 3%;
   margin-left: 0.3%;
   margin-right: 0.1%;
 }
 
 select {
-  margin-right: 0.5rem;
+  margin-right: 0.5rem; /* Margin for select elements */
 }
 
 .card {
-  text-shadow: 0 0 2px #000000;
+  text-shadow: 0 0 2px #000000; /* Black text shadow */
   align-items: center;
   border: none;
   border-radius: 0%;
@@ -132,18 +131,18 @@ p {
 }
 
 #clock {
-  width: 20px;
+  width: 20px; /* Clock width */
   margin-bottom: 0.8%;
   margin-right: 6%;
 }
 
-#search-form {
+#search_form { /* Changed from #form_ricerca to #search_form */
   margin-right: 2%;
 }
 
 #time {
   font-size: large;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255); /* White color */
   display: flex;
   align-items: center;
   margin-right: 4%;
@@ -157,7 +156,7 @@ p {
   margin-top: 1%;
 }
 
-#n-views {
+#n-views { /* Changed from #n-views to #n-views */
   display: flex;
   align-items: center;
   margin-left: 2%;
@@ -173,8 +172,8 @@ p {
   font-size: 140%;
   text-align: center;
   align-items: center;
-  color: #ffffff;
-  font-family: Title;
+  color: #ffffff; /* White color */
+  font-family: intitolazione; /* Title font */
   padding: 0% 2% 0% 2%;
   margin-bottom: 0.5%;
 }
@@ -183,7 +182,7 @@ p {
   font-size: 20px;
   text-align: center;
   align-items: center;
-  color: #ffffff;
+  color: #ffffff; /* White color */
   display: flex;
   justify-content: space-between;
 }
@@ -199,17 +198,17 @@ p {
   margin-right: 0.5%;
 }
 
-.btn#next {
+.btn#next { /* Next button */
   width: 8%;
   margin-left: 1.5%;
 }
 
-.btn#previous {
+.btn#previous { /* Previous button */
   width: 8%;
   margin-right: 1.5%;
 }
 
-span#page {
+span#page { /* Changed from #pagina to #page */
   width: 5%;
   height: 5%;
   font-size: 21px;
@@ -218,16 +217,16 @@ span#page {
 
 .pagination {
   width: 100%;
-  display: contents;
+  display: contents; /* Pagination display */
 }
 
+/* Media queries for responsiveness */
 @media screen and (max-width: 1250px) {
   .card-description h2 {
     font-size: 100%;
     text-align: center;
     align-items: center;
   }
-
   .card-description p {
     font-size: 120%;
     text-align: center;
@@ -245,7 +244,6 @@ span#page {
     margin-top: 2.5%;
     margin-bottom: 3%;
   }
-
   #views {
     width: 15%;
     margin-right: 5%;
@@ -258,7 +256,7 @@ span#page {
   .btn#next {
     margin-left: 3%;
   }
-
+  
   .btn#previous {
     margin-right: 3%;
   }
@@ -266,18 +264,10 @@ span#page {
   #n-views {
     font-size: 70%;
   }
-
+  
   #time {
     font-size: 70%;
     margin-right: 5%;
-  }
-
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
   }
 }
 
@@ -287,7 +277,6 @@ span#page {
     text-align: center;
     align-items: center;
   }
-
   .card-description p {
     font-size: 15px;
     text-align: center;
@@ -334,22 +323,14 @@ span#page {
   #clock {
     width: 18px;
   }
-
+  
   #n-views {
     font-size: 70%;
   }
-
+  
   #time {
     font-size: 70%;
     margin-right: 5%;
-  }
-
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
   }
 }
 
@@ -361,7 +342,7 @@ span#page {
   .card-description p {
     font-size: 120%;
   }
-
+  
   .row {
     width: 100%;
     margin-bottom: 1%;
@@ -386,19 +367,19 @@ span#page {
   .btn#previous {
     width: 20%;
   }
-
-  img#icons {
+  
+  img#icons { /* Changed from #icone to #icons */
     width: 7%;
   }
 
-  #title {
+  #title { /* Changed from #titolo to #title */
     margin-left: 6%;
   }
 
   .btn#next {
     margin-left: 5%;
   }
-
+  
   .btn#previous {
     margin-right: 5%;
   }
@@ -406,32 +387,32 @@ span#page {
   li.page-item {
     font-size: 20px;
   }
-
-  #page {
+  
+  #page { /* Changed from #pagina to #page */
     font-size: 15px;
   }
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
-/* Firefox */
+/* Firefox scrollbar */
 * {
-  scrollbar-color: #424242;
+  scrollbar-color: #424242; /* Scrollbar color */
 }
 
-/* Chrome, Edge, and Safari */
+/* Chrome, Edge, and Safari scrollbar */
 *::-webkit-scrollbar {
-  width: 16px;
+  width: 16px; /* Scrollbar width */
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent; /* Transparent scrollbar track */
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #353535;
+  background-color: #353535; /* Scrollbar thumb color */
   border-radius: 0px;
-  border: 5px solid transparent;
+  border: 5px solid transparent; /* Transparent border */
 }
