@@ -122,13 +122,16 @@ select {
     align-items: center;
     border: none;
     border-radius: 0%;
+    background-color: black; /* Set the background color to black */
+    margin: 0; /* Remove any default margin */
+    padding: 10px; /* Adjust padding as needed */
 }
 
 .card-description {
     position: relative;
     margin-top: 10px; /* Space between video and title */
     text-align: center; /* Center the title */
-    background-color: black; /* Set background color to black */
+    background-color: black; /* Ensure the background is black */
     padding: 10px; /* Add padding to the description area */
 }
 
@@ -144,6 +147,11 @@ select {
     font-size: 20px;
     color: #ffffff;
     margin: 0; /* Remove margin */
+}
+
+.card img {
+    width: 100%; /* Make sure images fill the card */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .row {
