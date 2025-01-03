@@ -20,6 +20,7 @@ body {
 }
 
 .card {
+    position: relative; /* Make card relative for absolute positioning */
     background-color: #1d1d1d; /* Card background color */
     border: none;
     border-radius: 5px; /* Rounded corners */
@@ -32,15 +33,45 @@ body {
     height: auto; /* Maintain aspect ratio */
 }
 
+.video-info {
+    position: absolute; /* Position absolutely within the card */
+    bottom: 10px; /* Position from the bottom of the thumbnail */
+    left: 10px; /* Position from the left */
+    display: flex; /* Use flexbox for the views and duration */
+    align-items: center; /* Center items vertically */
+    font-size: 0.9em; /* Font size for info */
+    color: #ffffff; /* Text color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 5px; /* Padding for the info box */
+    border-radius: 5px; /* Rounded corners for the info box */
+}
+
+.views {
+    margin-right: 10px; /* Space between views and duration */
+}
+
+.views::before {
+    content: "👁️ "; /* Optional: Eye emoji before views */
+    font-size: 0.8em; /* Smaller size for the views icon */
+}
+
+.duration {
+    margin-left: 10px; /* Space between views and duration */
+}
+
+.duration::before {
+    content: "⏳ "; /* Optional: Hourglass emoji before duration */
+    font-size: 0.8em; /* Smaller size for the duration icon */
+}
+
 .card-description {
     display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out elements */
-    align-items: center; /* Center items vertically */
+    flex-direction: column; /* Stack title and description vertically */
     padding: 10px; /* Padding for the description area */
 }
 
 .card-description h2 {
-    font-size: 1.1em; /* Slightly smaller font size */
+    font-size: 1.1em; /* Title font size */
     color: #ffffff;
     font-family: title; /* Use your defined font */
     margin: 0; /* Remove margin */
@@ -48,21 +79,6 @@ body {
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflow */
-}
-
-.video-info {
-    display: flex; /* Use flexbox for the views and duration */
-    align-items: center; /* Center items vertically */
-    font-size: 0.9em; /* Font size for info */
-    color: #ffffff; /* Text color */
-}
-
-.views, .duration {
-    margin-left: 10px; /* Space between views and duration */
-}
-
-.views::before {
-    content: "👁️ "; /* Optional: Eye emoji before views */
 }
 
 .card-description p {
