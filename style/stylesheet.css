@@ -130,9 +130,12 @@ select {
 .card-description {
     position: relative;
     margin-top: 10px; /* Space between video and title */
-    text-align: center; /* Center the title */
+    text-align: left; /* Align title to the left */
     background-color: black; /* Ensure the background is black */
     padding: 10px; /* Add padding to the description area */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out elements */
+    align-items: center; /* Center items vertically */
 }
 
 .card-description h2 {
@@ -144,7 +147,18 @@ select {
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Show ellipsis for overflowed text */
-    max-width: 100%; /* Ensure it fits within the card */
+    max-width: 70%; /* Ensure it fits within the card */
+}
+
+.video-info {
+    display: flex; /* Use flexbox for the views and duration */
+    align-items: center; /* Center items vertically */
+    color: #ffffff; /* Text color */
+    font-size: 0.9em; /* Adjust font size for info */
+}
+
+.views, .duration {
+    margin-left: 10px; /* Add space between views and duration */
 }
 
 .card-description p {
