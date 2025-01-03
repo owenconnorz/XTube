@@ -46,12 +46,22 @@ body {
     border-radius: 5px; /* Rounded corners for the info box */
 }
 
-.views, .duration {
+.views {
     margin-left: 10px; /* Space between views and duration */
 }
 
 .views::before {
     content: "👁️ "; /* Optional: Eye emoji before views */
+    font-size: 0.7em; /* Smaller size for the views icon */
+}
+
+.duration {
+    margin-left: 10px; /* Space between views and duration */
+}
+
+.duration::before {
+    content: "⏳ "; /* Optional: Hourglass emoji before duration */
+    font-size: 0.7em; /* Smaller size for the duration icon */
 }
 
 .card-description {
