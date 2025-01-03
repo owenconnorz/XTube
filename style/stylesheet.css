@@ -1,137 +1,437 @@
 
 @font-face {
-    font-family: Generale;
-    src: url("./../fonts/Gotham-Black.otf");
-    font-display: swap;
+  font-family: General;
+  src: url("./../fonts/Gotham-Black.otf");
+  font-display: swap;
 }
 
 @font-face {
-    font-family: title; /* Translated from 'intitolazione' */
-    src: url("./../fonts/PTSans-Bold.ttf");
-    font-display: swap;
+  font-family: Title;
+  src: url("./../fonts/PTSans-Bold.ttf");
+  font-display: swap;
+}
+
+img.card-img-top {
+  border-radius: 0%;
+}
+
+#page {
+  font-size: large;
+}
+
+span#search, #search, #logo, #category, #page {
+  color: orange;
 }
 
 body {
-    background-color: rgb(0, 0, 0);
-    font-family: Generale;
-    color: white;
-    margin: 0;
-    padding: 0;
+  /* background-color: rgb(33, 37, 41); */
+  background-color: rgb(0, 0, 0);
+  font-family: General;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(41, 48, 54);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+option {
+  color: white;
+  background-color: rgb(41, 48, 54);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+.navbar {
+  background-color: #161616f5 !important;
+}
+
+#title {
+  color: white;
+  font-size: 150%;
+  margin-left: 1.5%;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  margin-top: 1.5%;
+  margin-bottom: 2%;
+}
+
+li.page-item {
+  font-size: 20px;
+}
+
+.navbar-toggler {
+  color: rgb(221, 118, 21);
+  margin-right: 6.1%;
+}
+
+nav#pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.spinner-border {
+  color: rgb(255, 119, 0) !important;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 70%;
+}
+
+nav#pagination a {
+  color: rgb(255, 119, 0);
+  background-color: #1d1d1d;
+  border-color: rgba(255, 255, 255, 0.341);
+}
+
+nav#pagination a:hover {
+  background-color: black;
+  border-color: orange;
+}
+
+div.card:hover {
+  cursor: pointer;
+}
+
+.container-fluid {
+  width: 98% !important;
+}
+
+#icons {
+  width: 3%;
+  margin-left: 0.3%;
+  margin-right: 0.1%;
+}
+
+select {
+  margin-right: 0.5rem;
 }
 
 .card {
-    position: relative; /* Make card relative for absolute positioning */
-    background-color: #1d1d1d; /* Card background color */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    margin: 10px 0; /* Space between cards */
-    overflow: hidden; /* Prevent overflow */
+  text-shadow: 0 0 2px #000000;
+  align-items: center;
+  border: none;
+  border-radius: 0%;
 }
 
-.card-img-top {
-    width: 100%; /* Full width for image */
-    height: auto; /* Maintain aspect ratio */
+p {
+  display: flex;
 }
 
-.video-info {
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out elements */
-    align-items: center; /* Center items vertically */
-    font-size: 0.9em; /* Font size for info */
-    color: #ffffff; /* Text color */
-    padding: 5px 10px; /* Padding for the info box */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+#clock {
+  width: 20px;
+  margin-bottom: 0.8%;
+  margin-right: 6%;
 }
 
-.views {
-    margin-right: 10px; /* Space between views and duration */
+#search-form {
+  margin-right: 2%;
 }
 
-.views::before {
-    content: "👁️ "; /* Eye emoji before views */
-    font-size: 0.8em; /* Smaller size for the views icon */
+#time {
+  font-size: large;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  margin-right: 4%;
 }
 
-.duration {
-    margin-left: 10px; /* Space before duration */
+#views {
+  width: 10%;
+  margin-bottom: 0.5%;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 1%;
 }
 
-.duration::before {
-    content: "⏳ "; /* Hourglass emoji before duration */
-    font-size: 0.8em; /* Smaller size for the duration icon */
+#n-views {
+  display: flex;
+  align-items: center;
+  margin-left: 2%;
 }
 
 .card-description {
-    padding: 10px; /* Padding for the description area */
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
 }
 
 .card-description h2 {
-    font-size: 1em; /* Title font size */
-    color: #ffffff;
-    font-family: title; /* Use your defined font */
-    margin: 0; /* Remove margin */
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Ellipsis for overflow */
+  font-size: 140%;
+  text-align: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: Title;
+  padding: 0% 2% 0% 2%;
+  margin-bottom: 0.5%;
 }
 
 .card-description p {
-    font-size: 0.8em; /* Smaller font size for description */
-    color: #ffffff;
-    margin: 0; /* Remove margin */
+  font-size: 20px;
+  text-align: center;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
 }
 
-/* Additional styles for responsiveness */
-@media screen and (max-width: 600px) {
-    .card-description h2 {
-        font-size: 0.9em; /* Adjust title size for smaller screens */
-    }
-
-    .card-description p {
-        font-size: 0.7em; /* Adjust description size for smaller screens */
-    }
+.row {
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Scrollbar styles */
+#star {
+  width: 2%;
+  margin-right: 0.5%;
+}
+
+.btn#next {
+  width: 8%;
+  margin-left: 1.5%;
+}
+
+.btn#previous {
+  width: 8%;
+  margin-right: 1.5%;
+}
+
+span#page {
+  width: 5%;
+  height: 5%;
+  font-size: 21px;
+  background-color: transparent !important;
+}
+
+.pagination {
+  width: 100%;
+  display: contents;
+}
+
+@media screen and (max-width: 1250px) {
+  .card-description h2 {
+    font-size: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .card-description p {
+    font-size: 120%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .row {
+    width: 100%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+  }
+
+  #views {
+    width: 15%;
+    margin-right: 5%;
+  }
+
+  #clock {
+    width: 25%;
+  }
+
+  .btn#next {
+    margin-left: 3%;
+  }
+
+  .btn#previous {
+    margin-right: 3%;
+  }
+
+  #n-views {
+    font-size: 70%;
+  }
+
+  #time {
+    font-size: 70%;
+    margin-right: 5%;
+  }
+
+  .btn#next {
+    margin-left: 3%;
+  }
+
+  .btn#previous {
+    margin-right: 3%;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .card-description h2 {
+    font-size: 10px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .card-description p {
+    font-size: 15px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .btn#next {
+    width: 15%;
+  }
+
+  .btn#previous {
+    width: 15%;
+  }
+
+  .pagination {
+    width: 100%;
+    display: contents;
+  }
+
+  .row {
+    width: 100%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    margin-top: 2.5%;
+    margin-bottom: 3%;
+  }
+
+  #views {
+    width: 22px;
+    margin-bottom: 0.5%;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+
+  #time {
+    font-size: 15px;
+    margin-right: 5%;
+  }
+
+  #clock {
+    width: 18px;
+  }
+
+  #n-views {
+    font-size: 70%;
+  }
+
+  #time {
+    font-size: 70%;
+    margin-right: 5%;
+  }
+
+  .btn#next {
+    margin-left: 3%;
+  }
+
+  .btn#previous {
+    margin-right: 3%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .card-description h2 {
+    font-size: 100%;
+  }
+
+  .card-description p {
+    font-size: 120%;
+  }
+
+  .row {
+    width: 100%;
+    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  nav {
+    width: auto;
+  }
+
+  h1 {
+    margin-top: 4%;
+    margin-bottom: 4.5%;
+    font-size: 28px;
+  }
+
+  .btn#next {
+    width: 20%;
+  }
+
+  .btn#previous {
+    width: 20%;
+  }
+
+  img#icons {
+    width: 7%;
+  }
+
+  #title {
+    margin-left: 6%;
+  }
+
+  .btn#next {
+    margin-left: 5%;
+  }
+
+  .btn#previous {
+    margin-right: 5%;
+  }
+
+  li.page-item {
+    font-size: 20px;
+  }
+
+  #page {
+    font-size: 15px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Firefox */
 * {
-    scrollbar-color: #424242;
+  scrollbar-color: #424242;
 }
 
+/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 16px;
+  width: 16px;
 }
 
 *::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #353535;
-    border-radius: 0px;
-    border: 5px solid transparent;
-}
-
-/* Google Sign-In Button Styles */
-.g_id_signin {
-    margin-left: 1rem; /* Adjust as needed for spacing */
-}
-
-/* Style adjustments for the Google Sign-In button */
-.g_id_signin .g_id_button {
-    background-color: #4285F4; /* Google blue */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-}
-
-.g_id_signin .g_id_button:hover {
-    background-color: #357AE8; /* Darker blue on hover */
-}
-
-.g_id_signin .g_id_button:focus {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: #353535;
+  border-radius: 0px;
+  border: 5px solid transparent;
 }
