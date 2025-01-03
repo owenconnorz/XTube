@@ -20,6 +20,7 @@ body {
 }
 
 .card {
+    position: relative; /* Make card relative for absolute positioning */
     background-color: #1d1d1d; /* Card background color */
     border: none;
     border-radius: 5px; /* Rounded corners */
@@ -32,10 +33,31 @@ body {
     height: auto; /* Maintain aspect ratio */
 }
 
+.video-info {
+    position: absolute; /* Position absolutely within the card */
+    bottom: 10px; /* Position from the bottom of the thumbnail */
+    left: 10px; /* Position from the left */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    font-size: 0.9em; /* Font size for info */
+    color: #ffffff; /* Text color */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 5px; /* Padding for the info box */
+    border-radius: 5px; /* Rounded corners for the info box */
+}
+
+.views, .duration {
+    margin-left: 10px; /* Space between views and duration */
+}
+
+.views::before {
+    content: "👁️ "; /* Optional: Eye emoji before views */
+}
+
 .card-description {
     display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space out elements */
-    align-items: center; /* Center items vertically */
+    flex-direction: column; /* Stack title and description vertically */
+    justify-content: center; /* Center items */
     padding: 10px; /* Padding for the description area */
 }
 
@@ -48,21 +70,6 @@ body {
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflow */
-}
-
-.video-info {
-    display: flex; /* Use flexbox for the views and duration */
-    align-items: center; /* Center items vertically */
-    font-size: 0.9em; /* Font size for info */
-    color: #ffffff; /* Text color */
-}
-
-.views, .duration {
-    margin-left: 10px; /* Space between views and duration */
-}
-
-.views::before {
-    content: "👁️ "; /* Optional: Eye emoji before views */
 }
 
 .card-description p {
