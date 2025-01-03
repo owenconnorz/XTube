@@ -15,7 +15,7 @@ img.card-img-top {
   border-radius: 0%;
   width: 100%; /* Ensure images fit the card */
   height: auto; /* Maintain aspect ratio */
-  max-height: 200px; /* Set a maximum height for images */
+  max-height: 150px; /* Set a maximum height for images to prevent overflow */
 }
 
 #page {
@@ -27,7 +27,6 @@ span#search, #search, #logo, #category, #page {
 }
 
 body {
-  /* background-color: rgb(33, 37, 41); */
   background-color: rgb(0, 0, 0);
   font-family: General;
   color: white;
