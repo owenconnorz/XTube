@@ -34,16 +34,13 @@ body {
 }
 
 .video-info {
-    position: absolute; /* Position absolutely within the card */
-    bottom: 10px; /* Position from the bottom of the thumbnail */
-    left: 10px; /* Position from the left */
-    display: flex; /* Use flexbox for the views and duration */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out elements */
     align-items: center; /* Center items vertically */
     font-size: 0.9em; /* Font size for info */
     color: #ffffff; /* Text color */
+    padding: 5px 10px; /* Padding for the info box */
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 5px; /* Padding for the info box */
-    border-radius: 5px; /* Rounded corners for the info box */
 }
 
 .views {
@@ -51,116 +48,55 @@ body {
 }
 
 .views::before {
-    content: "👁️ "; /* Optional: Eye emoji before views */
+    content: "👁️ "; /* Eye emoji before views */
     font-size: 0.8em; /* Smaller size for the views icon */
 }
 
 .duration {
-    margin-left: 10px; /* Space between views and duration */
+    margin-left: 10px; /* Space before duration */
 }
 
 .duration::before {
-    content: "⏳ "; /* Optional: Hourglass emoji before duration */
+    content: "⏳ "; /* Hourglass emoji before duration */
     font-size: 0.8em; /* Smaller size for the duration icon */
 }
 
 .card-description {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack title and description vertically */
     padding: 10px; /* Padding for the description area */
 }
 
 .card-description h2 {
-    font-size: 1.1em; /* Title font size */
+    font-size: 1em; /* Title font size */
     color: #ffffff;
     font-family: title; /* Use your defined font */
     margin: 0; /* Remove margin */
-    max-width: 70%; /* Limit title width */
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
     text-overflow: ellipsis; /* Ellipsis for overflow */
 }
 
 .card-description p {
-    font-size: 20px;
+    font-size: 0.8em; /* Smaller font size for description */
     color: #ffffff;
     margin: 0; /* Remove margin */
 }
 
-.row {
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#star {
-    width: 2%;
-    margin-right: 0.5%;
-}
-
-.btn#next {
-    width: 8%;
-    margin-left: 1.5%;
-}
-
-.btn#previous {
-    width: 8%;
-    margin-right: 1.5%;
-}
-
-span#pagina {
-    width: 5%;
-    height: 5%;
-    font-size: 21px;
-    background-color: transparent !important;
-}
-
-.pagination {
-    width: 100%;
-    display: contents;
-}
-
 /* Additional styles for responsiveness */
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 600px) {
     .card-description h2 {
-        font-size: 100%;
-        text-align: center;
+        font-size: 0.9em; /* Adjust title size for smaller screens */
     }
 
     .card-description p {
-        font-size: 120%;
-        text-align: center;
+        font-size: 0.7em; /* Adjust description size for smaller screens */
     }
 }
 
-@media screen and (max-width: 725px) {
-    .card-description h2 {
-        font-size: 10px;
-        text-align: center;
-    }
-
-    .card-description p {
-        font-size: 15px;
-        text-align: center;
-    }
-}
-
-@media screen and (max-width: 575px) {
-    .card-description h2 {
-        font-size: 100%;
-    }
-
-    .card-description p {
-        font-size: 120%;
-    }
-}
-
-/* Firefox */
+/* Scrollbar styles */
 * {
     scrollbar-color: #424242;
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
     width: 16px;
 }
