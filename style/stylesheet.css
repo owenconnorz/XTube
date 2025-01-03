@@ -11,22 +11,6 @@
     font-display: swap;
 }
 
-img.card-img-top {
-    border-radius: 0%;
-}
-
-#pagina {
-    font-size: medium;
-}
-
-span#ricerca,
-#ricerca,
-#logo,
-#categoria,
-#pagina {
-    color: blue;
-}
-
 body {
     background-color: rgb(0, 0, 0);
     font-family: Generale;
@@ -35,139 +19,56 @@ body {
     padding: 0;
 }
 
-.dropdown-item:hover {
-    cursor: pointer;
-    color: white;
-    background-color: rgb(41, 48, 54);
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-}
-
-option {
-    color: white;
-    background-color: rgb(41, 48, 54);
-}
-
-.navbar {
-    background-color: #161616f5 !important;
-}
-
-h1 {
-    color: white;
-    text-align: center; /* Center the title */
-    margin-top: 1.5%;
-    margin-bottom: 2%;
-    font-size: 3em; /* Make the title larger */
-}
-
-li.page-item {
-    font-size: 15px;
-}
-
-.navbar-toggler {
-    color: rgb(221, 118, 21);
-    margin-right: 6.1%;
-}
-
-nav#pagination {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-#loading {
-    display: flex;
-    justify-content: center;
-    margin-top: 4%;
-}
-
-.spinner-border {
-    color: rgb(0, 136, 255) !important;
-    width: 3rem;
-    height: 3rem;
-    margin-bottom: 70%;
-}
-
-nav#pagination a {
-    color: rgb(255, 119, 0);
-    background-color: #1d1d1d;
-    border-color: rgba(255, 255, 255, 0.341);
-}
-
-nav#pagination a:hover {
-    background-color: black;
-    border-color: blue;
-}
-
-div.card:hover {
-    cursor: pointer;
-}
-
-.container-fluid {
-    width: 98% !important;
-}
-
-#icone {
-    width: 3%;
-    margin-left: 0.3%;
-    margin-right: 0.1%;
-}
-
-select {
-    margin-right: 0.5rem;
-}
-
 .card {
-    text-shadow: 0 0 2px #000000;
-    align-items: center;
+    background-color: #1d1d1d; /* Card background color */
     border: none;
-    border-radius: 0%;
-    background-color: black; /* Set the background color to black */
-    margin: 0; /* Remove any default margin */
-    padding: 10px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px 0; /* Space between cards */
+    overflow: hidden; /* Prevent overflow */
+}
+
+.card-img-top {
+    width: 100%; /* Full width for image */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .card-description {
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space out elements */
     align-items: center; /* Center items vertically */
-    margin-top: 10px; /* Space between video and title */
-    background-color: black; /* Ensure the background is black */
-    padding: 10px; /* Add padding to the description area */
-    color: #ffffff; /* Text color */
+    padding: 10px; /* Padding for the description area */
 }
 
 .card-description h2 {
-    font-size: 1.2em; /* Adjust font size */
+    font-size: 1.1em; /* Slightly smaller font size */
     color: #ffffff;
     font-family: title; /* Use your defined font */
-    padding: 0; /* Remove padding from the title */
-    margin: 0; /* Remove margin to reduce space */
+    margin: 0; /* Remove margin */
+    max-width: 70%; /* Limit title width */
     white-space: nowrap; /* Prevent wrapping */
     overflow: hidden; /* Hide overflow */
-    text-overflow: ellipsis; /* Show ellipsis for overflowed text */
-    max-width: 70%; /* Ensure it fits within the card */
+    text-overflow: ellipsis; /* Ellipsis for overflow */
 }
 
 .video-info {
     display: flex; /* Use flexbox for the views and duration */
     align-items: center; /* Center items vertically */
-    font-size: 0.9em; /* Adjust font size for info */
+    font-size: 0.9em; /* Font size for info */
+    color: #ffffff; /* Text color */
 }
 
 .views, .duration {
-    margin-left: 10px; /* Add space between views and duration */
+    margin-left: 10px; /* Space between views and duration */
+}
+
+.views::before {
+    content: "👁️ "; /* Optional: Eye emoji before views */
 }
 
 .card-description p {
     font-size: 20px;
     color: #ffffff;
     margin: 0; /* Remove margin */
-}
-
-.card img {
-    width: 100%; /* Make sure images fill the card */
-    height: auto; /* Maintain aspect ratio */
 }
 
 .row {
@@ -203,6 +104,7 @@ span#pagina {
     display: contents;
 }
 
+/* Additional styles for responsiveness */
 @media screen and (max-width: 1250px) {
     .card-description h2 {
         font-size: 100%;
@@ -212,44 +114,6 @@ span#pagina {
     .card-description p {
         font-size: 120%;
         text-align: center;
-    }
-
-    .row {
-        width: 100%;
-        margin-bottom: 1%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    h1 {
-        margin-top: 2.5%;
-        margin-bottom: 3%;
-    }
-
-    #views {
-        width: 15%;
-        margin-right: 5%;
-    }
-
-    #clock {
-        width: 25%;
-    }
-
-    .btn#next {
-        margin-left: 3%;
-    }
-
-    .btn#previous {
-        margin-right: 3%;
-    }
-
-    #n-views {
-        font-size: 70%;
-    }
-
-    #time {
-        font-size: 70%;
-        margin-right: 5%;
     }
 }
 
@@ -263,64 +127,6 @@ span#pagina {
         font-size: 15px;
         text-align: center;
     }
-
-    .btn#next {
-        width: 15%;
-    }
-
-    .btn#previous {
-        width: 15%;
-    }
-
-    .pagination {
-        width: 100%;
-        display: contents;
-    }
-
-    .row {
-        width: 100%;
-        margin-bottom: 1%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    h1 {
-        margin-top: 2.5%;
-        margin-bottom: 3%;
-    }
-
-    #views {
-        width: 22px;
-        margin-bottom: 0.5%;
-        margin-right: 10%;
-        margin-left: 10%;
-    }
-
-    #time {
-        font-size: 15px;
-        margin-right: 5%;
-    }
-
-    #clock {
-        width: 18px;
-    }
-
-    #n-views {
-        font-size: 70%;
-    }
-
-    #time {
-        font-size: 70%;
-        margin-right: 5%;
-    }
-
-    .btn#next {
-        margin-left: 3%;
-    }
-
-    .btn#previous {
-        margin-right: 3%;
-    }
 }
 
 @media screen and (max-width: 575px) {
@@ -331,59 +137,6 @@ span#pagina {
     .card-description p {
         font-size: 120%;
     }
-
-    .row {
-        width: 100%;
-        margin-bottom: 1%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    nav {
-        width: auto;
-    }
-
-    h1 {
-        margin-top: 4%;
-        margin-bottom: 4.5%;
-        font-size: 28px;
-    }
-
-    .btn#next {
-        width: 20%;
-    }
-
-    .btn#previous {
-        width: 20%;
-    }
-
-    img#icone {
-        width: 7%;
-    }
-
-    #titolo {
-        margin-left: 6%;
-    }
-
-    .btn#next {
-        margin-left: 5%;
-    }
-
-    .btn#previous {
-        margin-right: 5%;
-    }
-
-    li.page-item {
-        font-size: 20px;
-    }
-
-    #pagina {
-        font-size: 21px;
-    }
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 /* Firefox */
