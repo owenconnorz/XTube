@@ -24,7 +24,6 @@ span#search, #search, #logo, #category, #page {
 }
 
 body {
-  /* background-color: rgb(33, 37, 41); */ /* (Commented out) Background color */
   background-color: rgb(0, 0, 0); /* Black background color */
   font-family: Generale; /* Set font family to "Generale" */
   color: white; /* White text color */
@@ -46,7 +45,7 @@ option {
 }
 
 .navbar {
-  background-color: #161616f5!important; /* Dark background color for the navbar */
+  background-color: #161616f5 !important; /* Dark background color for the navbar */
 }
 
 #title {
@@ -85,7 +84,7 @@ nav#pagination {
 }
 
 .spinner-border {
-  color: rgb(255, 119, 0)!important; /* Orange color for loading spinner */
+  color: rgb(255, 119, 0) !important; /* Orange color for loading spinner */
   width: 3rem; /* Width of the spinner */
   height: 3rem; /* Height of the spinner */
   margin-bottom: 70%; /* Bottom margin */
@@ -170,252 +169,5 @@ p {
 }
 
 .card-description h2 {
-  font-size: 140%; /* Font size for card description heading */
-  text-align: center; /* Center-align text */
-  align-items: center; /* Center-align items */
-  color: #ffffff; /* White color for heading */
-  font-family: Title; /* Use "Title" font family */
-  padding: 0% 2% 0% 2%; /* Padding for heading */
-  margin-bottom: 0.5%; /* Bottom margin for heading */
-}
-
-.card-description p {
-  font-size: 20px; /* Font size for card description paragraph */
-  text-align: center; /* Center-align paragraph text */
-  align-items: center; /* Center-align items */
-  color: #ffffff; /* White color for paragraph text */
-  display: flex; /* Flex display for paragraph */
-  justify-content: space-between; /* Space between items in paragraph */
-}
-
-.row {
-  margin-bottom: 1%; /* Bottom margin for rows */
-  margin-left: auto; /* Auto left margin */
-  margin-right: auto; /* Auto right margin */
-}
-
-#star {
-  width: 2%; /* Width for star */
-  margin-right: 0.5%; /* Right margin for star */
-}
-
-.btn#next {
-  width: 8%; /* Width for next button */
-  margin-left: 1.5%; /* Left margin for next button */
-}
-
-.btn#previous {
-  width: 8%; /* Width for previous button */
-  margin-right: 1.5%; /* Right margin for previous button */
-}
-
-span#page {
-  width: 5%; /* Width for page span */
-  height: 5%; /* Height for page span */
-  font-size: 21px; /* Font size for page span */
-  background-color: transparent !important; /* Transparent background for page span */
-}
-
-.pagination {
-  width: 100%; /* Full width for pagination */
-  display: contents; /* Display contents for pagination */
-}
-
-@media screen and (max-width: 1250px) {
-  .card-description h2 {
-    font-size: 100%; /* Font size for heading in smaller screens */
-    text-align: center; /* Center-align text */
-    align-items: center; /* Center-align items */
-  }
-
-  .card-description p {
-    font-size: 120%; /* Font size for paragraph in smaller screens */
-    text-align: center; /* Center-align text */
-    align-items: center; /* Center-align items */
-  }
-
-  .row {
-    width: 100%; /* Full width for row in smaller screens */
-    margin-bottom: 1%; /* Bottom margin for row */
-    margin-left: auto; /* Auto left margin */
-    margin-right: auto; /* Auto right margin */
-  }
-
-  h1 {
-    margin-top: 2.5%; /* Top margin for h1 in smaller screens */
-    margin-bottom: 3%; /* Bottom margin for h1 in smaller screens */
-  }
-
-  #views {
-    width: 15%; /* Width for views in smaller screens */
-    margin-right: 5%; /* Right margin for views in smaller screens */
-  }
-
-  #clock {
-    width: 25%; /* Width for clock in smaller screens */
-  }
-
-  .btn#next {
-    margin-left: 3%; /* Left margin for next button in smaller screens */
-  }
-  
-  .btn#previous {
-    margin-right: 3%; /* Right margin for previous button in smaller screens */
-  }
-
-  #n-views {
-    font-size: 70%; /* Font size for number of views in smaller screens */
-  }
-  
-  #time {
-    font-size: 70%; /* Font size for time in smaller screens */
-    margin-right: 5%; /* Right margin for time in smaller screens */
-  }
-}
-
-@media screen and (max-width: 725px) {
-  .card-description h2 {
-    font-size: 10px; /* Font size for heading in very small screens */
-    text-align: center; /* Center-align text */
-    align-items: center; /* Center-align items */
-  }
-
-  .card-description p {
-    font-size: 15px; /* Font size for paragraph in very small screens */
-    text-align: center; /* Center-align text */
-    align-items: center; /* Center-align items */
-  }
-
-  .btn#next {
-    width: 15%; /* Width for next button in very small screens */
-  }
-
-  .btn#previous {
-    width: 15%; /* Width for previous button in very small screens */
-  }
-
-  .pagination {
-    width: 100%; /* Full width for pagination in very small screens */
-    display: contents; /* Display contents for pagination */
-  }
-
-  .row {
-    width: 100%; /* Full width for row in very small screens */
-    margin-bottom: 1%; /* Bottom margin for row */
-    margin-left: auto; /* Auto left margin */
-    margin-right: auto; /* Auto right margin */
-  }
-
-  h1 {
-    margin-top: 2.5%; /* Top margin for h1 in very small screens */
-    margin-bottom: 3%; /* Bottom margin for h1 in very small screens */
-  }
-
-  #views {
-    width: 22px; /* Width for views in very small screens */
-    margin-bottom: 0.5%; /* Bottom margin for views */
-    margin-right: 10%; /* Right margin for views */
-    margin-left: 10%; /* Left margin for views */
-  }
-
-  #time {
-    font-size: 15px; /* Font size for time in very small screens */
-    margin-right: 5%; /* Right margin for time */
-  }
-
-  #clock {
-    width: 18px; /* Width for clock in very small screens */
-  }
-
-  #n-views {
-    font-size: 70%; /* Font size for number of views in very small screens */
-  }
-  
-  #time {
-    font-size: 70%; /* Font size for time in very small screens */
-    margin-right: 5%; /* Right margin for time */
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .card-description h2 {
-    font-size: 100%; /* Font size for heading in extra small screens */
-  }
-
-  .card-description p {
-    font-size: 120%; /* Font size for paragraph in extra small screens */
-  }
-
-  .row {
-    width: 100%; /* Full width for row in extra small screens */
-    margin-bottom: 1%; /* Bottom margin for row */
-    margin-left: auto; /* Auto left margin */
-    margin-right: auto; /* Auto right margin */
-  }
-
-  nav {
-    width: auto; /* Auto width for nav */
-  }
-
-  h1 {
-    margin-top: 4%; /* Top margin for h1 in extra small screens */
-    margin-bottom: 4.5%; /* Bottom margin for h1 in extra small screens */
-    font-size: 28px; /* Font size for h1 in extra small screens */
-  }
-
-  .btn#next {
-    width: 20%; /* Width for next button in extra small screens */
-  }
-
-  .btn#previous {
-    width: 20%; /* Width for previous button in extra small screens */
-  }
-
-  img#icons {
-    width: 7%; /* Width for icons in extra small screens */
-  }
-
-  #title {
-    margin-left: 6%; /* Left margin for title in extra small screens */
-  }
-
-  .btn#next {
-    margin-left: 5%; /* Left margin for next button in extra small screens */
-  }
-  
-  .btn#previous {
-    margin-right: 5%; /* Right margin for previous button in extra small screens */
-  }
-
-  li.page-item {
-    font-size: 20px; /* Font size for page items in extra small screens */
-  }
-
-  #page {
-    font-size: 15px; /* Font size for page in extra small screens */
-  }
-}
-
-html {
-  scroll-behavior: smooth; /* Smooth scrolling behavior */
-}
-
-/* Firefox */
-* {
-  scrollbar-color: #424242; /* Scrollbar color for Firefox */
-}
-
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 16px; /* Width of the scrollbar */
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent; /* Background for scrollbar track */
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #353535; /* Color for scrollbar thumb */
-  border-radius: 0px; /* No rounding for scrollbar thumb */
-  border: 5px solid transparent; /* Transparent border for scrollbar thumb */
+  color: white; /* White text color for card description */
 }
