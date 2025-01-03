@@ -1,448 +1,162 @@
 
 @font-face {
-  font-family: Generale;
-  src: url("./../fonts/Gotham-Black.otf");
-  font-display: swap;
+    font-family: Generale;
+    src: url("./../fonts/Gotham-Black.otf");
+    font-display: swap;
 }
 
 @font-face {
-  font-family: title; /* Translated from 'intitolazione' */
-  src: url("./../fonts/PTSans-Bold.ttf");
-  font-display: swap;
-}
-
-img.card-img-top {
-  border-radius: 0%;
-}
-
-#pagina {
-  font-size: medium;
-}
-
-span#ricerca, #ricerca, #logo, #categoria, #pagina {
-  color: blue;
+    font-family: title; /* Translated from 'intitolazione' */
+    src: url("./../fonts/PTSans-Bold.ttf");
+    font-display: swap;
 }
 
 body {
-  background-color: rgb(0, 0, 0);
-  font-family: Generale;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
-.dropdown-item:hover {
-  cursor: pointer;
-  color: white;
-  background-color: rgb(41, 48, 54);
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-}
-
-option {
-  color: white;
-  background-color: rgb(41, 48, 54);
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-}
-
-.navbar {
-  background-color: #161616f5!important;
+    background-color: rgb(0, 0, 0);
+    font-family: Generale;
+    color: white;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-  color: white;
-  text-align: center; /* Center the title */
-  margin-top: 1.5%;
-  margin-bottom: 2%;
-  font-size: 3em; /* Make the title larger */
+    color: white;
+    text-align: center; /* Center the title */
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+    font-size: 3em; /* Make the title larger */
 }
 
-li.page-item {
-  font-size: 15px;
-}
-
-.navbar-toggler {
-  color: rgb(221, 118, 21);
-  margin-right: 6.1%;
-}
-
-nav#pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#loading {
-  display: flex;
-  justify-content: center;
-  margin-top: 4%;
-}
-
-.spinner-border {
-  color: rgb(0, 136, 255)!important;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 70%;
-}
-
-nav#pagination a {
-  color: rgb(255, 119, 0);
-  background-color: #1d1d1d;
-  border-color: rgba(255, 255, 255, 0.341);
-}
-
-nav#pagination a:hover {
-  background-color: black;
-  border-color: blue;
-}
-
-div.card:hover {
-  cursor: pointer;
-}
-
-.container-fluid {
-  width: 98% !important;
-}
-
-#icone {
-  width: 3%;
-  margin-left: 0.3%;
-  margin-right: 0.1%;
-}
-
-select {
-  margin-right: 0.5rem;
+.navbar {
+    background-color: #161616f5!important;
 }
 
 .card {
-  text-shadow: 0 0 2px #000000;
-  align-items: center;
-  border: none;
-  border-radius: 0%;
+    text-shadow: 0 0 2px #000000;
+    align-items: center;
+    border: none;
+    border-radius: 0%;
 }
 
-p {
-  display: flex;
-}
-
-#clock {
-  width: 20px;
-  margin-bottom: 0.8%;
-  margin-right: 6%;
-}
-
-#form_ricerca {
-  margin-right: 2%;
-}
-
-#time {
-  font-size: large;
-  color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
-  margin-right: 4%;
-}
-
-#views {
-  width: 10%;
-  margin-bottom: 0.5%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-top: 1%;
-}
-
-#n-views {
-  display: flex;
-  align-items: center;
-  margin-left: 2%;
+.card-img-top {
+    border-radius: 0%;
+    width: 100%;
+    height: auto;
 }
 
 .card-description {
-  position: absolute;
-  bottom: 0%;
-  width: 100%;
+    margin-top: 10px; /* Space between video and title */
+    text-align: center; /* Center the title if needed */
 }
 
 .card-description h2 {
-  font-size: 140%;
-  text-align: center;
-  align-items: center;
-  color: #ffffff;
-  font-family: title; /* Translated from 'intitolazione' */
-  padding: 0% 2% 0% 2%;
-  margin-bottom: 0.5%;
+    font-size: 140%;
+    color: #ffffff;
+    font-family: title; /* Translated from 'intitolazione' */
+    margin: 0; /* Remove margin */
 }
 
 .card-description p {
-  font-size: 20px;
-  text-align: center;
-  align-items: center;
-  color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-}
-
-.row {
-  margin-bottom: 1%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#star {
-  width: 2%;
-  margin-right: 0.5%;
-}
-
-.btn#next {
-  width: 8%;
-  margin-left: 1.5%;
-}
-
-.btn#previous {
-  width: 8%;
-  margin-right: 1.5%;
-}
-
-span#pagina {
-  width: 5%;
-  height: 5%;
-  font-size: 21px;
-  background-color: transparent !important;
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0; /* Remove margin */
 }
 
 .pagination {
-  width: 100%;
-  display: contents;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-@media screen and (max-width: 1250px) {
-  .card-description h2 {
-    font-size: 100%;
-    text-align: center;
-    align-items: center;
-  }
-
-  .card-description p {
-    font-size: 120%;
-    text-align: center;
-    align-items: center;
-  }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
-  }
-
-  #views {
-    width: 15%;
-    margin-right: 5%;
-  }
-
-  #clock {
-    width: 25%;
-  }
-
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
-  }
-
-  #n-views {
-    font-size: 70%;
-  }
-
-  #time {
-    font-size: 70%;
-    margin-right: 5%;
-  }
+.pagination button {
+    margin: 0 5px;
 }
 
-@media screen and (max-width: 725px) {
-  .card-description h2 {
-    font-size: 10px;
-    text-align: center;
-    align-items: center;
-  }
-
-  .card-description p {
-    font-size: 15px;
-    text-align: center;
-    align-items: center;
-  }
-
-  .btn#next {
-    width: 15%;
-  }
-
-  .btn#previous {
-    width: 15%;
-  }
-
-  .pagination {
-    width: 100%;
-    display: contents;
-  }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
-  }
-
-  #views {
-    width: 22px;
-    margin-bottom: 0.5%;
-    margin-right: 10%;
-    margin-left: 10%;
-  }
-
-  #time {
-    font-size: 15px;
-    margin-right: 5%;
-  }
-
-  #clock {
-    width: 18px;
-  }
-
-  #n-views {
-    font-size: 70%;
-  }
-
-  #time {
-    font-size: 70%;
-    margin-right: 5%;
-  }
-
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
-  }
-}
-
+/* Responsive styles */
 @media screen and (max-width: 575px) {
-  .card-description h2 {
-    font-size: 100%;
-  }
+    h1 {
+        font-size: 28px;
+    }
 
-  .card-description p {
-    font-size: 120%;
-  }
+    .card-description h2 {
+        font-size: 120%;
+    }
 
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    .card-description p {
+        font-size: 100%;
+    }
+}
 
-  nav {
-    width: auto;
-  }
+/* Additional styles from your provided CSS */
+span#ricerca, #ricerca, #logo, #categoria, #pagina {
+    color: blue;
+}
 
-  h1 {
+.dropdown-item:hover {
+    cursor: pointer;
+    color: white;
+    background-color: rgb(41, 48, 54);
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+option {
+    color: white;
+    background-color: rgb(41, 48, 54);
+}
+
+#loading {
+    display: flex;
+    justify-content: center;
     margin-top: 4%;
-    margin-bottom: 4.5%;
-    font-size: 28px;
-  }
-
-  .btn#next {
-    width: 20%;
-  }
-
-  .btn#previous {
-    width: 20%;
-  }
-
-  img#icone {
-    width: 7%;
-  }
-
-  #titolo {
-    margin-left: 6%;
-  }
-
-  .btn#next {
-    margin-left: 5%;
-  }
-
-  .btn#previous {
-    margin-right: 5%;
-  }
-
-  li.page-item {
-    font-size: 20px;
-  }
-
-  #pagina {
-    font-size: 21px;
-  }
 }
 
-html {
-  scroll-behavior: smooth;
+.spinner-border {
+    color: rgb(0, 136, 255)!important;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 70%;
 }
 
-/* Firefox */
+/* Scrollbar styles */
 * {
-  scrollbar-color: #424242;
+    scrollbar-color: #424242;
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 16px;
+    width: 16px;
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #353535;
-  border-radius: 0px;
-  border: 5px solid transparent;
+    background-color: #353535;
+    border-radius: 0px;
+    border: 5px solid transparent;
 }
 
 /* Google Sign-In Button Styles */
 .g_id_signin {
-  margin-left: 1rem; /* Adjust as needed for spacing */
+    margin-left: 1rem; /* Adjust as needed for spacing */
 }
 
-/* Style adjustments for the Google Sign-In button */
 .g_id_signin .g_id_button {
-  background-color: #4285F4; /* Google blue */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
+    background-color: #4285F4; /* Google blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 .g_id_signin .g_id_button:hover {
-  background-color: #357AE8; /* Darker blue on hover */
+    background-color: #357AE8; /* Darker blue on hover */
 }
 
 .g_id_signin .g_id_button:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
