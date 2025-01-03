@@ -13,6 +13,8 @@
 
 img.card-img-top {
   border-radius: 0%;
+  width: 100%; /* Ensure images fit the card */
+  height: auto; /* Maintain aspect ratio */
 }
 
 #page {
@@ -165,9 +167,10 @@ p {
 }
 
 .card-description {
-  position: absolute;
+  position: relative; /* Changed from absolute */
   bottom: 0%;
   width: 100%;
+  padding: 10px; /* Add padding for better spacing */
 }
 
 .card-description h2 {
@@ -176,8 +179,10 @@ p {
   align-items: center;
   color: #ffffff;
   font-family: Title;
-  padding: 0% 2% 0% 2%;
-  margin-bottom: 0.5%;
+  margin: 0; /* Remove margin for better fit */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
 
 .card-description p {
@@ -230,6 +235,7 @@ span#page {
     font-size: 100%;
     text-align: center;
     align-items: center;
+    white-space: normal; /* Allow wrapping on smaller screens */
   }
 
   .card-description p {
