@@ -14,8 +14,8 @@
 img.card-img-top {
   border-radius: 0%;
   width: 100%; /* Ensure images fit the card */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 150px; /* Set a maximum height for images to prevent overflow */
+  height: 150px; /* Set a fixed height for the images */
+  object-fit: cover; /* Maintain aspect ratio and cover the card */
 }
 
 #page {
@@ -129,6 +129,9 @@ select {
   border: none;
   border-radius: 0%;
   width: 100%; /* Ensures the card takes full width of grid cell */
+  display: flex;
+  flex-direction: column; /* Align content vertically */
+  justify-content: space-between; /* Space between image and description */
 }
 
 p {
@@ -168,12 +171,9 @@ p {
 }
 
 .card-description {
-  position: relative; /* Changed from absolute */
-  bottom: 0%;
   width: 100%;
   padding: 10px; /* Add padding for better spacing */
   text-align: center; /* Center the content */
-  overflow: hidden; /* Hide overflow */
 }
 
 .card-description h2 {
@@ -182,17 +182,8 @@ p {
   font-family: Title;
   margin: 0; /* Remove margin for better fit */
   white-space: nowrap; /* Prevent text wrapping */
-  display: inline-block; /* Required for the scroll effect */
-  animation: scrollText 10s linear infinite; /* Scroll effect */
-}
-
-@keyframes scrollText {
-  0% {
-    transform: translateX(100%); /* Start off to the right */
-  }
-  100% {
-    transform: translateX(-100%); /* End off to the left */
-  }
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
 
 .card-description p {
