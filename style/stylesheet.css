@@ -52,7 +52,7 @@ body {
 
 .views::before {
     content: "👁️ "; /* Optional: Eye emoji before views */
-    font-size: 0.2em; /* Smaller size for the views icon */
+    font-size: 7px; /* Smaller size for the views icon */
 }
 
 .duration {
