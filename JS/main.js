@@ -1,75 +1,78 @@
 
-var searchType = 2;
-var page = 1;
-var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
-const searchButton = document.getElementById('search');
-const nextButton = document.getElementById("next");
-const prevButton = document.getElementById('previous');
-const categorySelect = document.getElementById('category');
-const searchInput = document.getElementById('searchInput');
-const durationSelect = document.getElementById('duration');
-const sectionSelect = document.getElementById('section');
-let header = document.getElementById("header");
-let pageIndex = document.getElementById("page");
-var hoverInterval;
-var loading = false;
+var searchType = 2; // Set the default search type
+var page = 1; // Initialize the page number
+var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag"; 
+const btn = document.getElementById('search'); // Search button
+const btnNext = document.getElementById("next"); // Next button
+const btnPrev = document.getElementById('previous'); // Previous button
+const selectCategory = document.getElementById('category'); // Category select element
+const search = document.getElementById('search'); // Search input
+const selectDuration = document.getElementById('duration'); // Duration select element
+const selectSection = document.getElementById('section'); // Section select element
+let header = document.getElementById("header"); // Header element
+let pageIndex = document.getElementById("page"); // Page index element
+var hoverInterval; // Variable for hover interval
+var loading = false; // Loading state
 
-categorySelect.addEventListener("change", resetPage);
-durationSelect.addEventListener("change", resetPage);
-sectionSelect.addEventListener("change", resetPage);
+// Reset page when category, duration or section is changed
+selectCategory.addEventListener("change", resetPage);
+selectDuration.addEventListener("change", resetPage);
+selectSection.addEventListener("change", resetPage);
 
-if (searchButton) {
-    searchButton.addEventListener("click", search);
+// Event listeners for buttons
+if (btn) {
+    btn.addEventListener("click", searchVideos);
 }
 
-if (prevButton) {
-    prevButton.addEventListener("click", previous);
+if (btnPrev) {
+    btnPrev.addEventListener("click", previousPage);
 }
 
-if (nextButton) {
-    nextButton.addEventListener("click", next);
+if (btnNext) {
+    btnNext.addEventListener("click", nextPage);
 }
 
 // Function to switch search filter
-function switchInputSelect(num) {
+function SwitchInputSelect(num) {
     switch (num) {
         case 1:
             // Category Filter
             searchType = 1;
             page = 1;
-            categorySelect.className = "form-select";
-            sectionSelect.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2 visually-hidden";
-            durationSelect.className = "form-select visually-hidden";
+            selectCategory.className = "form-select";
+            selectSection.className = "form-select visually-hidden";
+            search.className = "form-control me-2 visually-hidden";
+            selectDuration.className = "form-select visually-hidden";
             break;
         case 2:
             // Keyword Filter (Default)
             searchType = 2;
             page = 1;
-            categorySelect.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2";
-            sectionSelect.className = "form-select visually-hidden";
-            searchInput.placeholder = "Search";
-            durationSelect.className = "form-select visually-hidden";
+            selectCategory.className = "form-select visually-hidden";
+            search.className = "form-control me-2";
+            selectSection.className = "form-select visually-hidden";
+            search.placeholder = "Search";
+            selectDuration.className = "form-select visually-hidden";
             break;
 
         case 3:
             // Duration Filter
             searchType = 3;
             page = 1;
-            categorySelect.className = "form-select visually-hidden";
-            sectionSelect.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2 visually-hidden";
-            durationSelect.className = "form-select";
+            selectCategory.className = "form-select visually-hidden";
+            selectSection.className = "form-select visually-hidden";
+            search.className = "form-control me-2 visually-hidden";
+            selectDuration.className = "form-select";
             break;
         case 4:
             // Section Filter
             page = 1;
             searchType = 4;
-            sectionSelect.className = "form-select";
-            searchInput.className = "form-control me-2 visually-hidden";
-            categorySelect.className = "form-select visually-hidden";
-            durationSelect.className = "form-select visually-hidden";
+
+            selectSection.className = "form-select";
+            search.className = "form-control me-2 visually-hidden";
+            selectCategory.className = "form-select visually-hidden";
+            selectDuration.className = "form-select visually-hidden";
             break;
         default:
             searchType = 2;
@@ -78,21 +81,21 @@ function switchInputSelect(num) {
 }
 
 // Function to perform the search based on the selected filter
-function search() {
+function searchVideos() {
     loading = false;
     load();
-    updatePage();
+    changePage();
     if (page == 1) {
         header.innerHTML = "Latest Releases";
-        prevButton.className = "btn btn-outline-warning disabled";
+        btnPrev.className = "btn btn-outline-warning disabled";
     } else {
-        prevButton.className = "btn btn-outline-warning";
-        nextButton.className = "btn btn-outline-warning";
+        btnPrev.className = "btn btn-outline-warning";
+        btnNext.className = "btn btn-outline-warning";
     }
     switch (searchType) {
         case 1:
             searchType = 1;
-            console.log("Searching by category");
+            console.log("Search by category");
             let category = document.getElementById("category").value;
             header.innerHTML = "";
             console.log(category);
@@ -110,10 +113,10 @@ function search() {
         case 2:
             searchType = 2;
             header.innerHTML = "";
-            console.log("Searching by Keyword");
-            let key_word = document.getElementById("searchInput").value;
-            console.log(key_word);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
+            console.log("Search by Keyword");
+            let keyWord = document.getElementById("search").value;
+            console.log(keyWord);
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + keyWord, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -122,16 +125,16 @@ function search() {
                 .then(response => response.json())
                 .then(result => { printCards(result) })
                 .catch(error => console.log('Error:', error));
-            header.innerHTML = "Search for <span id='search'>" + key_word + "</span>";
+            header.innerHTML = "Search by <span id='search'>" + keyWord + "</span>";
             break;
         case 3:
-            console.log("Searching by Duration");
+            console.log("Search by Duration");
             header.innerHTML = "";
             let time = document.getElementById("duration").value;
             if (time == "longest") {
-                header.innerHTML = "Searching for <span id='search'>Long Videos</span>";
+                header.innerHTML = "Search by <span id='search'>Long Videos</span>";
             } else {
-                header.innerHTML = "Searching for <span id='search'>Short Videos</span>";
+                header.innerHTML = "Search by <span id='search'>Short Videos</span>";
             }
 
             console.log(time);
@@ -147,7 +150,7 @@ function search() {
             break;
 
         case 4:
-            console.log("Searching by Section");
+            console.log("Search by Section");
             header.innerHTML = "";
             let section = document.getElementById("section").value;
             console.log(section);
@@ -185,22 +188,22 @@ function search() {
             }
             break;
         default:
-            document.getElementById("searchInput").value = "";
+            document.getElementById("search").value = "";
             break;
     }
 }
 
-// Function to print the cards
+// Function to print the video cards
 function printCards(result) {
     console.log(result);
     let videoArray = result.videos;
     let videoCards = document.getElementById('video');
 
     videoCards.innerHTML = "";
-    nextButton.className = "btn btn-outline-warning";
+    btnNext.className = "btn btn-outline-warning";
     if (videoArray.length == 0) {
         header.innerHTML = "No results found";
-        nextButton.className = "btn btn-outline-warning disabled";
+        btnNext.className = "btn btn-outline-warning disabled";
         return;
     }
     // Print the cards
@@ -295,12 +298,12 @@ function createHome() {
     load();
     if (page == 1) {
         header.innerHTML = "Latest Releases";
-        prevButton.className = "btn btn-outline-warning disabled";
+        btnPrev.className = "btn btn-outline-warning disabled";
     } else {
-        prevButton.className = "btn btn-outline-warning";
-        nextButton.className = "btn btn-outline-warning";
+        btnPrev.className = "btn btn-outline-warning";
+        btnNext.className = "btn btn-outline-warning";
     }
-    updatePage();
+    changePage();
     console.log("Create Home");
     searchType = 5;
     fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + page + "&per_page=30", {
@@ -312,7 +315,7 @@ function createHome() {
         .then(response => response.json())
         .then(result => { printCards(result) })
         .catch(error => console.log('Error:', error));
-    updatePage();
+    changePage();
 }
 
 // Function to create the trending page when loading the trending page
@@ -320,14 +323,14 @@ function createTrending() {
     loading = false;
     load();
     window.scrollTo(top);
-    updatePage();
+    changePage();
     if (page == 1) {
-        header.innerHTML = ` <h1 id="header"><span><img src="./img/campfire.png" alt="" id="icon"></span>Trending<span><img
-        src="./img/campfire.png" alt="" id="icon"></span></h1>`;
-        prevButton.className = "btn btn-outline-warning disabled";
+        header.innerHTML = ` <h1 id="header"><span><img src="./img/campfire.png" alt="" id="icons"></span>Trending<span><img
+        src="./img/campfire.png" alt="" id="icons"></span></h1>`;
+        btnPrev.className = "btn btn-outline-warning disabled";
     } else {
-        prevButton.className = "btn btn-outline-warning";
-        nextButton.className = "btn btn-outline-warning";
+        btnPrev.className = "btn btn-outline-warning";
+        btnNext.className = "btn btn-outline-warning";
     }
     console.log("Create Trending");
     searchType = 6;
@@ -343,14 +346,14 @@ function createTrending() {
 }
 
 // Function to print the video title limiting the characters
-function printTitle(text, maxWords) {
+function printTitle(text, numberOfWords) {
     let words = text.split('');
-    let wordsToPrint = words.slice(0, maxWords).join('');
+    let wordsToPrint = words.slice(0, numberOfWords).join('');
     return wordsToPrint;
 }
 
 // Function to go to the next page
-function next() {
+function nextPage() {
     window.scrollTo(top);
     header.innerHTML = "";
     console.log(searchType);
@@ -366,13 +369,13 @@ function next() {
         case 6:
             createTrending();
         default:
-            search();
+            searchVideos();
             break;
     }
 }
 
 // Function to go to the previous page
-function previous() {
+function previousPage() {
     window.scrollTo(top);
     header.innerHTML = "";
     if (page > 1 && page < 100) {
@@ -388,38 +391,38 @@ function previous() {
             createTrending();
             break;
         default:
-            search();
+            searchVideos();
             break;
     }
 }
 
 // Function to make the Enter key work in the category select
-categorySelect.addEventListener("keypress", function (event) {
+category.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        searchButton.click();
+        btn.click();
     }
 });
 
-searchInput.addEventListener("keypress", function (event) {
+search.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        searchButton.click();
+        btn.click();
     }
 });
 
-durationSelect.addEventListener("keypress", function (event) {
+selectDuration.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        searchButton.click();
+        btn.click();
     }
 });
 
 // Function to make the Enter key work in the section select
-sectionSelect.addEventListener("keypress", function (event) {
+selectSection.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        searchButton.click();
+        btn.click();
     }
 });
 
@@ -456,21 +459,21 @@ function setDefaultImage(card, thumb, title) {
     card.querySelector('p').classList.remove("visually-hidden");
 }
 
-// Function to update the page number
-function updatePage() {
+// Function to change the page number display
+function changePage() {
     pageIndex.textContent = page;
 }
 
-// Function to show the loading indicator
+// Function to show the loading state
 function load() {
-    let videoGrid = document.getElementById('cardGraphics');
+    let gridVideo = document.getElementById('graphicCards');
     let loadingDiv = document.getElementById("loading");
     if (loading == true) {
         loadingDiv.className = "container-fluid visually-hidden";
-        videoGrid.className = "container-fluid";
+        gridVideo.className = "container-fluid";
     } else {
         loadingDiv.className = "container-fluid";
-        videoGrid.className = "container-fluid visually-hidden";
+        gridVideo.className = "container-fluid visually-hidden";
     }
 }
 
