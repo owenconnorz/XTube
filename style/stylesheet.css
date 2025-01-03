@@ -15,6 +15,7 @@ img.card-img-top {
   border-radius: 0%;
   width: 100%; /* Ensure images fit the card */
   height: auto; /* Maintain aspect ratio */
+  max-height: 200px; /* Set a maximum height for images */
 }
 
 #page {
@@ -49,6 +50,7 @@ option {
 
 .navbar {
   background-color: #161616f5 !important;
+  padding: 15px; /* Increase padding for a taller navbar */
 }
 
 #title {
