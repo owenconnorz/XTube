@@ -1,418 +1,421 @@
 
 @font-face {
-  font-family: Generale;
-  src: url("./../fonts/Gotham-Black.otf");
-  font-display: swap;
+  font-family: Generale; /* Font family named "Generale" */
+  src: url("./../fonts/Gotham-Black.otf"); /* Source file for the font */
+  font-display: swap; /* Font display strategy */
 }
 
 @font-face {
-  font-family: intitolazione; /* Title */
-  src: url("./../fonts/PTSans-Bold.ttf");
-  font-display: swap;
+  font-family: Title; /* Font family named "Title" */
+  src: url("./../fonts/PTSans-Bold.ttf"); /* Source file for the font */
+  font-display: swap; /* Font display strategy */
 }
 
 img.card-img-top {
-  border-radius: 0%;
+  border-radius: 0%; /* No border radius for the top image in a card */
 }
 
-#page { /* Changed from #pagina to #page */
-  font-size: large;
+#page {
+  font-size: large; /* Set font size to large for the element with ID "page" */
 }
 
-span#search, #search, #logo, #category, #page { /* Changed from #ricerca to #search */
-  color: orange;
+span#search, #search, #logo, #category, #page {
+  color: orange; /* Set text color to orange for these elements */
 }
 
 body {
-  background-color: rgb(0, 0, 0); /* Black background */
-  font-family: Generale;
-  color: white;
-  margin: 0;
-  padding: 0;
+  /* background-color: rgb(33, 37, 41); */ /* (Commented out) Background color */
+  background-color: rgb(0, 0, 0); /* Black background color */
+  font-family: Generale; /* Set font family to "Generale" */
+  color: white; /* White text color */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
 }
 
 .dropdown-item:hover {
-  cursor: pointer;
-  color: white;
-  background-color: rgb(41, 48, 54); /* Dark background on hover */
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer; /* Change cursor to pointer on hover */
+  color: white; /* White text color on hover */
+  background-color: rgb(41, 48, 54); /* Dark background color on hover */
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; /* Border color on hover */
 }
 
 option {
-  color: white;
-  background-color: rgb(41, 48, 54); /* Dark background for options */
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  color: white; /* White text color for options */
+  background-color: rgb(41, 48, 54); /* Dark background color for options */
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent; /* Border color for options */
 }
 
 .navbar {
-  background-color: #161616f5 !important; /* Dark navbar */
+  background-color: #161616f5!important; /* Dark background color for the navbar */
 }
 
-#title { /* Changed from #titolo to #title */
-  color: white;
-  font-size: 150%;
-  margin-left: 1.5%;
+#title {
+  color: white; /* White text color for the title */
+  font-size: 150%; /* Font size 150% for the title */
+  margin-left: 1.5%; /* Left margin */
 }
 
 h1 {
-  color: white;
-  text-align: center;
-  margin-top: 1.5%;
-  margin-bottom: 2%;
+  color: white; /* White text color for h1 headings */
+  text-align: center; /* Center-align text */
+  margin-top: 1.5%; /* Top margin */
+  margin-bottom: 2%; /* Bottom margin */
 }
 
 li.page-item {
-  font-size: 20px;
+  font-size: 20px; /* Font size for page items */
 }
 
 .navbar-toggler {
-  color: rgb(221, 118, 21); /* Orange color */
-  margin-right: 6.1%;
+  color: rgb(221, 118, 21); /* Toggler button color */
+  margin-right: 6.1%; /* Right margin for toggler */
 }
 
 nav#pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: flex; /* Use flexbox for pagination */
+  flex-direction: row; /* Row direction for pagination items */
+  justify-content: center; /* Center-align items */
+  align-items: center; /* Align items vertically */
 }
 
 #loading {
-  display: flex;
-  justify-content: center;
-  margin-top: 4%;
+  display: flex; /* Use flexbox for loading */
+  justify-content: center; /* Center-align loading spinner */
+  margin-top: 4%; /* Top margin */
 }
 
 .spinner-border {
-  color: rgb(255, 119, 0) !important; /* Orange spinner */
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 70%;
+  color: rgb(255, 119, 0)!important; /* Orange color for loading spinner */
+  width: 3rem; /* Width of the spinner */
+  height: 3rem; /* Height of the spinner */
+  margin-bottom: 70%; /* Bottom margin */
 }
 
 nav#pagination a {
   color: rgb(255, 119, 0); /* Orange color for pagination links */
-  background-color: #1d1d1d; /* Dark background */
-  border-color: rgba(255, 255, 255, 0.341);
+  background-color: #1d1d1d; /* Dark background color for pagination links */
+  border-color: rgba(255, 255, 255, 0.341); /* Border color for pagination links */
 }
 
 nav#pagination a:hover {
-  background-color: black; /* Dark background on hover */
+  background-color: black; /* Black background on hover */
   border-color: orange; /* Orange border on hover */
 }
 
 div.card:hover {
-  cursor: pointer;
+  cursor: pointer; /* Change cursor to pointer on hover over card */
 }
 
 .container-fluid {
-  width: 98% !important; /* Full width */
+  width: 98% !important; /* Set fluid container width to 98% */
 }
 
-#icons { /* Changed from #icone to #icons */
-  width: 3%;
-  margin-left: 0.3%;
-  margin-right: 0.1%;
+#icons {
+  width: 3%; /* Width for icons */
+  margin-left: 0.3%; /* Left margin for icons */
+  margin-right: 0.1%; /* Right margin for icons */
 }
 
 select {
-  margin-right: 0.5rem; /* Margin for select elements */
+  margin-right: 0.5rem; /* Right margin for select elements */
 }
 
 .card {
-  text-shadow: 0 0 2px #000000; /* Black text shadow */
-  align-items: center;
-  border: none;
-  border-radius: 0%;
+  text-shadow: 0 0 2px #000000; /* Text shadow for card */
+  align-items: center; /* Center items in card */
+  border: none; /* No border for card */
+  border-radius: 0%; /* No border radius for card */
 }
 
 p {
-  display: flex;
+  display: flex; /* Flex display for paragraphs */
 }
 
 #clock {
-  width: 20px; /* Clock width */
-  margin-bottom: 0.8%;
-  margin-right: 6%;
+  width: 20px; /* Width for clock element */
+  margin-bottom: 0.8%; /* Bottom margin for clock */
+  margin-right: 6%; /* Right margin for clock */
 }
 
-#search_form { /* Changed from #form_ricerca to #search_form */
-  margin-right: 2%;
+#search_form {
+  margin-right: 2%; /* Right margin for search form */
 }
 
 #time {
-  font-size: large;
-  color: rgb(255, 255, 255); /* White color */
-  display: flex;
-  align-items: center;
-  margin-right: 4%;
+  font-size: large; /* Large font size for time */
+  color: rgb(255, 255, 255); /* White color for time */
+  display: flex; /* Flex display for time */
+  align-items: center; /* Align items center */
+  margin-right: 4%; /* Right margin for time */
 }
 
 #views {
-  width: 10%;
-  margin-bottom: 0.5%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-top: 1%;
+  width: 10%; /* Width for views */
+  margin-bottom: 0.5%; /* Bottom margin for views */
+  margin-right: 2%; /* Right margin for views */
+  margin-left: 2%; /* Left margin for views */
+  margin-top: 1%; /* Top margin for views */
 }
 
-#n-views { /* Changed from #n-views to #n-views */
-  display: flex;
-  align-items: center;
-  margin-left: 2%;
+#n-views {
+  display: flex; /* Flex display for number of views */
+  align-items: center; /* Align items center */
+  margin-left: 2%; /* Left margin for number of views */
 }
 
 .card-description {
-  position: absolute;
-  bottom: 0%;
-  width: 100%;
+  position: absolute; /* Absolute positioning for card description */
+  bottom: 0%; /* Align to bottom */
+  width: 100%; /* Full width */
 }
 
 .card-description h2 {
-  font-size: 140%;
-  text-align: center;
-  align-items: center;
-  color: #ffffff; /* White color */
-  font-family: intitolazione; /* Title font */
-  padding: 0% 2% 0% 2%;
-  margin-bottom: 0.5%;
+  font-size: 140%; /* Font size for card description heading */
+  text-align: center; /* Center-align text */
+  align-items: center; /* Center-align items */
+  color: #ffffff; /* White color for heading */
+  font-family: Title; /* Use "Title" font family */
+  padding: 0% 2% 0% 2%; /* Padding for heading */
+  margin-bottom: 0.5%; /* Bottom margin for heading */
 }
 
 .card-description p {
-  font-size: 20px;
-  text-align: center;
-  align-items: center;
-  color: #ffffff; /* White color */
-  display: flex;
-  justify-content: space-between;
+  font-size: 20px; /* Font size for card description paragraph */
+  text-align: center; /* Center-align paragraph text */
+  align-items: center; /* Center-align items */
+  color: #ffffff; /* White color for paragraph text */
+  display: flex; /* Flex display for paragraph */
+  justify-content: space-between; /* Space between items in paragraph */
 }
 
 .row {
-  margin-bottom: 1%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 1%; /* Bottom margin for rows */
+  margin-left: auto; /* Auto left margin */
+  margin-right: auto; /* Auto right margin */
 }
 
 #star {
-  width: 2%;
-  margin-right: 0.5%;
+  width: 2%; /* Width for star */
+  margin-right: 0.5%; /* Right margin for star */
 }
 
-.btn#next { /* Next button */
-  width: 8%;
-  margin-left: 1.5%;
+.btn#next {
+  width: 8%; /* Width for next button */
+  margin-left: 1.5%; /* Left margin for next button */
 }
 
-.btn#previous { /* Previous button */
-  width: 8%;
-  margin-right: 1.5%;
+.btn#previous {
+  width: 8%; /* Width for previous button */
+  margin-right: 1.5%; /* Right margin for previous button */
 }
 
-span#page { /* Changed from #pagina to #page */
-  width: 5%;
-  height: 5%;
-  font-size: 21px;
-  background-color: transparent !important;
+span#page {
+  width: 5%; /* Width for page span */
+  height: 5%; /* Height for page span */
+  font-size: 21px; /* Font size for page span */
+  background-color: transparent !important; /* Transparent background for page span */
 }
 
 .pagination {
-  width: 100%;
-  display: contents; /* Pagination display */
+  width: 100%; /* Full width for pagination */
+  display: contents; /* Display contents for pagination */
 }
 
-/* Media queries for responsiveness */
 @media screen and (max-width: 1250px) {
   .card-description h2 {
-    font-size: 100%;
-    text-align: center;
-    align-items: center;
+    font-size: 100%; /* Font size for heading in smaller screens */
+    text-align: center; /* Center-align text */
+    align-items: center; /* Center-align items */
   }
+
   .card-description p {
-    font-size: 120%;
-    text-align: center;
-    align-items: center;
+    font-size: 120%; /* Font size for paragraph in smaller screens */
+    text-align: center; /* Center-align text */
+    align-items: center; /* Center-align items */
   }
 
   .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%; /* Full width for row in smaller screens */
+    margin-bottom: 1%; /* Bottom margin for row */
+    margin-left: auto; /* Auto left margin */
+    margin-right: auto; /* Auto right margin */
   }
 
   h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
+    margin-top: 2.5%; /* Top margin for h1 in smaller screens */
+    margin-bottom: 3%; /* Bottom margin for h1 in smaller screens */
   }
+
   #views {
-    width: 15%;
-    margin-right: 5%;
+    width: 15%; /* Width for views in smaller screens */
+    margin-right: 5%; /* Right margin for views in smaller screens */
   }
 
   #clock {
-    width: 25%;
+    width: 25%; /* Width for clock in smaller screens */
   }
 
   .btn#next {
-    margin-left: 3%;
+    margin-left: 3%; /* Left margin for next button in smaller screens */
   }
   
   .btn#previous {
-    margin-right: 3%;
+    margin-right: 3%; /* Right margin for previous button in smaller screens */
   }
 
   #n-views {
-    font-size: 70%;
+    font-size: 70%; /* Font size for number of views in smaller screens */
   }
   
   #time {
-    font-size: 70%;
-    margin-right: 5%;
+    font-size: 70%; /* Font size for time in smaller screens */
+    margin-right: 5%; /* Right margin for time in smaller screens */
   }
 }
 
 @media screen and (max-width: 725px) {
   .card-description h2 {
-    font-size: 10px;
-    text-align: center;
-    align-items: center;
+    font-size: 10px; /* Font size for heading in very small screens */
+    text-align: center; /* Center-align text */
+    align-items: center; /* Center-align items */
   }
+
   .card-description p {
-    font-size: 15px;
-    text-align: center;
-    align-items: center;
+    font-size: 15px; /* Font size for paragraph in very small screens */
+    text-align: center; /* Center-align text */
+    align-items: center; /* Center-align items */
   }
 
   .btn#next {
-    width: 15%;
+    width: 15%; /* Width for next button in very small screens */
   }
 
   .btn#previous {
-    width: 15%;
+    width: 15%; /* Width for previous button in very small screens */
   }
 
   .pagination {
-    width: 100%;
-    display: contents;
+    width: 100%; /* Full width for pagination in very small screens */
+    display: contents; /* Display contents for pagination */
   }
 
   .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%; /* Full width for row in very small screens */
+    margin-bottom: 1%; /* Bottom margin for row */
+    margin-left: auto; /* Auto left margin */
+    margin-right: auto; /* Auto right margin */
   }
 
   h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
+    margin-top: 2.5%; /* Top margin for h1 in very small screens */
+    margin-bottom: 3%; /* Bottom margin for h1 in very small screens */
   }
 
   #views {
-    width: 22px;
-    margin-bottom: 0.5%;
-    margin-right: 10%;
-    margin-left: 10%;
+    width: 22px; /* Width for views in very small screens */
+    margin-bottom: 0.5%; /* Bottom margin for views */
+    margin-right: 10%; /* Right margin for views */
+    margin-left: 10%; /* Left margin for views */
   }
 
   #time {
-    font-size: 15px;
-    margin-right: 5%;
+    font-size: 15px; /* Font size for time in very small screens */
+    margin-right: 5%; /* Right margin for time */
   }
 
   #clock {
-    width: 18px;
+    width: 18px; /* Width for clock in very small screens */
   }
-  
+
   #n-views {
-    font-size: 70%;
+    font-size: 70%; /* Font size for number of views in very small screens */
   }
   
   #time {
-    font-size: 70%;
-    margin-right: 5%;
+    font-size: 70%; /* Font size for time in very small screens */
+    margin-right: 5%; /* Right margin for time */
   }
 }
 
 @media screen and (max-width: 575px) {
   .card-description h2 {
-    font-size: 100%;
+    font-size: 100%; /* Font size for heading in extra small screens */
   }
 
   .card-description p {
-    font-size: 120%;
+    font-size: 120%; /* Font size for paragraph in extra small screens */
   }
-  
+
   .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%; /* Full width for row in extra small screens */
+    margin-bottom: 1%; /* Bottom margin for row */
+    margin-left: auto; /* Auto left margin */
+    margin-right: auto; /* Auto right margin */
   }
 
   nav {
-    width: auto;
+    width: auto; /* Auto width for nav */
   }
 
   h1 {
-    margin-top: 4%;
-    margin-bottom: 4.5%;
-    font-size: 28px;
+    margin-top: 4%; /* Top margin for h1 in extra small screens */
+    margin-bottom: 4.5%; /* Bottom margin for h1 in extra small screens */
+    font-size: 28px; /* Font size for h1 in extra small screens */
   }
 
   .btn#next {
-    width: 20%;
+    width: 20%; /* Width for next button in extra small screens */
   }
 
   .btn#previous {
-    width: 20%;
-  }
-  
-  img#icons { /* Changed from #icone to #icons */
-    width: 7%;
+    width: 20%; /* Width for previous button in extra small screens */
   }
 
-  #title { /* Changed from #titolo to #title */
-    margin-left: 6%;
+  img#icons {
+    width: 7%; /* Width for icons in extra small screens */
+  }
+
+  #title {
+    margin-left: 6%; /* Left margin for title in extra small screens */
   }
 
   .btn#next {
-    margin-left: 5%;
+    margin-left: 5%; /* Left margin for next button in extra small screens */
   }
   
   .btn#previous {
-    margin-right: 5%;
+    margin-right: 5%; /* Right margin for previous button in extra small screens */
   }
 
   li.page-item {
-    font-size: 20px;
+    font-size: 20px; /* Font size for page items in extra small screens */
   }
-  
-  #page { /* Changed from #pagina to #page */
-    font-size: 15px;
+
+  #page {
+    font-size: 15px; /* Font size for page in extra small screens */
   }
 }
 
 html {
-  scroll-behavior: smooth; /* Smooth scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling behavior */
 }
 
-/* Firefox scrollbar */
+/* Firefox */
 * {
-  scrollbar-color: #424242; /* Scrollbar color */
+  scrollbar-color: #424242; /* Scrollbar color for Firefox */
 }
 
-/* Chrome, Edge, and Safari scrollbar */
+/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 16px; /* Scrollbar width */
+  width: 16px; /* Width of the scrollbar */
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent; /* Transparent scrollbar track */
+  background: transparent; /* Background for scrollbar track */
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #353535; /* Scrollbar thumb color */
-  border-radius: 0px;
-  border: 5px solid transparent; /* Transparent border */
+  background-color: #353535; /* Color for scrollbar thumb */
+  border-radius: 0px; /* No rounding for scrollbar thumb */
+  border: 5px solid transparent; /* Transparent border for scrollbar thumb */
 }
