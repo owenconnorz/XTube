@@ -86,11 +86,8 @@ function search() {
     }
     switch (searchType) {
         case 1:
-            searchType = 1;
             console.log("Search by category");
             let category = document.getElementById("category").value;
-            header.innerHTML = "";
-            console.log(category);
             fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&per_page=30&query=${category}`, {
                 method: "GET",
                 headers: {
@@ -100,14 +97,10 @@ function search() {
             .then(response => response.json())
             .then(result => { printCards(result) })
             .catch(error => console.log('Error:', error));
-            header.innerHTML = `Page <span id="category">${page}</span>`;
             break;
         case 2:
-            searchType = 2;
-            header.innerHTML = "";
             console.log("Search by Keyword");
             let key_word = document.getElementById("search").value;
-            console.log(key_word);
             fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&order=latest&per_page=30&query=${key_word}`, {
                 method: "GET",
                 headers: {
@@ -117,19 +110,10 @@ function search() {
             .then(response => response.json())
             .then(result => { printCards(result) })
             .catch(error => console.log('Error:', error));
-            header.innerHTML = `Search for <span id='search'>${key_word}</span>`;
             break;
         case 3:
             console.log("Search by Duration");
-            header.innerHTML = "";
             let time = document.getElementById("duration").value;
-            if (time == "longest") {
-                header.innerHTML = `Search for <span id='search'>Long Videos</span>`;
-            } else {
-                header.innerHTML = `Search for <span id='search'>Short Videos</span>`;
-            }
-
-            console.log(time);
             fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&order=${time}&lq=0&format=json&per_page=30`, {
                 method: "GET",
                 headers: {
@@ -140,12 +124,9 @@ function search() {
             .then(result => { printCards(result) })
             .catch(error => console.log('Error:', error));
             break;
-
         case 4:
             console.log("Search by Section");
-            header.innerHTML = "";
             let section = document.getElementById("section").value;
-            console.log(section);
             if (section == "hetero") {
                 fetch(`https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=${page}`, {
                     method: "GET",
@@ -197,8 +178,7 @@ function printCards(result) {
         btnNext.className = "btn btn-outline-warning disabled";
         return;
     }
-
-    // Printing the cards
+    
     videoArray.forEach((video, index) => {
         const wrapper = document.createElement(`div`);
         wrapper.className = `col`;
@@ -212,10 +192,9 @@ function printCards(result) {
             
             // Check if the video URL is a direct link
             if (isDirectVideoUrl(videoUrl)) {
-                location.href = videoUrl; // Open the direct video URL
+                location.href = videoUrl; // Open the video URL directly
             } else {
-                const intentUrl = `intent:${videoUrl}#Intent;scheme=http;end`;
-                window.open(intentUrl); // Open with intent URL for Android
+                alert("Invalid video URL. Please check the link.");
             }
         });
 
@@ -223,69 +202,11 @@ function printCards(result) {
         cardImg.src = video.default_thumb.src;
         cardImg.className = `card-img-top`;
 
-        card.onmouseover = function () {
-            clearInterval(hoverInterval);
-            changeImageOnHover(this, videoArray[index].thumbs[0].src);
-        };
-        card.onmouseleave = function () {
-            clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65));
-        };
-        card.ontouchstart = function () {
-            clearInterval(hoverInterval);
-            changeImageOnHover(this, videoArray[index].thumbs[0].src);
-        };
-        card.ontouchend = function () {
-            clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, printTitle(videoArray[index].title, 65));
-        };
-
-        const cardDescription = document.createElement(`div`);
-        cardDescription.className = `card-description`;
-
-        const h2 = document.createElement(`h2`);
-        h2.className = `card-title`;
-        h2.textContent = printTitle(videoArray[index].title, 60);
-
-        const spanViews = document.createElement(`span`);
-        spanViews.className = `card-text`;
-        spanViews.id = `n-views`;
-
-        const imgViews = document.createElement(`img`);
-        imgViews.src = `/img/eye.png`;
-        imgViews.id = `views`;
-
-        const spanTime = document.createElement(`span`);
-        spanTime.className = `card-text`;
-        spanTime.id = `time`;
-
-        const imgTime = document.createElement(`img`);
-        imgTime.src = `/img/clock-circular-outline.png`;
-        imgTime.id = `clock`;
-
-        const spanViewsText = document.createElement(`span`);
-        spanViewsText.textContent = video.views;
-
-        const spanTimeText = document.createElement(`span`);
-        spanTimeText.textContent = video.length_min;
-
         card.append(cardImg);
-        card.append(cardDescription);
-        cardDescription.append(h2);
         wrapper.append(card);
         videoCards.append(wrapper);
-
-        spanViews.append(imgViews);
-        spanViews.append(spanViewsText);
-
-        spanTime.append(imgTime);
-        spanTime.append(spanTimeText);
-
-        p.append(spanViews);
-        p.append(spanTime);
-
-        cardDescription.append(p);
     });
+
     loading = true;
     setTimeout(() => {
         load();
@@ -318,9 +239,9 @@ function CreateHome() {
             Accept: "application/json"
         }
     })
-        .then(response => response.json())
-        .then(result => { printCards(result) })
-        .catch(error => console.log('Error:', error));
+    .then(response => response.json())
+    .then(result => { printCards(result) })
+    .catch(error => console.log('Error:', error));
     changePage();
 }
 
@@ -346,9 +267,9 @@ function CreateTrending() {
             Accept: "application/json"
         }
     })
-        .then(response => response.json())
-        .then(result => { printCards(result) })
-        .catch(error => console.log('Error:', error));
+    .then(response => response.json())
+    .then(result => { printCards(result) })
+    .catch(error => console.log('Error:', error));
 }
 
 // Function to print the video title limiting the characters
