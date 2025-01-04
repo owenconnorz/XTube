@@ -500,15 +500,3 @@ function load() {
 function resetPage() {
     page = 1;
 }
-```
-
-### Summary of Key Changes
-- **Direct Video URL Check**: The function `isDirectVideoUrl` checks if the video URL ends with a common video file extension (like `.mp4`, `.mov`, etc.). You can adjust the regex to include other formats if necessary.
-- **Video Opening Logic**: When a video card is clicked, it checks if the URL is a direct link. If it is, it uses `location.href` to navigate directly to that URL. If not, it falls back to an intent URL.
-
-### Next Steps
-1. **Verify Video URLs**: Ensure that the URLs returned in `video.embed` are valid direct links to video files.
-2. **Test the Implementation**: Run the code on an Android device to see if the expected behavior occurs when clicking on video cards.
-3. **Monitor Network Connection**: Make sure that the device has a stable internet connection when testing.
-
-Feel free to reach out if you need further assistance or adjustments!
