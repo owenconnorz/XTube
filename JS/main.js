@@ -34,7 +34,6 @@ if (btnNext) {
 function SwitchInputSelect(num) {
     switch (num) {
         case 1:
-            // Category Filter
             searchType = 1;
             page = 1;
             selectCategory.className = "form-select";
@@ -43,7 +42,6 @@ function SwitchInputSelect(num) {
             selectDuration.className = "form-select visually-hidden";
             break;
         case 2:
-            // Keyword Filter (Default)
             searchType = 2;
             page = 1;
             selectCategory.className = "form-select visually-hidden";
@@ -52,9 +50,7 @@ function SwitchInputSelect(num) {
             searchInput.placeholder = "Search";
             selectDuration.className = "form-select visually-hidden";
             break;
-
         case 3:
-            // Duration Filter
             searchType = 3;
             page = 1;
             selectCategory.className = "form-select visually-hidden";
@@ -63,10 +59,8 @@ function SwitchInputSelect(num) {
             selectDuration.className = "form-select";
             break;
         case 4:
-            // Section Filter
             page = 1;
             searchType = 4;
-
             selectSection.className = "form-select";
             searchInput.className = "form-control me-2 visually-hidden";
             selectCategory.className = "form-select visually-hidden";
@@ -212,7 +206,7 @@ function printCards(result) {
 
         const card = document.createElement(`div`);
         card.className = `card`;
-        
+
         // Open in media player
         card.addEventListener(`click`, (ev) => {
             const videoUrl = video.embed; // Ensure this is a direct link to the video file
@@ -306,7 +300,7 @@ function printCards(result) {
 
 // Function to check if a URL is a direct video file link
 function isDirectVideoUrl(url) {
-    return /\.(mp4|mov|avi|mkv)$/i.test(url); // Add more formats as necessary
+    return /\.(mp4|mov|avi|mkv|wmv|flv)$/i.test(url); // Add more formats as necessary
 }
 
 // Function to create the homepage when loading the index page
