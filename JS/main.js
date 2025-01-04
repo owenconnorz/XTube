@@ -212,10 +212,17 @@ function printCards(result) {
 
         const card = document.createElement(`div`);
         card.className = `card`;
-        // Modified to open in the default player using intent URL
+        
+        // Use the method that suits your needs best
         card.addEventListener(`click`, (ev) => {
-            const intentUrl = `intent:${video.embed}#Intent;scheme=http;package=com.android.chrome;end`;
-            window.open(intentUrl); 
+            const videoUrl = video.embed; // Ensure this is a direct link to the video file
+            // Option 1: Directly navigate to the video URL
+            location.href = videoUrl; 
+            // Option 2: Use intent URL for Android devices
+            // const intentUrl = `intent:${videoUrl}#Intent;scheme=http;package=com.android.chrome;end`;
+            // window.open(intentUrl);
+            // Option 3: Use '_system' target (if applicable)
+            // window.open(videoUrl, '_system');
         });
 
         const p = document.createElement(`p`);
