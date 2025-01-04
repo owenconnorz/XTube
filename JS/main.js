@@ -212,7 +212,10 @@ function printCards(result) {
 
         const card = document.createElement(`div`);
         card.className = `card`;
-        card.addEventListener(`click`, (ev) => window.open(video.embed));
+        // Modified to open in the default player
+        card.addEventListener(`click`, (ev) => {
+            location.href = video.embed; 
+        });
 
         const p = document.createElement(`p`);
         p.className = `card-text`;
