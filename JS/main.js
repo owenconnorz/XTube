@@ -213,16 +213,14 @@ function printCards(result) {
         const card = document.createElement(`div`);
         card.className = `card`;
         
-        // Use the method that suits your needs best
+        // Open in media player
         card.addEventListener(`click`, (ev) => {
             const videoUrl = video.embed; // Ensure this is a direct link to the video file
-            // Option 1: Directly navigate to the video URL
-            location.href = videoUrl; 
-            // Option 2: Use intent URL for Android devices
-            // const intentUrl = `intent:${videoUrl}#Intent;scheme=http;package=com.android.chrome;end`;
-            // window.open(intentUrl);
-            // Option 3: Use '_system' target (if applicable)
-            // window.open(videoUrl, '_system');
+            // Use intent URL for Android devices
+            const intentUrl = `intent:${videoUrl}#Intent;scheme=http;end`;
+            window.open(intentUrl);
+            // Alternatively, you can use:
+            // location.href = videoUrl; // For direct links
         });
 
         const p = document.createElement(`p`);
