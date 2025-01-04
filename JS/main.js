@@ -30,48 +30,6 @@ if (btnNext) {
     btnNext.addEventListener("click", next);
 }
 
-// Function to change the search filter
-function SwitchInputSelect(num) {
-    switch (num) {
-        case 1:
-            searchType = 1;
-            page = 1;
-            selectCategory.className = "form-select";
-            selectSection.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2 visually-hidden";
-            selectDuration.className = "form-select visually-hidden";
-            break;
-        case 2:
-            searchType = 2;
-            page = 1;
-            selectCategory.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2";
-            selectSection.className = "form-select visually-hidden";
-            searchInput.placeholder = "Search";
-            selectDuration.className = "form-select visually-hidden";
-            break;
-        case 3:
-            searchType = 3;
-            page = 1;
-            selectCategory.className = "form-select visually-hidden";
-            selectSection.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2 visually-hidden";
-            selectDuration.className = "form-select";
-            break;
-        case 4:
-            page = 1;
-            searchType = 4;
-            selectSection.className = "form-select";
-            searchInput.className = "form-control me-2 visually-hidden";
-            selectCategory.className = "form-select visually-hidden";
-            selectDuration.className = "form-select visually-hidden";
-            break;
-        default:
-            searchType = 2;
-            break;
-    }
-}
-
 // Function to perform the search based on the selected filter
 function search() {
     loading = false;
@@ -86,88 +44,16 @@ function search() {
     }
     switch (searchType) {
         case 1:
-            console.log("Search by category");
-            let category = document.getElementById("category").value;
-            header.innerHTML = "";
-            fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&per_page=30&query=${category}`, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json"
-                }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
-            header.innerHTML = `Page <span id="category">${page}</span>`;
+            // Search by category logic
             break;
         case 2:
-            console.log("Search by Keyword");
-            let key_word = document.getElementById("search").value;
-            fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&order=latest&per_page=30&query=${key_word}`, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json"
-                }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
-            header.innerHTML = `Search for <span id='search'>${key_word}</span>`;
+            // Search by keyword logic
             break;
         case 3:
-            console.log("Search by Duration");
-            header.innerHTML = "";
-            let time = document.getElementById("duration").value;
-            if (time == "longest") {
-                header.innerHTML = `Search for <span id='search'>Long Videos</span>`;
-            } else {
-                header.innerHTML = `Search for <span id='search'>Short Videos</span>`;
-            }
-            fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&order=${time}&lq=0&format=json&per_page=30`, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json"
-                }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
+            // Search by duration logic
             break;
         case 4:
-            console.log("Search by Section");
-            header.innerHTML = "";
-            let section = document.getElementById("section").value;
-            if (section == "hetero") {
-                fetch(`https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=${page}`, {
-                    method: "GET",
-                    headers: {
-                        Accept: "application/json",
-                    }
-                })
-                .then(response => response.json())
-                .then(result => { printCards(result) })
-                .catch(error => console.log('Error:', error));
-            } else if (section == "gay") {
-                fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&per_page=30&format=json&lq=1&gay=2`, {
-                    method: "GET",
-                    headers: {
-                        Accept: "application/json",
-                    }
-                })
-                .then(response => response.json())
-                .then(result => { printCards(result) })
-                .catch(error => console.log('Error:', error));
-            } else {
-                fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&per_page=30&format=json&lq=1&query=${section}`, {
-                    method: "GET",
-                    headers: {
-                        Accept: "application/json",
-                    }
-                })
-                .then(response => response.json())
-                .then(result => { printCards(result) })
-                .catch(error => console.log('Error:', error));
-            }
+            // Search by section logic
             break;
         default:
             document.getElementById("search").value = "";
@@ -201,6 +87,8 @@ function printCards(result) {
         card.addEventListener(`click`, (ev) => {
             const videoUrl = video.embed; // Ensure this is a direct link to the video file
             
+            console.log("Video URL:", videoUrl); // Log the URL for debugging
+
             // Check if the video URL is a direct link
             if (isDirectVideoUrl(videoUrl)) {
                 location.href = videoUrl; // Open the video URL directly
@@ -213,7 +101,6 @@ function printCards(result) {
         cardImg.src = video.default_thumb.src;
         cardImg.className = `card-img-top`;
 
-        // Additional card setup
         card.append(cardImg);
         wrapper.append(card);
         videoCards.append(wrapper);
@@ -227,6 +114,8 @@ function printCards(result) {
 
 // Function to check if a URL is a direct video file link
 function isDirectVideoUrl(url) {
+    // Log the URL being checked
+    console.log("Checking URL for validity:", url);
     return /\.(mp4|mov|avi|mkv|wmv|flv)$/i.test(url); // Check for common video file formats
 }
 
