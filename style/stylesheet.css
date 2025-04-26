@@ -10,35 +10,42 @@
   font-display: swap;
 }
 
-body {
-  background-color: #000;
-  font-family: Generale;
-  color: white;
-  margin: 0;
-  padding: 0;
-}
-
 img.card-img-top {
   border-radius: 0%;
+  transition: transform 0.3s ease;
 }
 
-span#ricerca, #ricerca, #logo, #categoria, #pagina {
-  color: orange;
+img.card-img-top:hover {
+  transform: scale(1.05);
 }
 
 #pagina {
   font-size: large;
 }
 
+span#ricerca, #ricerca, #logo, #categoria, #pagina {
+  color: orange;
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+  font-family: Generale;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
 .dropdown-item:hover {
   cursor: pointer;
   color: white;
   background-color: rgb(41, 48, 54);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
 
 option {
   color: white;
   background-color: rgb(41, 48, 54);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
 
 .navbar {
@@ -69,6 +76,7 @@ li.page-item {
 
 nav#pagination {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -97,24 +105,30 @@ nav#pagination a:hover {
   border-color: orange;
 }
 
-/* ------ CARD + ZOOM EFFECT ------- */
+div.card:hover {
+  cursor: pointer;
+}
+
+.container-fluid {
+  width: 98% !important;
+}
+
+#icone {
+  width: 3%;
+  margin-left: 0.3%;
+  margin-right: 0.1%;
+}
+
+select {
+  margin-right: 0.5rem;
+}
+
 .card {
   text-shadow: 0 0 2px #000000;
   align-items: center;
   border: none;
   border-radius: 0%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 119, 0, 0.5);
-}
-/* --------------------------------- */
-
-.container-fluid {
-  width: 98% !important;
+  overflow: hidden;
 }
 
 p {
@@ -133,7 +147,7 @@ p {
 
 #time {
   font-size: large;
-  color: white;
+  color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
   margin-right: 4%;
@@ -141,7 +155,10 @@ p {
 
 #views {
   width: 10%;
-  margin: 1% 2% 0.5% 2%;
+  margin-bottom: 0.5%;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 1%;
 }
 
 #n-views {
@@ -152,31 +169,40 @@ p {
 
 .card-description {
   position: absolute;
-  bottom: 0;
+  bottom: 0%;
   width: 100%;
 }
 
 .card-description h2 {
   font-size: 140%;
   text-align: center;
-  color: white;
+  align-items: center;
+  color: #ffffff;
   font-family: intitolazione;
-  padding: 0 2%;
+  padding: 0% 2% 0% 2%;
   margin-bottom: 0.5%;
 }
 
 .card-description p {
   font-size: 20px;
   text-align: center;
-  color: white;
+  align-items: center;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
 }
 
 .row {
-  margin-bottom: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.row > div {
+  flex: 0 0 25%;
+  max-width: 25%;
 }
 
 #star {
@@ -208,17 +234,12 @@ span#pagina {
   display: contents;
 }
 
-/* ----------- MEDIA QUERIES ----------- */
 @media screen and (max-width: 1250px) {
   .card-description h2 {
     font-size: 100%;
   }
   .card-description p {
     font-size: 120%;
-  }
-  h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
   }
   #views {
     width: 15%;
@@ -227,11 +248,18 @@ span#pagina {
   #clock {
     width: 25%;
   }
-  .btn#next, .btn#previous {
-    margin: 3%;
+  .btn#next {
+    margin-left: 3%;
   }
-  #n-views, #time {
+  .btn#previous {
+    margin-right: 3%;
+  }
+  #n-views {
     font-size: 70%;
+  }
+  #time {
+    font-size: 70%;
+    margin-right: 5%;
   }
 }
 
@@ -247,16 +275,22 @@ span#pagina {
   }
   #views {
     width: 22px;
-    margin: 0.5% 10%;
-  }
-  #time {
-    font-size: 15px;
+    margin-right: 10%;
+    margin-left: 10%;
   }
   #clock {
     width: 18px;
   }
-  #n-views, #time {
+  #n-views {
     font-size: 70%;
+  }
+  #time {
+    font-size: 70%;
+    margin-right: 5%;
+  }
+  .row > div {
+    flex: 0 0 25%;
+    max-width: 25%;
   }
 }
 
@@ -267,9 +301,6 @@ span#pagina {
   .card-description p {
     font-size: 120%;
   }
-  nav {
-    width: auto;
-  }
   h1 {
     margin-top: 4%;
     margin-bottom: 4.5%;
@@ -277,7 +308,6 @@ span#pagina {
   }
   .btn#next, .btn#previous {
     width: 20%;
-    margin: 5%;
   }
   img#icone {
     width: 7%;
@@ -291,20 +321,21 @@ span#pagina {
   #pagina {
     font-size: 15px;
   }
+  .row > div {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
 }
-/* -------------------------------------- */
 
-/* ---- SMOOTH SCROLLING + SCROLLBAR STYLE ---- */
 html {
   scroll-behavior: smooth;
 }
 
-/* Firefox */
+/* Scrollbar */
 * {
-  scrollbar-color: #424242 transparent;
+  scrollbar-color: #424242;
 }
 
-/* Chrome, Edge, Safari */
 *::-webkit-scrollbar {
   width: 16px;
 }
