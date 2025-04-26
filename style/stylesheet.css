@@ -10,42 +10,39 @@
   font-display: swap;
 }
 
-img.card-img-top {
- border-radius: 0%
-};
-
-#pagina {
-  font-size: large;
-}
-
-span#ricerca,#ricerca,#logo, #categoria, #pagina  {
-  color: orange;
-}
-
 body {
-  /* background-color: rgb(33, 37, 41); */
-  background-color: rgb(0, 0, 0);
+  background-color: #000;
   font-family: Generale;
   color: white;
   margin: 0;
   padding: 0;
 }
 
+img.card-img-top {
+  border-radius: 0%;
+}
+
+span#ricerca, #ricerca, #logo, #categoria, #pagina {
+  color: orange;
+}
+
+#pagina {
+  font-size: large;
+}
+
 .dropdown-item:hover {
   cursor: pointer;
   color: white;
   background-color: rgb(41, 48, 54);
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
+
 option {
   color: white;
   background-color: rgb(41, 48, 54);
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
 
 .navbar {
-  background-color: #161616f5!important;
-
+  background-color: #161616f5 !important;
 }
 
 #titolo {
@@ -61,7 +58,7 @@ h1 {
   margin-bottom: 2%;
 }
 
-li.page-item{
+li.page-item {
   font-size: 20px;
 }
 
@@ -72,19 +69,18 @@ li.page-item{
 
 nav#pagination {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-#loading{
+#loading {
   display: flex;
   justify-content: center;
   margin-top: 4%;
 }
 
-.spinner-border{
-  color: rgb(255, 119, 0)!important;
+.spinner-border {
+  color: rgb(255, 119, 0) !important;
   width: 3rem;
   height: 3rem;
   margin-bottom: 70%;
@@ -101,34 +97,30 @@ nav#pagination a:hover {
   border-color: orange;
 }
 
-div.card:hover {
-  cursor: pointer;
+/* ------ CARD + ZOOM EFFECT ------- */
+.card {
+  text-shadow: 0 0 2px #000000;
+  align-items: center;
+  border: none;
+  border-radius: 0%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 119, 0, 0.5);
+}
+/* --------------------------------- */
 
 .container-fluid {
   width: 98% !important;
 }
 
-#icone {
-  width: 3%;
-  margin-left: 0.3%;
-  margin-right: 0.1%;
-}
-
-select {
-  margin-right: 0.5rem;
-}
-
-.card {
-  text-shadow: 0 0 2px #000000;
-  align-items: center;
-  border:none;
-  border-radius: 0%;
-}
-
 p {
   display: flex;
 }
+
 #clock {
   width: 20px;
   margin-bottom: 0.8%;
@@ -141,7 +133,7 @@ p {
 
 #time {
   font-size: large;
-  color: rgb(255, 255, 255);
+  color: white;
   display: flex;
   align-items: center;
   margin-right: 4%;
@@ -149,10 +141,7 @@ p {
 
 #views {
   width: 10%;
-  margin-bottom: 0.5%;
-  margin-right: 2%;
-  margin-left: 2%;
-  margin-top: 1%;
+  margin: 1% 2% 0.5% 2%;
 }
 
 #n-views {
@@ -160,25 +149,26 @@ p {
   align-items: center;
   margin-left: 2%;
 }
+
 .card-description {
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
   width: 100%;
 }
+
 .card-description h2 {
   font-size: 140%;
   text-align: center;
-  align-items: center;
-  color: #ffffff;
+  color: white;
   font-family: intitolazione;
-  padding: 0% 2% 0% 2%;
+  padding: 0 2%;
   margin-bottom: 0.5%;
 }
+
 .card-description p {
   font-size: 20px;
   text-align: center;
-  align-items: center;
-  color: #ffffff;
+  color: white;
   display: flex;
   justify-content: space-between;
 }
@@ -194,13 +184,15 @@ p {
   margin-right: 0.5%;
 }
 
-.btn#next {
+.btn#next, .btn#previous {
   width: 8%;
+}
+
+.btn#next {
   margin-left: 1.5%;
 }
 
 .btn#previous {
-  width: 8%;
   margin-right: 1.5%;
 }
 
@@ -216,25 +208,14 @@ span#pagina {
   display: contents;
 }
 
+/* ----------- MEDIA QUERIES ----------- */
 @media screen and (max-width: 1250px) {
   .card-description h2 {
     font-size: 100%;
-    text-align: center;
-    align-items: center;
   }
   .card-description p {
     font-size: 120%;
-    text-align: center;
-    align-items: center;
   }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   h1 {
     margin-top: 2.5%;
     margin-bottom: 3%;
@@ -243,182 +224,97 @@ span#pagina {
     width: 15%;
     margin-right: 5%;
   }
-
   #clock {
     width: 25%;
   }
-
-  .btn#next {
-    margin-left: 3%;
+  .btn#next, .btn#previous {
+    margin: 3%;
   }
-
-  .btn#previous {
-    margin-right: 3%;
-  }
-
-  #n-views {
+  #n-views, #time {
     font-size: 70%;
-  }
-
-  #time {
-    font-size: 70%;
-    margin-right: 5%;
-  }
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
   }
 }
 
 @media screen and (max-width: 725px) {
   .card-description h2 {
     font-size: 10px;
-    text-align: center;
-    align-items: center;
   }
   .card-description p {
     font-size: 15px;
-    text-align: center;
-    align-items: center;
   }
-
-  .btn#next {
+  .btn#next, .btn#previous {
     width: 15%;
   }
-
-  .btn#previous {
-    width: 15%;
-  }
-
-  .pagination {
-    width: 100%;
-    display: contents;
-  }
-
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h1 {
-    margin-top: 2.5%;
-    margin-bottom: 3%;
-  }
-
   #views {
     width: 22px;
-    margin-bottom: 0.5%;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin: 0.5% 10%;
   }
-
   #time {
     font-size: 15px;
-    margin-right: 5%;
   }
-
   #clock {
     width: 18px;
   }
-  #n-views {
+  #n-views, #time {
     font-size: 70%;
-  }
-
-  #time {
-    font-size: 70%;
-    margin-right: 5%;
-  }
-  .btn#next {
-    margin-left: 3%;
-  }
-
-  .btn#previous {
-    margin-right: 3%;
   }
 }
-
 
 @media screen and (max-width: 575px) {
   .card-description h2 {
     font-size: 100%;
   }
-
   .card-description p {
     font-size: 120%;
   }
-  .row {
-    width: 100%;
-    margin-bottom: 1%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   nav {
     width: auto;
   }
-
   h1 {
     margin-top: 4%;
     margin-bottom: 4.5%;
     font-size: 28px;
   }
-
-  .btn#next {
+  .btn#next, .btn#previous {
     width: 20%;
-  }
-
-  .btn#previous {
-    width: 20%;
+    margin: 5%;
   }
   img#icone {
     width: 7%;
   }
-
   #titolo {
     margin-left: 6%;
   }
-
-  .btn#next {
-    margin-left: 5%;
-  }
-
-  .btn#previous {
-    margin-right: 5%;
-  }
-
-  li.page-item{
+  li.page-item {
     font-size: 20px;
   }
   #pagina {
     font-size: 15px;
   }
 }
+/* -------------------------------------- */
 
+/* ---- SMOOTH SCROLLING + SCROLLBAR STYLE ---- */
 html {
   scroll-behavior: smooth;
 }
 
-  /* Firefox */
-  * {
-    scrollbar-color: #424242;
-  }
+/* Firefox */
+* {
+  scrollbar-color: #424242 transparent;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: transparent;
-  }
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #353535;
-    border-radius: 0px;
-    border: 5px solid transparent;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #353535;
+  border-radius: 0px;
+  border: 5px solid transparent;
+}
