@@ -174,26 +174,37 @@ p {
   margin-left: 2%;
 }
 
+/* Title positioning and styling */
 .card-description {
-  position: absolute;
+  position: relative;
   bottom: 0%;
   width: 100%;
+  padding: 10px;
 }
 
 .card-description h2 {
   font-size: 140%;
   text-align: center;
-  align-items: center;
   color: #ffffff;
   font-family: intitolazione;
-  padding: 0% 2% 0% 2%;
-  margin-bottom: 0.5%;
+  margin: 0; /* Remove default margin */
+  padding: 0 2%; /* Ensure no excessive padding */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  max-width: 100%; /* Ensure the title does not exceed container width */
+  box-sizing: border-box; /* Prevent padding from affecting the width */
 }
 
+/* Title container styling to allow scrolling */
+.card-description h2 {
+  display: inline-block;
+  width: 100%;
+}
+
+/* Text styling for description */
 .card-description p {
   font-size: 20px;
   text-align: center;
-  align-items: center;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
