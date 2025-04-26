@@ -1,25 +1,25 @@
 
-var searchType = 2;
-var page = 1;
+var tipoRicerca = 2;
+var pagina = 1;
 var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
-const btn = document.getElementById('search');
+const btn = document.getElementById('cerca');
 const btnNext = document.getElementById("next");
 const btnPrev = document.getElementById('previous');
-const selectCategory = document.getElementById('category');
-const searchInput = document.getElementById('search');
-const selectDuration = document.getElementById('duration');
-const selectSection = document.getElementById('section');
-let header = document.getElementById("header");
-let pageIndex = document.getElementById("page");
+const selectCategoria = document.getElementById('categoria');
+const search = document.getElementById('ricerca');
+const selectDurata = document.getElementById('durata');
+const selectSezione = document.getElementById('sezione');
+let intestazione = document.getElementById("intestazione");
+let indicePagina = document.getElementById("pagina");
 var hoverInterval;
 var loading = false;
 
-selectCategory.addEventListener("change", resetPage);
-selectDuration.addEventListener("change", resetPage);
-selectSection.addEventListener("change", resetPage);
+selectCategoria.addEventListener("change", resetPagina);
+selectDurata.addEventListener("change", resetPagina);
+selectSezione.addEventListener("change", resetPagina);
 
 if (btn) {
-    btn.addEventListener("click", search);
+    btn.addEventListener("click", Ricerca);
 }
 
 if (btnPrev) {
@@ -29,283 +29,443 @@ if (btnPrev) {
 if (btnNext) {
     btnNext.addEventListener("click", next);
 }
+// funzione che mi fa cambiare il filtro di ricerca
+function SwitchInputSelect(num) {
+    switch (num) {
+        case 1:
+            //Filtro Categorie
+            tipoRicerca = 1;
+            pagina = 1
+            selectCategoria.className = "form-select";
+            selectSezione.className = "form-select visually-hidden";
+            search.className = "form-control me-2 visually-hidden";
+            selectDurata.className = "form-select visually-hidden";
+            break;
+        case 2:
+            //Filtro Parola Chiave (Default)
+            tipoRicerca = 2;
+            pagina = 1
+            selectCategoria.className = "form-select visually-hidden";
+            search.className = "form-control me-2";
+            selectSezione.className = "form-select visually-hidden";
+            search.placeholder = "Cerca";
+            selectDurata.className = "form-select visually-hidden";
+            break;
 
-// Function to perform the search based on the selected filter
-function search() {
+        case 3:
+            //Filtro Durata
+            tipoRicerca = 3;
+            pagina = 1
+            selectCategoria.className = "form-select visually-hidden";
+            selectSezione.className = "form-select visually-hidden";
+            search.className = "form-control me-2 visually-hidden";
+            selectDurata.className = "form-select";
+            break;
+        case 4:
+            //Filtro Sezione
+            pagina = 1
+            tipoRicerca = 4;
+
+            selectSezione.className = "form-select";
+            search.className = "form-control me-2 visually-hidden";
+            selectCategoria.className = "form-select visually-hidden";
+            selectDurata.className = "form-select visually-hidden";
+            break;
+        default:
+            tipoRicerca = 2;
+            break;
+
+    }
+}
+// funzione che mi fa la ricerca in base al filtro selezionato
+function Ricerca() {
     loading = false;
     load();
-    changePage();
-    if (page == 1) {
-        header.innerHTML = "Latest Releases";
+    cambiaPagina();
+    if (pagina == 1) {
+        intestazione.innerHTML = "Ultime uscite";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
         btnNext.className = "btn btn-outline-warning";
     }
-    switch (searchType) {
+    switch (tipoRicerca) {
         case 1:
-            // Search by category logic
+            tipoRicerca = 1;
+            console.log("Ricerca per categoria");
+            let categoria = document.getElementById("categoria").value;
+            intestazione.innerHTML = "";
+            console.log(categoria);
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&lq=1&format=json&per_page=30&query=" + categoria, {
+                "method": "GET",
+                "headers": {
+                    "Accept": "application/json"
+                }
+            })
+                .then(response => response.json())
+                .then(result => { stampaCards(result) })
+                .catch(error => console.log('Error:', error));
+            intestazione.innerHTML = `Pagina <span id="categoria">${pagina}</span>`;
             break;
         case 2:
-            // Search by keyword logic
+            tipoRicerca = 2;
+            intestazione.innerHTML = "";
+            console.log("Ricerca per Parola Chiave");
+            let key_word = document.getElementById("ricerca").value;
+            console.log(key_word);
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&lq=1&format=json&order=latest&per_page=30&query=" + key_word, {
+                "method": "GET",
+                "headers": {
+                    "Accept": "application/json"
+                }
+            })
+                .then(response => response.json())
+                .then(result => { stampaCards(result) })
+                .catch(error => console.log('Error:', error));
+            intestazione.innerHTML = "Ricerca per <span id='ricerca'>" + key_word + "</span>";
             break;
         case 3:
-            // Search by duration logic
+            console.log("Ricerca per Durata");
+            intestazione.innerHTML = "";
+            let time = document.getElementById("durata").value;
+            if (time == "longest") {
+                intestazione.innerHTML = "Ricerca per <span id='ricerca'>Video lunghi</span>";
+            } else {
+                intestazione.innerHTML = "Ricerca per <span id='ricerca'>Video Corti</span>";
+            }
+
+            console.log(time);
+            fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&order=" + time + "&lq=0&format=json&per_page=30", {
+                "method": "GET",
+                "headers": {
+                    "Accept": "application/json"
+                }
+            })
+                .then(response => response.json())
+                .then(result => { stampaCards(result) })
+                .catch(error => console.log('Error:', error));
             break;
+
         case 4:
-            // Search by section logic
+            console.log("Ricerca per Sezione");
+            intestazione.innerHTML = "";
+            let sezione = document.getElementById("sezione").value;
+            console.log(sezione);
+            if (sezione == "etero") {
+                fetch("https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + pagina, {
+                    "method": "GET",
+                    "headers": {
+                        "Accept": "application/json",
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => { stampaCards(result) })
+                    .catch(error => console.log('Error:', error));
+
+            } else if (sezione == "gay") {
+
+                fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&per_page=30&format=json&lq=1&gay=2", {
+                    "method": "GET",
+                    "headers": {
+                        "Accept": "application/json",
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => { stampaCards(result) })
+                    .catch(error => console.log('Error:', error));
+            } else {
+                fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&per_page=30&format=json&lq=1&query=" + sezione, {
+                    "method": "GET",
+                    "headers": {
+                        "Accept": "application/json",
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => { stampaCards(result) })
+                    .catch(error => console.log('Error:', error));
+            }
             break;
         default:
-            document.getElementById("search").value = "";
+            document.getElementById("ricerca").value = "";
             break;
     }
 }
+// funzione che mi stampa le cards
+function stampaCards(result) {
 
-// Function to print the cards
-function printCards(result) {
     console.log(result);
-    let videoArray = result.videos;
-    let videoCards = document.getElementById('video');
+    let arrayVideo = result.videos;
+    let cardsVideo = document.getElementById('video');
 
-    videoCards.innerHTML = "";
+    cardsVideo.innerHTML = "";
     btnNext.className = "btn btn-outline-warning";
-    if (videoArray.length == 0) {
-        header.innerHTML = "No results found";
+    if (arrayVideo.length == 0) {
+        intestazione.innerHTML = "Nessun risultato trovato";
         btnNext.className = "btn btn-outline-warning disabled";
         return;
     }
-
-    // Printing the cards
-    videoArray.forEach((video, index) => {
+    // stampa delle cards
+    arrayVideo.forEach((video, index) => {
         const wrapper = document.createElement(`div`);
         wrapper.className = `col`;
 
         const card = document.createElement(`div`);
         card.className = `card`;
+        card.addEventListener(`click`, (ev) => window.open(video.embed));
 
-        // Open in media player
-        card.addEventListener(`click`, (ev) => {
-            const videoUrl = video.embed; // Ensure this is a direct link to the video file
-            
-            console.log("Video URL:", videoUrl); // Log the URL for debugging
-
-            // Check if the video URL is a direct link
-            if (isDirectVideoUrl(videoUrl)) {
-                location.href = videoUrl; // Open the video URL directly
-            } else {
-                alert("Invalid video URL. Please check the link."); // Alert if URL is not valid
-            }
-        });
+        const p = document.createElement(`p`);
+        p.className = `card-text`;
 
         const cardImg = document.createElement(`img`);
         cardImg.src = video.default_thumb.src;
         cardImg.className = `card-img-top`;
 
-        card.append(cardImg);
-        wrapper.append(card);
-        videoCards.append(wrapper);
-    });
+        card.onmouseover = function () {
+            clearInterval(hoverInterval);
+            CambiaImmagineOnHover(this, arrayVideo[index].thumbs[0].src)
+        };
+        card.onmouseleave = function () {
+            clearInterval(hoverInterval);
+            setImmagineDefault(this, video.default_thumb.src, stampaTitolo(arrayVideo[index].title, 65))
+        };
+        card.ontouchstart = function () {
+            clearInterval(hoverInterval)
+            CambiaImmagineOnHover(this, arrayVideo[index].thumbs[0].src)
+        };
+        card.ontouchend = function () {
+            clearInterval(hoverInterval);
+            setImmagineDefault(this, video.default_thumb.src, stampaTitolo(arrayVideo[index].title, 65))
+        };
 
+        const cardDescription = document.createElement(`div`);
+        cardDescription.className = `card-description`;
+
+        const h2 = document.createElement(`h2`);
+        h2.className = `card-title`;
+        h2.textContent = stampaTitolo(arrayVideo[index].title, 60);
+
+        const spanViews = document.createElement(`span`);
+        spanViews.className = `card-text`;
+        spanViews.id = `n-views`;
+
+        const imgViews = document.createElement(`img`);
+        imgViews.src = `/img/eye.png`;
+        imgViews.id = `views`;
+
+        const spanTime = document.createElement(`span`);
+        spanTime.className = `card-text`;
+        spanTime.id = `time`;
+
+        const imgTime = document.createElement(`img`);
+        imgTime.src = `/img/clock-circular-outline.png`;
+        imgTime.id = `clock`;
+
+        const spanViewsText = document.createElement(`span`);
+        spanViewsText.textContent = video.views;
+
+        const spanTimeText = document.createElement(`span`);
+        spanTimeText.textContent = video.length_min;
+
+        card.append(cardImg);
+        card.append(cardDescription);
+        cardDescription.append(h2);
+        wrapper.append(card);
+        cardsVideo.append(wrapper);
+
+        spanViews.append(imgViews);
+        spanViews.append(spanViewsText);
+
+        spanTime.append(imgTime);
+        spanTime.append(spanTimeText);
+
+        p.append(spanViews);
+        p.append(spanTime);
+
+        cardDescription.append(p);
+    });
     loading = true;
-    setTimeout(() => {
+    setTimeout(function () {
         load();
     }, 800);
 }
-
-// Function to check if a URL is a direct video file link
-function isDirectVideoUrl(url) {
-    // Log the URL being checked
-    console.log("Checking URL for validity:", url);
-    return /\.(mp4|mov|avi|mkv|wmv|flv)$/i.test(url); // Check for common video file formats
-}
-
-// Function to create the homepage when loading the index page
-function CreateHome() {
+// funzione che mi crea la homepage quando carica la pagina index
+function CreaHome() {
     window.scrollTo(top);
     loading = false;
     load();
-    if (page == 1) {
-        header.innerHTML = "Latest Releases";
+    if (pagina == 1) {
+        intestazione.innerHTML = "Ultime uscite";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
         btnNext.className = "btn btn-outline-warning";
     }
-    changePage();
-    console.log("Create Home");
-    searchType = 5;
-    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + page + "&per_page=30", {
-        method: "GET",
-        headers: {
-            Accept: "application/json"
+    cambiaPagina();
+    console.log("Crea Home");
+    tipoRicerca = 5;
+    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + pagina + "&per_page=30", {
+        "method": "GET",
+        "headers": {
+            "Accept": "application/json"
         }
     })
-    .then(response => response.json())
-    .then(result => { printCards(result) })
-    .catch(error => console.log('Error:', error));
+        .then(response => response.json())
+        .then(result => { stampaCards(result) })
+        .catch(error => console.log('Error:', error));
+    cambiaPagina();
 }
-
-// Function to create the trending page when loading the trending page
-function CreateTrending() {
+// funzione che mi crea la pagina trending quando carica la pagina trending
+function CreaTrending() {
     loading = false;
     load();
     window.scrollTo(top);
-    changePage();
-    if (page == 1) {
-        header.innerHTML = ` <h1 id="header"><span><img src="./img/campfire.png" alt="" id="icon"></span>Trending<span><img
-        src="./img/campfire.png" alt="" id="icon"></span></h1>`;
+    cambiaPagina();
+    if (pagina == 1) {
+        intestazione.innerHTML = ` <h1 id="intestazione"><span><img src="./img/campfire.png" alt="" id="icone"></span>Trending<span><img
+        src="./img/campfire.png" alt="" id="icone"></span></h1>`;
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
         btnNext.className = "btn btn-outline-warning";
     }
-    console.log("Create Trending");
-    searchType = 6;
-    fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=top-weekly&lq=0&format=json&per_page=30", {
-        method: "GET",
-        headers: {
-            Accept: "application/json"
+    console.log("Crea Trending");
+    tipoRicerca = 6;
+    fetch("https://www.eporner.com/api/v2/video/search/?page=" + pagina + "&order=top-weekly&lq=0&format=json&per_page=30", {
+        "method": "GET",
+        "headers": {
+            "Accept": "application/json"
         }
     })
-    .then(response => response.json())
-    .then(result => { printCards(result) })
-    .catch(error => console.log('Error:', error));
+        .then(response => response.json())
+        .then(result => { stampaCards(result) })
+        .catch(error => console.log('Error:', error));
 }
-
-// Function to print the video title limiting the characters
-function printTitle(text, wordLimit) {
-    let words = text.split('');
-    let wordsToPrint = words.slice(0, wordLimit).join('');
-    return wordsToPrint;
+//funzione che mi stampa il titolo del video limitando i caratteri
+function stampaTitolo(testo, numeroParole) {
+    let parole = testo.split('');
+    let paroleDaStampare = parole.slice(0, numeroParole).join('');
+    return paroleDaStampare;
 }
-
-// Function to go to the next page
+// funzione che mi fa andare alla pagina successiva
 function next() {
     window.scrollTo(top);
-    header.innerHTML = "";
-    console.log(searchType);
-    if (page > 0 && page < 100) {
-        page++;
+    intestazione.innerHTML = "";
+    console.log(tipoRicerca);
+    if (pagina > 0 && pagina < 100) {
+        pagina++;
     } else {
-        page = 1;
+        pagina = 1;
     }
-    switch (searchType) {
+    switch (tipoRicerca) {
         case 5:
-            CreateHome();
+            CreaHome();
             break;
         case 6:
-            CreateTrending();
+            CreaTrending();
         default:
-            search();
+            Ricerca();
             break;
     }
 }
-
-// Function to go to the previous page
+// funzione che mi fa andare alla pagina precedente
 function prev() {
     window.scrollTo(top);
-    header.innerHTML = "";
-    if (page > 1 && page < 100) {
-        page--;
+    intestazione.innerHTML = "";
+    if (pagina > 1 && pagina < 100) {
+        pagina--;
     } else {
-        page = 1;
+        pagina = 1;
+
     }
-    switch (searchType) {
+    switch (tipoRicerca) {
         case 5:
-            CreateHome();
+            CreaHome();
             break;
         case 6:
-            CreateTrending();
+            CreaTrending();
             break;
         default:
-            search();
+            Ricerca();
             break;
     }
 }
-
-// Function to make the enter key work in the category select
-category.addEventListener("keypress", function (event) {
+//Funzione per far funzionare il tasto invio nella select della categoria
+categoria.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
     }
 });
 
-searchInput.addEventListener("keypress", function (event) {
+search.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
     }
 });
 
-selectDuration.addEventListener("keypress", function (event) {
+selectDurata.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
     }
 });
-
-// Function to make the enter key work in the section select
-selectSection.addEventListener("keypress", function (event) {
+//Funzione per far funzionare il tasto invio nella select della sezione
+selectSezione.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
         btn.click();
     }
 });
-
-// Function to change the card image when the mouse enters the card
-function changeImageOnHover(cardElement, thumbBase) {
+//Funzione per cambiare l'immagine della card quando il mouse entra nella card
+function CambiaImmagineOnHover(cardElement, thumbBase) {
     let i = 2;
-    let prev = 1;
+    let prec = 1;
     let url;
-    start = thumbBase;
+    inizio = thumbBase;
     cardElement.querySelector('img').src = thumbBase;
     cardElement.querySelector('h2').textContent = "";
     cardElement.querySelector('p').classList.add("visually-hidden");
     hoverInterval = setInterval(() => {
         cardElement.querySelector('img').src = thumbBase;
-        url = thumbBase.replace(prev + "_", i + "_");
+        url = thumbBase.replace(prec + "_", i + "_");
         thumbBase = url;
-        if (i == 15 || prev == 14) {
+        if (i == 15 || prec == 14) {
             i = 2;
-            prev = 1;
-            thumbBase = start;
+            prec = 1;
+            thumbBase = inizio;
             cardElement.querySelector('img').src = thumbBase;
 
         } else {
-            cardElement.querySelector('img').src = thumbBase.replace(prev + "_", i + "_");
+            cardElement.querySelector('img').src = thumbBase.replace(prec + "_", i + "_");
             i++;
-            prev++;
+            prec++;
         }
     }, 350);
 }
-
-// Function to set the default image of the card when the mouse leaves the card
-function setDefaultImage(card, thumb, title) {
+//Funzione per cambiare l'immagine della card quando il mouse esce dalla card
+function setImmagineDefault(card, thumb, titolo) {
     card.querySelector('img').src = thumb;
-    card.querySelector('h2').textContent = title;
+    card.querySelector('h2').textContent = titolo;
     card.querySelector('p').classList.remove("visually-hidden");
 }
-
-// Function to change the page number
-function changePage() {
-    pageIndex.textContent = page;
+//Funzione per cambiare il numero della pagina
+function cambiaPagina() {
+    indicePagina.textContent = pagina;
 }
-
-// Function to show loading
+// Funzione per far apparire il loading
 function load() {
-    let gridVideo = document.getElementById('graphicsCards');
-    let loadingDiv = document.getElementById("loading");
+    let gridVideo = document.getElementById('graficaCards');
+    let Divloading = document.getElementById("loading");
     if (loading == true) {
-        loadingDiv.className = "container-fluid visually-hidden";
+        Divloading.className = "container-fluid visually-hidden";
         gridVideo.className = "container-fluid";
     } else {
-        loadingDiv.className = "container-fluid";
+        Divloading.className = "container-fluid";
         gridVideo.className = "container-fluid visually-hidden";
     }
 }
-
-// Function to reset the page
-function resetPage() {
-    page = 1;
+// Funzione per resettare la pagina
+function resetPagina(){
+    pagina = 1;
 }
