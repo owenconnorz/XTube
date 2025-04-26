@@ -11,7 +11,25 @@
   font-display: swap;
 }
 
-/* Global body styling */
+/* Image hover effect */
+img.card-img-top {
+  border-radius: 0%;
+  transition: transform 0.3s ease;
+}
+
+img.card-img-top:hover {
+  transform: scale(1.05);
+}
+
+/* Text styling */
+#pagina {
+  font-size: large;
+}
+
+span#ricerca, #ricerca, #logo, #categoria, #pagina {
+  color: orange;
+}
+
 body {
   background-color: rgb(0, 0, 0);
   font-family: Generale;
@@ -20,125 +38,269 @@ body {
   padding: 0;
 }
 
+.dropdown-item:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(41, 48, 54);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+option {
+  color: white;
+  background-color: rgb(41, 48, 54);
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+}
+
+/* Navbar styling */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Distribute items on both sides */
+  align-items: center;
+  background-color: #161616f5 !important;
+  position: relative;
+  padding: 10px 20px;
+}
+
+#titolo {
+  color: white;
+  font-size: 150%;
+  margin-left: 1.5%;
+  flex-grow: 1; /* Allow title to take up space */
+  text-align: left; /* Align title to the left */
+}
+
+/* Navbar toggle alignment */
+.navbar-toggler {
+  color: rgb(221, 118, 21);
+  margin-left: 1%;
+  margin-right: 0;
+  order: -1;
+}
+
+/* Add the search icon - positioning it at the top-right of the page */
+#search-icon {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: fixed; /* Fix the position */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  z-index: 9999; /* Ensure it stays above other elements */
+}
+
+#search-icon:hover {
+  color: orange;
+}
+
+/* Header styling */
+h1 {
+  color: white;
+  text-align: center;
+  margin-top: 1.5%;
+  margin-bottom: 2%;
+}
+
+/* Pagination and buttons */
+li.page-item {
+  font-size: 20px;
+}
+
+.navbar-toggler {
+  color: rgb(221, 118, 21);
+  margin-right: 6.1%;
+}
+
+nav#pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.spinner-border {
+  color: rgb(255, 119, 0) !important;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 70%;
+}
+
+nav#pagination a {
+  color: rgb(255, 119, 0);
+  background-color: #1d1d1d;
+  border-color: rgba(255, 255, 255, 0.341);
+}
+
+nav#pagination a:hover {
+  background-color: black;
+  border-color: orange;
+}
+
 /* Card styling */
+div.card:hover {
+  cursor: pointer;
+}
+
+.container-fluid {
+  width: 98% !important;
+}
+
+#icone {
+  width: 3%;
+  margin-left: 0.3%;
+  margin-right: 0.1%;
+}
+
+select {
+  margin-right: 0.5rem;
+}
+
 .card {
-  position: relative; /* Ensure the button is positioned relative to the card */
+  text-shadow: 0 0 2px #000000;
+  align-items: center;
   border: none;
   border-radius: 0%;
   overflow: hidden;
-  margin: 10px;
+}
+
+p {
+  display: flex;
+}
+
+#clock {
+  width: 20px;
+  margin-bottom: 0.8%;
+  margin-right: 6%;
+}
+
+#form_ricerca {
+  margin-right: 2%;
+}
+
+#time {
+  font-size: large;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  margin-right: 4%;
+}
+
+#views {
+  width: 10%;
+  margin-bottom: 0.5%;
+  margin-right: 2%;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+#n-views {
+  display: flex;
+  align-items: center;
+  margin-left: 2%;
+}
+
+.card-description {
+  position: relative;
+  bottom: 0%;
   width: 100%;
-  max-width: 300px; /* Prevents large cards */
-  background-color: #222;
+  padding: 10px;
+  background-color: black; /* Set background color to black */
 }
 
-.card-img-top {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-  border-radius: 0%;
+.card-description h2 {
+  font-size: 140%;
+  text-align: center;
+  color: white; /* Set text color to white */
+  font-family: intitolazione;
+  margin: 0; /* Remove default margin */
+  padding: 0 2%; /* Ensure no excessive padding */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  max-width: 100%; /* Ensure the title does not exceed container width */
+  box-sizing: border-box; /* Prevent padding from affecting the width */
 }
 
-.card-img-top:hover {
-  transform: scale(1.05);
-}
-
-/* Card Body Flex to align title and button */
-.card-body {
+/* Text styling for description */
+.card-description p {
+  font-size: 20px;
+  text-align: center;
+  color: white; /* Set text color to white */
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 10px;
 }
 
-.card-body .card-title {
-  font-size: 1.2rem;
-  margin: 0;
+/* Responsive Layout - Rows and Columns */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.card-body .btn-outline-warning {
+.row > div {
+  flex: 0 0 100%; /* 100% for 1 item per row */
+  max-width: 100%;
+}
+
+#star {
+  width: 2%;
+  margin-right: 0.5%;
+}
+
+/* Buttons (pagination) */
+.btn#next, .btn#previous {
+  width: 8%;
+}
+
+.btn#next {
+  margin-left: 1.5%;
+}
+
+.btn#previous {
+  margin-right: 1.5%;
+}
+
+span#pagina {
+  width: 5%;
+  height: 5%;
+  font-size: 21px;
+  background-color: transparent !important;
+}
+
+.pagination {
+  width: 100%;
+  display: contents;
+}
+
+/* New Styles for 'Add to Playlist' button */
+.card .btn-outline-warning {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
   background-color: rgba(255, 119, 0, 0.8);
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.card-body .btn-outline-warning:hover {
+.card .btn-outline-warning:hover {
   background-color: rgb(255, 119, 0);
-  transform: scale(1.1); /* Slightly enlarges the button on hover */
+  transform: scale(1.1);
 }
 
-.card-body .btn-outline-warning i {
-  margin-right: 5px; /* Add space between icon and text */
-}
-
-/* Card Description */
-.card-description {
-  padding: 10px;
-  background-color: black;
-  color: white;
-}
-
-.card-description h2 {
-  font-size: 140%;
-  text-align: center;
-  font-family: intitolazione;
-  margin: 0;
-  padding: 0 2%;
-  white-space: nowrap;
-  max-width: 100%;
-}
-
-.card-description p {
-  font-size: 20px;
-  text-align: center;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Pagination */
-.pagination {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pagination .btn {
-  margin: 0 10px;
-}
-
-.pagination .btn#next, .pagination .btn#previous {
-  width: auto;
-  font-size: 1rem;
-}
-
-/* Scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Scrollbar */
-* {
-  scrollbar-color: #424242;
-}
-
-*::-webkit-scrollbar {
-  width: 16px;
-}
-
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: #353535;
-  border-radius: 0px;
-  border: 5px solid transparent;
+.card .btn-outline-warning i {
+  margin-right: 5px;
 }
 
 /* Media Queries for smaller screens */
@@ -151,13 +313,13 @@ html {
     font-size: 120%;
   }
 
-  .btn#next, .btn#previous {
-    font-size: 1rem; /* Adjusting font size for better readability */
-  }
-
   #views {
     width: 15%;
     margin-right: 5%;
+  }
+
+  #clock {
+    width: 25%;
   }
 
   .btn#next {
@@ -188,8 +350,7 @@ html {
   }
 
   .btn#next, .btn#previous {
-    width: 35%; /* Adjust width for smaller buttons on mobile */
-    font-size: 1rem;
+    width: 15%;
   }
 
   #views {
@@ -233,8 +394,7 @@ html {
   }
 
   .btn#next, .btn#previous {
-    width: 30%;
-    font-size: 1rem;
+    width: 20%;
   }
 
   img#icone {
@@ -257,4 +417,28 @@ html {
     flex: 0 0 100%; /* 100% for 1 item per row */
     max-width: 100%;
   }
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar */
+* {
+  scrollbar-color: #424242;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #353535;
+  border-radius: 0px;
+  border: 5px solid transparent;
 }
