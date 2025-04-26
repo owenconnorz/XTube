@@ -42,12 +42,20 @@ body {
   transform: scale(1.05);
 }
 
-/* Add to Playlist Button */
-.card .btn-outline-warning {
-  position: absolute;
-  top: 10px; /* Position it slightly down from the top */
-  left: 10px; /* Position it slightly right from the left */
-  z-index: 1;
+/* Card Body Flex to align title and button */
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.card-body .card-title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.card-body .btn-outline-warning {
   background-color: rgba(255, 119, 0, 0.8);
   color: white;
   font-size: 14px;
@@ -57,12 +65,12 @@ body {
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.card .btn-outline-warning:hover {
+.card-body .btn-outline-warning:hover {
   background-color: rgb(255, 119, 0);
   transform: scale(1.1); /* Slightly enlarges the button on hover */
 }
 
-.card .btn-outline-warning i {
+.card-body .btn-outline-warning i {
   margin-right: 5px; /* Add space between icon and text */
 }
 
