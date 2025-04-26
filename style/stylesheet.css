@@ -54,7 +54,8 @@ option {
 /* Navbar styling */
 .navbar {
   display: flex;
-  justify-content: flex-start; /* Align navbar items to the left */
+  justify-content: space-between; /* Distribute items on both sides */
+  align-items: center;
   background-color: #161616f5 !important;
 }
 
@@ -70,6 +71,24 @@ option {
   margin-left: 1%; /* Move the toggle to the left */
   margin-right: 0; /* Remove any right margin */
   order: -1; /* Ensure it appears before the brand/logo if needed */
+}
+
+/* Add the search icon */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Adjust spacing from the right edge */
+}
+
+#search-icon {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#search-icon:hover {
+  color: orange; /* Change color when hovered */
 }
 
 /* Header styling */
