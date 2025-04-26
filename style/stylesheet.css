@@ -57,6 +57,8 @@ option {
   justify-content: space-between; /* Distribute items on both sides */
   align-items: center;
   background-color: #161616f5 !important;
+  position: relative;
+  padding: 10px 20px;
 }
 
 #titolo {
@@ -68,15 +70,16 @@ option {
 /* Navbar toggle alignment */
 .navbar-toggler {
   color: rgb(221, 118, 21);
-  margin-left: 1%; /* Move the toggle to the left */
-  margin-right: 0; /* Remove any right margin */
-  order: -1; /* Ensure it appears before the brand/logo if needed */
+  margin-left: 1%;
+  margin-right: 0;
+  order: -1;
 }
 
 /* Add the search icon */
 .navbar-right {
   display: flex;
   align-items: center;
+  margin-left: auto;
   margin-right: 10px; /* Adjust spacing from the right edge */
 }
 
@@ -88,7 +91,7 @@ option {
 }
 
 #search-icon:hover {
-  color: orange; /* Change color when hovered */
+  color: orange;
 }
 
 /* Header styling */
