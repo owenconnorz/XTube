@@ -53,6 +53,8 @@ option {
 
 /* Navbar styling */
 .navbar {
+  display: flex;
+  justify-content: flex-start; /* Align navbar items to the left */
   background-color: #161616f5 !important;
 }
 
@@ -60,6 +62,14 @@ option {
   color: white;
   font-size: 150%;
   margin-left: 1.5%;
+}
+
+/* Navbar toggle alignment */
+.navbar-toggler {
+  color: rgb(221, 118, 21);
+  margin-left: 1%; /* Move the toggle to the left */
+  margin-right: 0; /* Remove any right margin */
+  order: -1; /* Ensure it appears before the brand/logo if needed */
 }
 
 /* Header styling */
