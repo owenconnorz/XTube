@@ -38,12 +38,10 @@
               Cerca Per
             </a>
             <ul class="dropdown-menu " aria-labelledby="navbarScrollingDropdown">
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(1)>
-                  Categoria</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(2)>
-                  Parola chiave</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(3)>Cerca per Durata</a></li>
-              <li><a class="dropdown-item" onclick=SwitchInputSelect(4)>Cerca per Sezione</a></li>
+              <li><a class="dropdown-item" onclick="SwitchInputSelect(1)">Categoria</a></li>
+              <li><a class="dropdown-item" onclick="SwitchInputSelect(2)">Parola chiave</a></li>
+              <li><a class="dropdown-item" onclick="SwitchInputSelect(3)">Cerca per Durata</a></li>
+              <li><a class="dropdown-item" onclick="SwitchInputSelect(4)">Cerca per Sezione</a></li>
             </ul>
           </li>
         </ul>
@@ -55,7 +53,7 @@
             <option selected id="decorazione" value="0">Seleziona categoria</option>
             <option value="Amateur">Amateurs</option>
             <option value="Anal">Anal</option>
-            <option value="Asian">Asiatiche </option>
+            <option value="Asian">Asiatiche</option>
             <option value="Big Ass">Big Ass</option>
             <option value="Big Tits">Big Tits</option>
             <option value="Blowjob">Blowjob</option>
@@ -85,6 +83,7 @@
             <option value="Romantic">Romantic</option>
             <option value="Cuckhold">Cuckhold</option>
           </select>
+
           <select class="form-select visually-hidden" aria-label="sezione" id="sezione">
             <option selected id="decorazione" value="0">Seleziona Sezione</option>
             <option value="etero">Etero</option>
@@ -92,17 +91,20 @@
             <option value="trans">Trans</option>
             <option value="Lesbian">Lesbian</option>
           </select>
+
           <select class="form-select visually-hidden" aria-label="durata" id="durata">
             <option selected id="decorazione" value="0">Seleziona Durata</option>
             <option value="shortest">Video Corti</option>
             <option value="longest">Video Lunghi</option>
           </select>
+
           <button class="btn btn-outline-warning" type="button" id="cerca">Cerca</button>
         </form>
       </div>
     </div>
   </nav>
-  <h1 id="intestazione">Ultime uscite</h1>
+
+  <h1 id="intestazione" class="text-center my-4">Ultime uscite</h1>
 
   <div class="container-fluid" id="loading">
     <div class="spinner-border text-warning" role="status">
@@ -111,18 +113,30 @@
   </div>
 
   <div class="container-fluid visually-hidden" id="graficaCards">
-    <div class="row row-cols-1 row-cols-sm-3 row-gap-5" id="video">
-
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="video">
+      <!-- Your videos will be dynamically inserted here by JS -->
+      <!-- Example of a static video card: -->
+      <!--
+      <div class="col">
+        <div class="card h-100">
+          <video class="card-img-top" src="your-video.mp4" controls></video>
+          <div class="card-body">
+            <h5 class="card-title">Video Title</h5>
+          </div>
+        </div>
+      </div>
+      -->
     </div>
   </div>
+
   <br>
 </body>
 
 <footer>
   <nav aria-label="Page navigation fixed-bottom" id="pagination" data-bs-theme="dark">
-    <ul class="pagination">
-      <button type="button" class="btn btn-outline-warning outline-warning" id="previous">&laquo;</button>
-      <li class="page-item">Pagina <span id="pagina">1</span></li>
+    <ul class="pagination justify-content-center">
+      <button type="button" class="btn btn-outline-warning" id="previous">&laquo;</button>
+      <li class="page-item mx-2">Pagina <span id="pagina">1</span></li>
       <button type="button" class="btn btn-outline-warning" id="next">&raquo;</button>
     </ul>
   </nav>
@@ -131,11 +145,15 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
-  </script>
+</script>
+
 <script src="./JS/main.js"></script>
 <script>
-  CreaHome()</script>
+  CreaHome()
+</script>
+
 <script defer src="/_vercel/insights/script.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2342057939760254"
      crossorigin="anonymous"></script>
+
 </html>
