@@ -65,6 +65,8 @@ option {
   color: white;
   font-size: 150%;
   margin-left: 1.5%;
+  flex-grow: 1; /* Allow title to take up space */
+  text-align: left; /* Align title to the left */
 }
 
 /* Navbar toggle alignment */
@@ -79,7 +81,7 @@ option {
 .navbar-right {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  margin-left: auto; /* Align search to the right */
   margin-right: 10px; /* Adjust spacing from the right edge */
 }
 
