@@ -83,7 +83,7 @@ function Ricerca() {
     load();
     cambiaPagina();
     if (pagina == 1) {
-        intestazione.innerHTML = "Ultime uscite";
+        intestazione.innerHTML = "Latest Releases";
         btnPrev.className = "btn btn-outline-warning disabled";
     } else {
         btnPrev.className = "btn btn-outline-warning";
