@@ -1,0 +1,143 @@
+/* General Styles */
+body {
+  background-color: #121212; /* Dark background */
+  color: white; /* White text for readability */
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #1d1d1d; /* Dark navbar */
+  border-bottom: 2px solid #444; /* Subtle border */
+}
+
+.navbar-brand {
+  color: #ffcc00; /* Gold color for the title */
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.navbar-brand #logo {
+  color: #ffcc00;
+}
+
+.nav-link {
+  color: white; /* White text for nav links */
+}
+
+.nav-link:hover {
+  color: #ffcc00; /* Gold color on hover */
+}
+
+.navbar-toggler-icon {
+  background-color: #ffcc00; /* Gold color for the hamburger menu */
+}
+
+.navbar-right button {
+  background-color: transparent;
+  border: 1px solid #ffcc00; /* Border around search button */
+  color: #ffcc00;
+}
+
+.navbar-right button:hover {
+  background-color: #ffcc00;
+  color: black;
+}
+
+/* Dropdown Menu */
+.nav-item .dropdown-menu {
+  background-color: #1d1d1d; /* Dark background for the dropdown */
+  border: 1px solid #444; /* Border for dropdown */
+}
+
+.nav-item .dropdown-item {
+  color: white; /* White text for dropdown items */
+}
+
+.nav-item .dropdown-item:hover {
+  background-color: #444; /* Hover effect on dropdown items */
+}
+
+/* Search Bar Styling */
+#searchBar {
+  background-color: #121212; /* Dark background for the search bar */
+  padding: 15px;
+}
+
+#ricerca {
+  background-color: #1d1d1d;
+  border: 1px solid #444;
+  color: white;
+}
+
+#ricerca:focus {
+  outline-color: #ffcc00;
+}
+
+/* Cards Section */
+#graficaCards {
+  padding: 30px 0;
+}
+
+.card {
+  background-color: #1d1d1d; /* Dark background for cards */
+  border: 1px solid #444; /* Border around cards */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  color: #ffcc00; /* Gold color for card titles */
+}
+
+.card-text {
+  color: white; /* White color for card text */
+}
+
+.card-img-top {
+  border-radius: 8px 8px 0 0;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #1d1d1d;
+  color: white;
+  padding: 15px;
+}
+
+#pagination {
+  background-color: #1d1d1d;
+  border: none;
+}
+
+#pagination .btn {
+  background-color: transparent;
+  color: #ffcc00;
+  border: 1px solid #ffcc00;
+}
+
+#pagination .btn:hover {
+  background-color: #ffcc00;
+  color: black;
+}
+
+/* Loading Spinner */
+#loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.spinner-border {
+  color: #ffcc00;
+}
+
+/* Title Section */
+#intestazione {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
