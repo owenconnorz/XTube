@@ -174,18 +174,18 @@ p {
   margin-left: 2%;
 }
 
-/* Title positioning and styling */
 .card-description {
   position: relative;
   bottom: 0%;
   width: 100%;
   padding: 10px;
+  background-color: black; /* Set background color to black */
 }
 
 .card-description h2 {
   font-size: 140%;
   text-align: center;
-  color: #ffffff;
+  color: white; /* Set text color to white */
   font-family: intitolazione;
   margin: 0; /* Remove default margin */
   padding: 0 2%; /* Ensure no excessive padding */
@@ -195,17 +195,11 @@ p {
   box-sizing: border-box; /* Prevent padding from affecting the width */
 }
 
-/* Title container styling to allow scrolling */
-.card-description h2 {
-  display: inline-block;
-  width: 100%;
-}
-
 /* Text styling for description */
 .card-description p {
   font-size: 20px;
   text-align: center;
-  color: #ffffff;
+  color: white; /* Set text color to white */
   display: flex;
   justify-content: space-between;
 }
