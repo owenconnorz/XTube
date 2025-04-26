@@ -175,28 +175,29 @@ p {
 }
 
 .card-description {
-  position: absolute;
-  bottom: 0%;
+  padding: 10px;
+  background-color: #161616f5;
+  position: relative;
   width: 100%;
+  text-align: center;
 }
 
 .card-description h2 {
   font-size: 140%;
   text-align: center;
-  align-items: center;
   color: #ffffff;
   font-family: intitolazione;
-  padding: 0% 2% 0% 2%;
-  margin-bottom: 0.5%;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 .card-description p {
   font-size: 20px;
-  text-align: center;
-  align-items: center;
   color: #ffffff;
+  text-align: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Responsive Layout - Rows and Columns */
