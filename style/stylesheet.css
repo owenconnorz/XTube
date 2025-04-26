@@ -303,6 +303,13 @@ span#pagina {
   margin-right: 5px;
 }
 
+/* Hold to Add to Playlist - Button Interaction */
+.card .btn-outline-warning:active {
+  background-color: rgba(255, 119, 0, 1);
+  transform: scale(1.1);
+  transition: transform 0.2s, background-color 0.1s ease;
+}
+
 /* Media Queries for smaller screens */
 @media screen and (max-width: 1250px) {
   .card-description h2 {
@@ -441,4 +448,3 @@ html {
   background-color: #353535;
   border-radius: 0px;
   border: 5px solid transparent;
-}
