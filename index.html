@@ -17,13 +17,11 @@
   <nav class="navbar navbar-expand-md bg-body-tertiary bg-dark sticky-top" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" id="titolo" href="./index.html">X <span id="logo">Tube</span></a>
-
       <!-- Menu Toggle (on the left) -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <!-- Collapsible Menu on the left -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -131,9 +129,9 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-gap-5" id="video">
       <!-- Video Cards -->
       <div class="col">
-        <div class="card position-relative">
-          <!-- Add to Playlist Button -->
-          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2" title="Add to Playlist">
+        <div class="card position-relative" onmousedown="showPlaylistMenu(event, this)" onmouseup="hidePlaylistMenu(event, this)" onmouseleave="hidePlaylistMenu(event, this)">
+          <!-- Add to Playlist Button (hidden by default) -->
+          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2 visually-hidden" title="Add to Playlist">
             <i class="fas fa-plus"></i> Add to Playlist
           </button>
           <img src="thumbnail1.jpg" class="card-img-top" alt="Video Thumbnail">
@@ -144,9 +142,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="card position-relative">
-          <!-- Add to Playlist Button -->
-          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2" title="Add to Playlist">
+        <div class="card position-relative" onmousedown="showPlaylistMenu(event, this)" onmouseup="hidePlaylistMenu(event, this)" onmouseleave="hidePlaylistMenu(event, this)">
+          <!-- Add to Playlist Button (hidden by default) -->
+          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2 visually-hidden" title="Add to Playlist">
             <i class="fas fa-plus"></i> Add to Playlist
           </button>
           <img src="thumbnail2.jpg" class="card-img-top" alt="Video Thumbnail">
@@ -157,9 +155,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="card position-relative">
-          <!-- Add to Playlist Button -->
-          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2" title="Add to Playlist">
+        <div class="card position-relative" onmousedown="showPlaylistMenu(event, this)" onmouseup="hidePlaylistMenu(event, this)" onmouseleave="hidePlaylistMenu(event, this)">
+          <!-- Add to Playlist Button (hidden by default) -->
+          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2 visually-hidden" title="Add to Playlist">
             <i class="fas fa-plus"></i> Add to Playlist
           </button>
           <img src="thumbnail3.jpg" class="card-img-top" alt="Video Thumbnail">
@@ -170,9 +168,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="card position-relative">
-          <!-- Add to Playlist Button -->
-          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2" title="Add to Playlist">
+        <div class="card position-relative" onmousedown="showPlaylistMenu(event, this)" onmouseup="hidePlaylistMenu(event, this)" onmouseleave="hidePlaylistMenu(event, this)">
+          <!-- Add to Playlist Button (hidden by default) -->
+          <button class="btn btn-outline-warning position-absolute top-0 start-0 m-2 visually-hidden" title="Add to Playlist">
             <i class="fas fa-plus"></i> Add to Playlist
           </button>
           <img src="thumbnail4.jpg" class="card-img-top" alt="Video Thumbnail">
@@ -199,7 +197,15 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <script src="./JS/main.js"></script>
   <script>
-    CreaHome()
+    function showPlaylistMenu(event, cardElement) {
+      const button = cardElement.querySelector("button");
+      button.classList.remove("visually-hidden");
+    }
+
+    function hidePlaylistMenu(event, cardElement) {
+      const button = cardElement.querySelector("button");
+      button.classList.add("visually-hidden");
+    }
   </script>
 </body>
 
