@@ -77,19 +77,16 @@ option {
   order: -1;
 }
 
-/* Add the search icon */
-.navbar-right {
-  display: flex;
-  align-items: center;
-  margin-left: auto; /* Align search to the right */
-  margin-right: 10px; /* Adjust spacing from the right edge */
-}
-
+/* Add the search icon - positioning it at the top-right of the page */
 #search-icon {
   font-size: 24px;
   color: white;
   cursor: pointer;
   transition: color 0.3s ease;
+  position: fixed; /* Fix the position */
+  top: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  z-index: 9999; /* Ensure it stays above other elements */
 }
 
 #search-icon:hover {
