@@ -1,7 +1,7 @@
 
 var searchType = 2;
 var page = 1;
-var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
+var api_url_getall = "https://www.eporner.co.uk/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
 const searchButton = document.getElementById('search');
 const nextButton = document.getElementById("next");
 const prevButton = document.getElementById('previous');
@@ -97,7 +97,7 @@ function search() {
             let category = document.getElementById("category").value;
             header.innerHTML = "";
             console.log(category);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&per_page=30&query=" + category, {
+            fetch("https://www.eporner.co.uk/api/v2/video/search/?page=" + page + "&lq=1&format=json&per_page=30&query=" + category, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -114,7 +114,7 @@ function search() {
             console.log("Searching by keyword");
             let keyWord = document.getElementById("searchInput").value;
             console.log(keyWord);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + keyWord, {
+            fetch("https://www.eporner.co.uk/api/v2/video/search/?page=" + page + "&lq=1&format=json&order=latest&per_page=30&query=" + keyWord, {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -136,7 +136,7 @@ function search() {
             }
 
             console.log(time);
-            fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=" + time + "&lq=0&format=json&per_page=30", {
+            fetch("https://www.eporner.co.uk/api/v2/video/search/?page=" + page + "&order=" + time + "&lq=0&format=json&per_page=30", {
                 "method": "GET",
                 "headers": {
                     "Accept": "application/json"
@@ -153,7 +153,7 @@ function search() {
             let section = document.getElementById("section").value;
             console.log(section);
             if (section == "hetero") {
-                fetch("https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + page, {
+                fetch("https://www.eporner.co.uk/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=" + page, {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -165,7 +165,7 @@ function search() {
 
             } else if (section == "gay") {
 
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
+                fetch("https://www.eporner.co.uk/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&gay=2", {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -175,7 +175,7 @@ function search() {
                     .then(result => { printCards(result) })
                     .catch(error => console.log('Error:', error));
             } else {
-                fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&query=" + section, {
+                fetch("https://www.eporner.co.uk/api/v2/video/search/?page=" + page + "&per_page=30&format=json&lq=1&query=" + section, {
                     "method": "GET",
                     "headers": {
                         "Accept": "application/json",
@@ -306,7 +306,7 @@ function createHome() {
     changePage();
     console.log("Create Home");
     searchType = 5;
-    fetch("https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=" + page + "&per_page=30", {
+    fetch("https://www.eporner.co.uk/api/v2/video/search/?format=json&lq=0&page=" + page + "&per_page=30", {
         "method": "GET",
         "headers": {
             "Accept": "application/json"
@@ -334,7 +334,7 @@ function createTrending() {
     }
     console.log("Create Trending");
     searchType = 6;
-    fetch("https://www.eporner.com/api/v2/video/search/?page=" + page + "&order=top-weekly&lq=0&format=json&per_page=30", {
+    fetch("https://www.eporner.co.uk/api/v2/video/search/?page=" + page + "&order=top-weekly&lq=0&format=json&per_page=30", {
         "method": "GET",
         "headers": {
             "Accept": "application/json"
