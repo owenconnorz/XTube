@@ -1,179 +1,199 @@
+// ================= Variables =================
+let searchType = 2;
+let page = 1;
+let loading = false;
+let hoverInterval;
 
-var searchType = 2;
-var page = 1;
-var api_url_getall = "https://www.eporner.com/api/v2/video/search/?order=latest&lq=1&format=json&gay=0&per_pag";
-const btn = document.getElementById('search');
-const btnNext = document.getElementById("next");
-const btnPrev = document.getElementById('previous');
-const selectCategory = document.getElementById('category');
-const searchInput = document.getElementById('search-input');
-const selectDuration = document.getElementById('duration');
-const selectSection = document.getElementById('section');
-let header = document.getElementById("header");
-let pageIndex = document.getElementById("page");
-var hoverInterval;
-var loading = false;
+const apiBase = "https://www.eporner.com/api/v2/video/search/?format=json&lq=1";
 
-// Event Listeners
-selectCategory.addEventListener("change", resetPage);
-selectDuration.addEventListener("change", resetPage);
-selectSection.addEventListener("change", resetPage);
+const elements = {
+    btnSearch: document.getElementById('search'),
+    btnNext: document.getElementById('next'),
+    btnPrev: document.getElementById('previous'),
+    selectCategory: document.getElementById('category'),
+    selectDuration: document.getElementById('duration'),
+    selectSection: document.getElementById('section'),
+    searchInput: document.getElementById('search-input'),
+    header: document.getElementById('header'),
+    pageIndex: document.getElementById('page'),
+    videoGrid: document.getElementById('video'),
+    cardGrid: document.getElementById('cardGrid'),
+    loadingDiv: document.getElementById('loading')
+};
 
-if (btn) {
-    btn.addEventListener("click", search);
+// ================= Event Listeners =================
+['category', 'search-input', 'duration', 'section'].forEach(id => {
+    document.getElementById(id).addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            elements.btnSearch.click();
+        }
+    });
+});
+
+elements.selectCategory.addEventListener("change", resetPage);
+elements.selectDuration.addEventListener("change", resetPage);
+elements.selectSection.addEventListener("change", resetPage);
+
+elements.btnSearch?.addEventListener("click", search);
+elements.btnPrev?.addEventListener("click", prev);
+elements.btnNext?.addEventListener("click", next);
+
+// ================= Helper Functions =================
+const fetchVideos = (url, onSuccess) => {
+    fetch(url, { method: "GET", headers: { "Accept": "application/json" } })
+        .then(res => res.json())
+        .then(onSuccess)
+        .catch(error => console.error('Fetch Error:', error));
+};
+
+const shortenTitle = (text, maxLength) => text.slice(0, maxLength);
+
+function resetPage() {
+    page = 1;
 }
 
-if (btnPrev) {
-    btnPrev.addEventListener("click", prev);
+function updatePage() {
+    elements.pageIndex.textContent = page;
 }
 
-if (btnNext) {
-    btnNext.addEventListener("click", next);
+function load() {
+    const loadingVisible = loading ? 'visually-hidden' : '';
+    elements.loadingDiv.className = `container-fluid ${loadingVisible}`;
+    elements.cardGrid.className = `container-fluid ${loading ? '' : 'visually-hidden'}`;
 }
 
-// Function to change the search filter
+// ================= Core Functions =================
 function SwitchInputSelect(num) {
-    switch (num) {
-        case 1:
-            searchType = 1;
-            page = 1;
-            selectCategory.className = "form-select";
-            selectSection.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2 visually-hidden";
-            selectDuration.className = "form-select visually-hidden";
-            break;
-        case 2:
-            searchType = 2;
-            page = 1;
-            selectCategory.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2";
-            selectSection.className = "form-select visually-hidden";
-            searchInput.placeholder = "Search";
-            selectDuration.className = "form-select visually-hidden";
-            break;
-        case 3:
-            searchType = 3;
-            page = 1;
-            selectCategory.className = "form-select visually-hidden";
-            selectSection.className = "form-select visually-hidden";
-            searchInput.className = "form-control me-2 visually-hidden";
-            selectDuration.className = "form-select";
-            break;
-        case 4:
-            searchType = 4;
-            page = 1;
-            selectSection.className = "form-select";
-            searchInput.className = "form-control me-2 visually-hidden";
-            selectCategory.className = "form-select visually-hidden";
-            selectDuration.className = "form-select visually-hidden";
-            break;
-        default:
-            searchType = 2;
-            break;
-    }
+    searchType = num;
+    page = 1;
+    
+    const toggle = (el, visible) => el.className = visible ? 'form-select' : 'form-select visually-hidden';
+    const toggleInput = (el, visible) => el.className = visible ? 'form-control me-2' : 'form-control me-2 visually-hidden';
+
+    toggle(elements.selectCategory, num === 1);
+    toggleInput(elements.searchInput, num === 2);
+    toggle(elements.selectDuration, num === 3);
+    toggle(elements.selectSection, num === 4);
+
+    if (num === 2) elements.searchInput.placeholder = "Search";
 }
 
-// Function to perform the search based on selected filter
 function search() {
     loading = false;
     load();
     updatePage();
-    if (page == 1) {
-        header.innerHTML = "Latest Releases";
-        btnPrev.className = "btn btn-outline-warning disabled";
+    
+    if (page === 1) {
+        elements.header.innerHTML = "Latest Releases";
+        elements.btnPrev.className = "btn btn-outline-warning disabled";
     } else {
-        btnPrev.className = "btn btn-outline-warning";
-        btnNext.className = "btn btn-outline-warning";
+        elements.btnPrev.className = elements.btnNext.className = "btn btn-outline-warning";
     }
+
+    let url = '';
+    let query = '';
+
     switch (searchType) {
         case 1:
-            console.log("Search by Category");
-            let category = document.getElementById("category").value;
-            header.innerHTML = "";
-            console.log(category);
-            fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&per_page=30&query=${category}`, {
-                method: "GET",
-                headers: { "Accept": "application/json" }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
-            header.innerHTML = `Page <span id="category">${page}</span>`;
+            query = elements.selectCategory.value.trim();
+            url = `${apiBase}&per_page=30&page=${page}&query=${query}`;
+            elements.header.innerHTML = `Category: ${query}`;
             break;
         case 2:
-            console.log("Search by Keyword");
-            let keyword = document.getElementById("search-input").value;
-            console.log(keyword);
-            fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&lq=1&format=json&order=latest&per_page=30&query=${keyword}`, {
-                method: "GET",
-                headers: { "Accept": "application/json" }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
-            header.innerHTML = `Search results for <span id='search-input'>${keyword}</span>`;
+            query = elements.searchInput.value.trim();
+            url = `${apiBase}&order=latest&per_page=30&page=${page}&query=${query}`;
+            elements.header.innerHTML = `Search: ${query}`;
             break;
         case 3:
-            console.log("Search by Duration");
-            header.innerHTML = "";
-            let time = document.getElementById("duration").value;
-            header.innerHTML = time == "longest" ? "Searching for Long Videos" : "Searching for Short Videos";
-            fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&order=${time}&lq=0&format=json&per_page=30`, {
-                method: "GET",
-                headers: { "Accept": "application/json" }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
+            query = elements.selectDuration.value;
+            url = `${apiBase}&order=${query}&per_page=30&page=${page}`;
+            elements.header.innerHTML = query === "longest" ? "Long Videos" : "Short Videos";
             break;
         case 4:
-            console.log("Search by Section");
-            header.innerHTML = "";
-            let section = document.getElementById("section").value;
-            console.log(section);
-            let url;
-            if (section == "straight") {
-                url = `https://www.eporner.com/api/v2/video/search/?order=latest&lq=0&format=json&gay=0&per_page=30&page=${page}`;
-            } else if (section == "gay") {
-                url = `https://www.eporner.com/api/v2/video/search/?page=${page}&per_page=30&format=json&lq=1&gay=2`;
+            query = elements.selectSection.value;
+            if (query === "straight") {
+                url = `${apiBase}&gay=0&per_page=30&page=${page}`;
+            } else if (query === "gay") {
+                url = `${apiBase}&gay=2&per_page=30&page=${page}`;
             } else {
-                url = `https://www.eporner.com/api/v2/video/search/?page=${page}&per_page=30&format=json&lq=1&query=${section}`;
+                url = `${apiBase}&per_page=30&page=${page}&query=${query}`;
             }
-            fetch(url, {
-                method: "GET",
-                headers: { "Accept": "application/json" }
-            })
-            .then(response => response.json())
-            .then(result => { printCards(result) })
-            .catch(error => console.log('Error:', error));
+            elements.header.innerHTML = `Section: ${query}`;
             break;
         default:
-            document.getElementById("search-input").value = "";
-            break;
+            return;
+    }
+
+    console.log(`Fetching: ${url}`);
+    fetchVideos(url, printCards);
+}
+
+function next() {
+    if (page < 100) page++;
+    else page = 1;
+    window.scrollTo(0, 0);
+    header.innerHTML = "";
+    switch (searchType) {
+        case 5: createHome(); break;
+        case 6: createTrending(); break;
+        default: search(); break;
     }
 }
 
-// Function to print the video cards
+function prev() {
+    if (page > 1) page--;
+    else page = 1;
+    window.scrollTo(0, 0);
+    header.innerHTML = "";
+    switch (searchType) {
+        case 5: createHome(); break;
+        case 6: createTrending(); break;
+        default: search(); break;
+    }
+}
+
+function createHome() {
+    pageSetup("Latest Releases");
+    searchType = 5;
+    fetchVideos(`${apiBase}&lq=0&per_page=30&page=${page}`, printCards);
+}
+
+function createTrending() {
+    pageSetup("Trending");
+    searchType = 6;
+    fetchVideos(`${apiBase}&order=top-weekly&lq=0&per_page=30&page=${page}`, printCards);
+}
+
+function pageSetup(title) {
+    window.scrollTo(0, 0);
+    loading = false;
+    load();
+    updatePage();
+    elements.header.innerHTML = title;
+    elements.btnPrev.className = page === 1 ? "btn btn-outline-warning disabled" : "btn btn-outline-warning";
+    elements.btnNext.className = "btn btn-outline-warning";
+}
+
+// ================= Render Functions =================
 function printCards(result) {
     console.log(result);
-    let videoArray = result.videos;
-    let videoGrid = document.getElementById('video');
+    const videos = result.videos || [];
+    elements.videoGrid.innerHTML = "";
 
-    videoGrid.innerHTML = "";
-    btnNext.className = "btn btn-outline-warning";
-    if (videoArray.length == 0) {
-        header.innerHTML = "No Results Found";
-        btnNext.className = "btn btn-outline-warning disabled";
+    if (!videos.length) {
+        elements.header.innerHTML = "No Results Found";
+        elements.btnNext.className = "btn btn-outline-warning disabled";
         return;
     }
 
-    videoArray.forEach((video, index) => {
+    videos.forEach(video => {
         const wrapper = document.createElement('div');
         wrapper.className = 'col';
 
         const card = document.createElement('div');
         card.className = 'card';
-        card.addEventListener('click', () => window.open(video.embed));
+        card.onclick = () => window.open(video.embed);
 
         const cardImg = document.createElement('img');
         cardImg.src = video.default_thumb.src;
@@ -189,199 +209,39 @@ function printCards(result) {
         const p = document.createElement('p');
         p.className = 'card-text';
 
-        const spanViews = document.createElement('span');
-        spanViews.className = 'card-text';
-        spanViews.id = 'n-views';
+        p.innerHTML = `
+            <span class="card-text" id="n-views"><img src="/img/eye.png" id="views"> ${video.views}</span>
+            <span class="card-text" id="time"><img src="/img/clock-circular-outline.png" id="clock"> ${video.length_min}</span>
+        `;
 
-        const imgViews = document.createElement('img');
-        imgViews.src = '/img/eye.png';
-        imgViews.id = 'views';
-
-        const spanViewsText = document.createElement('span');
-        spanViewsText.textContent = video.views;
-
-        const spanTime = document.createElement('span');
-        spanTime.className = 'card-text';
-        spanTime.id = 'time';
-
-        const imgTime = document.createElement('img');
-        imgTime.src = '/img/clock-circular-outline.png';
-        imgTime.id = 'clock';
-
-        const spanTimeText = document.createElement('span');
-        spanTimeText.textContent = video.length_min;
-
-        card.append(cardImg);
-        card.append(cardDescription);
-        cardDescription.append(h2);
+        card.append(cardImg, cardDescription);
+        cardDescription.append(h2, p);
         wrapper.append(card);
-        videoGrid.append(wrapper);
+        elements.videoGrid.append(wrapper);
 
-        spanViews.append(imgViews, spanViewsText);
-        spanTime.append(imgTime, spanTimeText);
-        p.append(spanViews, spanTime);
-        cardDescription.append(p);
-
-        card.onmouseover = function () {
-            clearInterval(hoverInterval);
-            changeImageOnHover(this, video.thumbs[0].src);
-        };
-        card.onmouseleave = function () {
-            clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, shortenTitle(video.title, 65));
-        };
-        card.ontouchstart = function () {
-            clearInterval(hoverInterval);
-            changeImageOnHover(this, video.thumbs[0].src);
-        };
-        card.ontouchend = function () {
-            clearInterval(hoverInterval);
-            setDefaultImage(this, video.default_thumb.src, shortenTitle(video.title, 65));
-        };
+        card.addEventListener('mouseover', () => changeImageOnHover(card, video.thumbs[0].src));
+        card.addEventListener('mouseleave', () => setDefaultImage(card, video.default_thumb.src, video.title));
+        card.addEventListener('touchstart', () => changeImageOnHover(card, video.thumbs[0].src));
+        card.addEventListener('touchend', () => setDefaultImage(card, video.default_thumb.src, video.title));
     });
+
     loading = true;
     setTimeout(load, 800);
 }
 
-// Helper Functions
-function shortenTitle(text, length) {
-    return text.split('').slice(0, length).join('');
-}
-
-function next() {
-    window.scrollTo(0, 0);
-    header.innerHTML = "";
-    if (page > 0 && page < 100) page++;
-    else page = 1;
-    
-    switch (searchType) {
-        case 5:
-            createHome();
-            break;
-        case 6:
-            createTrending();
-            break;
-        default:
-            search();
-            break;
-    }
-}
-
-function prev() {
-    window.scrollTo(0, 0);
-    header.innerHTML = "";
-    if (page > 1 && page < 100) page--;
-    else page = 1;
-    
-    switch (searchType) {
-        case 5:
-            createHome();
-            break;
-        case 6:
-            createTrending();
-            break;
-        default:
-            search();
-            break;
-    }
-}
-
+// ================= Hover Functions =================
 function changeImageOnHover(cardElement, thumbBase) {
-    let i = 2, prev = 1;
-    let start = thumbBase;
+    clearInterval(hoverInterval);
+    let i = 2;
     hoverInterval = setInterval(() => {
-        let url = thumbBase.replace(prev + "_", i + "_");
+        let url = thumbBase.replace(/(\d+)_/, `${i}_`);
         cardElement.querySelector('img').src = url;
-        thumbBase = url;
-        if (i === 15 || prev === 14) {
-            i = 2;
-            prev = 1;
-            thumbBase = start;
-        } else {
-            i++;
-            prev++;
-        }
+        i = i === 15 ? 2 : i + 1;
     }, 350);
 }
 
 function setDefaultImage(card, thumb, title) {
+    clearInterval(hoverInterval);
     card.querySelector('img').src = thumb;
-    card.querySelector('h2').textContent = title;
-    card.querySelector('p').classList.remove("visually-hidden");
+    card.querySelector('h2').textContent = shortenTitle(title, 65);
 }
-
-function createHome() {
-    window.scrollTo(0, 0);
-    loading = false;
-    load();
-    if (page == 1) {
-        header.innerHTML = "Latest Releases";
-        btnPrev.className = "btn btn-outline-warning disabled";
-    } else {
-        btnPrev.className = "btn btn-outline-warning";
-        btnNext.className = "btn btn-outline-warning";
-    }
-    updatePage();
-    console.log("Create Home");
-    searchType = 5;
-    fetch(`https://www.eporner.com/api/v2/video/search/?format=json&lq=0&page=${page}&per_page=30`, {
-        method: "GET",
-        headers: { "Accept": "application/json" }
-    })
-    .then(response => response.json())
-    .then(result => { printCards(result) })
-    .catch(error => console.log('Error:', error));
-}
-
-function createTrending() {
-    window.scrollTo(0, 0);
-    loading = false;
-    load();
-    updatePage();
-    if (page == 1) {
-        header.innerHTML = `<h1><span><img src="./img/campfire.png" alt="" id="icon"></span> Trending <span><img src="./img/campfire.png" alt="" id="icon"></span></h1>`;
-        btnPrev.className = "btn btn-outline-warning disabled";
-    } else {
-        btnPrev.className = "btn btn-outline-warning";
-        btnNext.className = "btn btn-outline-warning";
-    }
-    console.log("Create Trending");
-    searchType = 6;
-    fetch(`https://www.eporner.com/api/v2/video/search/?page=${page}&order=top-weekly&lq=0&format=json&per_page=30`, {
-        method: "GET",
-        headers: { "Accept": "application/json" }
-    })
-    .then(response => response.json())
-    .then(result => { printCards(result) })
-    .catch(error => console.log('Error:', error));
-}
-
-function updatePage() {
-    pageIndex.textContent = page;
-}
-
-function load() {
-    let videoGrid = document.getElementById('cardGrid');
-    let loadingDiv = document.getElementById("loading");
-    if (loading) {
-        loadingDiv.className = "container-fluid visually-hidden";
-        videoGrid.className = "container-fluid";
-    } else {
-        loadingDiv.className = "container-fluid";
-        videoGrid.className = "container-fluid visually-hidden";
-    }
-}
-
-function resetPage() {
-    page = 1;
-}
-
-// Handling Enter key press for inputs
-["category", "search-input", "duration", "section"].forEach(id => {
-    document.getElementById(id).addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            btn.click();
-        }
-    });
-});
