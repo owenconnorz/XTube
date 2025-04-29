@@ -1,15 +1,15 @@
-/* ./style/stylesheet.css */
+/* style.css */
 
 /* Importa font personalizzati */
 @font-face {
   font-family: 'Generale';
-  src: url("../fonts/Gotham-Black.otf");
+  src: url("./../fonts/Gotham-Black.otf");
   font-display: swap;
 }
 
 @font-face {
   font-family: 'intitolazione';
-  src: url("../fonts/PTSans-Bold.ttf");
+  src: url("./../fonts/PTSans-Bold.ttf");
   font-display: swap;
 }
 
@@ -76,31 +76,34 @@ html {
   cursor: pointer;
 }
 
-/* Stili per il bottone di ricerca mobile */
-.btn-outline-warning.d-md-none {
+/* Icona di ricerca */
+#search-icon {
   background-color: #ffc107; /* Giallo */
-  border-color: #ffc107; /* Giallo */
-  color: #000; /* Nero per l'icona */
-  padding: 8px; /* Regola il padding per farlo sembrare un quadrato */
-  border-radius: 5px; /* Bordo arrotondato opzionale */
+  color: #000; /* Nero per l'icona SVG */
+  cursor: pointer;
+  position: fixed;
+  top: 15px; /* Ajusta según sea necesario */
+  right: 15px; /* Ajusta según sea necesario */
+  z-index: 9999;
+  padding: 10px;
+  border-radius: 5px; /* Opcional: bordes redondeados */
+  width: auto; /* Ajustar según el tamaño del icono */
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto; /* Adatta al contenuto */
-  height: auto;
-  margin-left: auto !important; /* Spinge a destra */
+  font-size: 24px; /* Tamaño del icono si es un carácter de fuente */
+  transition: background-color 0.3s ease;
 }
 
-.btn-outline-warning.d-md-none:hover {
+#search-icon svg {
+  display: block; /* Asegura que el SVG ocupe el espacio */
+  width: 24px; /* Ajusta el tamaño del icono dentro del cuadrado */
+  height: 24px;
+}
+
+#search-icon:hover {
   background-color: orange;
-  border-color: orange;
-  color: #000;
-}
-
-.btn-outline-warning.d-md-none svg {
-  fill: #000 !important; /* Forza il colore nero dell'icona SVG */
-  width: 20px; /* Assicura che l'SVG abbia la dimensione desiderata */
-  height: 20px;
 }
 
 /* Intestazione (h1) */
@@ -232,4 +235,289 @@ li.page-item {
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  transition: background-color 0.3
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.card .btn-outline-warning:hover {
+  background-color: rgb(255, 119, 0);
+  transform: scale(1.1);
+}
+
+.card .btn-outline-warning:active {
+  background-color: rgba(255, 119, 0, 1);
+  transform: scale(1.1);
+  transition: transform 0.2s, background-color 0.1s ease;
+}
+
+.card .btn-outline-warning i {
+  margin-right: 5px;
+}
+
+/* Colore del testo evidenziato */
+span#ricerca, #ricerca, #logo, #categoria, #pagina {
+  color: orange;
+}
+
+/* Spinner di caricamento */
+#loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.spinner-border {
+  color: rgb(255, 119, 0) !important;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 70%;
+}
+
+/* Pulsanti di navigazione */
+.btn#next, .btn#previous {
+  width: auto; /* Ajusta al contenido */
+  padding: 8px 15px;
+}
+
+.btn#next {
+  margin-left: 1.5%;
+}
+
+.btn#previous {
+  margin-right: 1.5%;
+}
+
+/* Elementi del form */
+#form_ricerca {
+  margin: 20px auto;
+  text-align: center;
+  padding: 15px;
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+}
+
+#form_ricerca select {
+  margin-right: 0.5rem;
+  padding: 8px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+
+#form_ricerca input[type="text"] {
+  padding: 8px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background-color: #333;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+#form_ricerca button {
+  padding: 8px 15px;
+  background-color: orange;
+  color: #000;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#form_ricerca button:hover {
+  background-color: #cc8400;
+}
+
+/* Icone orologio e visualizzazioni */
+#clock {
+  width: 20px;
+  margin-bottom: 0.8%;
+  margin-right: 6%;
+  filter: invert(1); /* Rende l'icona bianca su sfondo scuro */
+}
+
+#views {
+  width: 10%;
+  margin: 1% 2% 0.5%;
+  filter: invert(1); /* Rende l'icona bianca su sfondo scuro */
+}
+
+#n-views,
+#time {
+  display: flex;
+  align-items: center;
+  margin-left: 2%;
+  font-size: 0.9em; /* Ridotto per adattarsi meglio */
+}
+
+#time {
+  color: #fff;
+  margin-right: 4%;
+}
+
+/* Contenitore generale */
+.container-fluid {
+  width: 98% !important;
+  padding-right: 15px; /* Aggiunto per compensare scrollbar */
+  padding-left: 15px; /* Aggiunto per compensare scrollbar */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Icone piccole */
+#icone {
+  width: 3%;
+  margin: 0 0.1% 0 0.3%;
+  filter: invert(1); /* Rende l'icona bianca su sfondo scuro */
+}
+
+#star {
+  width: 2%;
+  margin-right: 0.5%;
+  filter: invert(1); /* Rende l'icona bianca su sfondo scuro */
+}
+
+/* Layout delle righe */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.row > div {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding-right: 15px; /* Spaziatura tra le colonne */
+  padding-left: 15px; /* Spaziatura tra le colonne */
+  box-sizing: border-box; /* Assicura che il padding non influenzi la larghezza */
+}
+
+@media (min-width: 576px) {
+  .row > div {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .row > div {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+@media (min-width: 992px) {
+  .row > div {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* Numero della pagina */
+span#pagina {
+  width: auto; /* Ajusta al contenido */
+  height: auto; /* Ajusta al contenido */
+  font-size: 21px;
+  background-color: transparent !important;
+  padding: 5px 10px;
+  border: 1px solid #555; /* Bordo per farlo risaltare */
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+/* Responsive Design */
+
+/* Schermi più piccoli di 1250px */
+@media screen and (max-width: 1250px) {
+  .card-description h2 {
+    font-size: 120%; /* Aumentato leggermente */
+  }
+  .card-description p {
+    font-size: 16px; /* Aumentato leggermente */
+  }
+  #views {
+    width: 12%; /* Ajustado */
+    margin-right: 3%; /* Ajustado */
+  }
+  #clock {
+    width: 22px; /* Ajustado */
+  }
+  .btn#next {
+    margin-left: 2%; /* Ajustado */
+  }
+  .btn#previous {
+    margin-right: 2%; /* Ajustado */
+  }
+  #n-views,
+  #time {
+    font-size: 0.8em; /* Ajustado */
+  }
+}
+
+/* Schermi più piccoli di 725px */
+@media screen and (max-width: 725px) {
+  .card-description h2 {
+    font-size: 110%; /* Ajustado */
+  }
+  .card-description p {
+    font-size: 14px; /* Ajustado */
+  }
+  .btn#next,
+  .btn#previous {
+    width: auto; /* Ajustado */
+    padding: 6px 10px;
+    font-size: 16px;
+  }
+  #views {
+    width: 18px; /* Ajustado */
+    margin: 0 8%; /* Ajustado */
+  }
+  #clock {
+    width: 16px; /* Ajustado */
+  }
+  #n-views,
+  #time {
+    font-size: 0.7em; /* Ajustado */
+  }
+}
+
+/* Schermi più piccoli di 575px */
+@media screen and (max-width: 575px) {
+  h1 {
+    margin-top: 6%; /* Ajustado */
+    margin-bottom: 6.5%; /* Ajustado */
+    font-size: 24px; /* Ajustado */
+  }
+  .card-description h2 {
+    font-size: 120%; /* Ajustado */
+  }
+  .card-description p {
+    font-size: 15px; /* Ajustado */
+  }
+  .btn#next,
+  .btn#previous {
+    width: auto; /* Ajustado */
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+  img#icone {
+    width: 6%; /* Ajustado */
+  }
+  #titolo {
+    margin-left: 4%; /* Ajustado */
+    font-size: 130%; /* Ajustado */
+  }
+  li.page-item {
+    font-size: 18px; /* Ajustado */
+  }
+  #pagina {
+    font-size: 14px; /* Ajustado */
+    padding: 4px 8px; /* Ajustado */
+  }
+  .row > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 10px; /* Ajustado */
+    padding-left: 10px; /* Ajustado */
+  }
