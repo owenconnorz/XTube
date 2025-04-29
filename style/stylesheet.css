@@ -1,4 +1,4 @@
-/* Import custom fonts */
+/* Importa font personalizzati */
 @font-face {
   font-family: 'Generale';
   src: url("./../fonts/Gotham-Black.otf");
@@ -11,7 +11,7 @@
   font-display: swap;
 }
 
-/* Global Styles */
+/* Stili globali */
 body {
   background-color: #000;
   font-family: 'Generale';
@@ -24,7 +24,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+/* Barra di scorrimento personalizzata */
 * {
   scrollbar-color: #424242;
 }
@@ -43,7 +43,7 @@ html {
   border: 5px solid transparent;
 }
 
-/* Navbar Styles */
+/* Stili per la navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -53,6 +53,7 @@ html {
   position: relative;
 }
 
+/* Titolo nella navbar */
 #titolo {
   color: #fff;
   font-size: 150%;
@@ -61,6 +62,7 @@ html {
   text-align: left;
 }
 
+/* Bottone per menu mobile */
 .navbar-toggler {
   color: rgb(221, 118, 21);
   margin-left: 1%;
@@ -68,7 +70,7 @@ html {
   order: -1;
 }
 
-/* Search Icon */
+/* Icona di ricerca */
 #search-icon {
   font-size: 24px;
   color: #fff;
@@ -84,14 +86,14 @@ html {
   color: orange;
 }
 
-/* Header (h1) */
+/* Intestazione (h1) */
 h1 {
   color: #fff;
   text-align: center;
   margin: 1.5% 0 2%;
 }
 
-/* Image Hover Effects */
+/* Effetti hover per le immagini */
 img.card-img-top {
   border-radius: 0;
   transition: transform 0.3s ease;
@@ -101,7 +103,7 @@ img.card-img-top:hover {
   transform: scale(1.05);
 }
 
-/* Dropdown Menu and Options */
+/* Menu a tendina e opzioni */
 .dropdown-item:hover {
   cursor: pointer;
   color: #fff;
@@ -115,7 +117,7 @@ option {
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
 }
 
-/* Pagination Styles */
+/* Stili per la paginazione */
 nav#pagination {
   display: flex;
   flex-direction: row;
@@ -138,7 +140,7 @@ li.page-item {
   font-size: 20px;
 }
 
-/* Card Styles */
+/* Stili per le card */
 .card {
   text-shadow: 0 0 2px #000;
   align-items: center;
@@ -152,6 +154,7 @@ li.page-item {
   cursor: pointer;
 }
 
+/* Descrizione della card */
 .card-description {
   background-color: #000;
   padding: 10px;
@@ -160,6 +163,7 @@ li.page-item {
   bottom: 0;
 }
 
+/* Titolo nella descrizione della card */
 .card-description h2 {
   font-family: 'intitolazione';
   font-size: 140%;
@@ -173,6 +177,7 @@ li.page-item {
   box-sizing: border-box;
 }
 
+/* Paragrafo nella descrizione della card */
 .card-description p {
   font-size: 20px;
   text-align: center;
@@ -181,7 +186,7 @@ li.page-item {
   justify-content: space-between;
 }
 
-/* "Add to Playlist" Button */
+/* Pulsante "Aggiungi alla Playlist" */
 .card .btn-outline-warning {
   position: absolute;
   top: 10px;
@@ -211,12 +216,12 @@ li.page-item {
   margin-right: 5px;
 }
 
-/* Text Color Styling */
+/* Colore del testo evidenziato */
 span#ricerca, #ricerca, #logo, #categoria, #pagina {
   color: orange;
 }
 
-/* Loading Spinner */
+/* Spinner di caricamento */
 #loading {
   display: flex;
   justify-content: center;
@@ -230,7 +235,7 @@ span#ricerca, #ricerca, #logo, #categoria, #pagina {
   margin-bottom: 70%;
 }
 
-/* Buttons */
+/* Pulsanti */
 .btn#next, .btn#previous {
   width: 8%;
 }
@@ -243,7 +248,7 @@ span#ricerca, #ricerca, #logo, #categoria, #pagina {
   margin-right: 1.5%;
 }
 
-/* Form Elements */
+/* Elementi del form */
 #form_ricerca {
   margin-right: 2%;
 }
@@ -252,7 +257,7 @@ select {
   margin-right: 0.5rem;
 }
 
-/* Clock and Views Icons */
+/* Icone orologio e visualizzazioni */
 #clock {
   width: 20px;
   margin-bottom: 0.8%;
@@ -276,12 +281,12 @@ select {
   margin-right: 4%;
 }
 
-/* General Container */
+/* Contenitore generale */
 .container-fluid {
   width: 98% !important;
 }
 
-/* Small Icons */
+/* Icone piccole */
 #icone {
   width: 3%;
   margin: 0 0.1% 0 0.3%;
@@ -292,7 +297,7 @@ select {
   margin-right: 0.5%;
 }
 
-/* Row Layout */
+/* Layout delle righe */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -305,7 +310,7 @@ select {
   max-width: 100%;
 }
 
-/* Pagination Number */
+/* Numero della pagina */
 span#pagina {
   width: 5%;
   height: 5%;
@@ -315,7 +320,7 @@ span#pagina {
 
 /* Responsive Design */
 
-/* Screens smaller than 1250px */
+/* Schermi più piccoli di 1250px */
 @media screen and (max-width: 1250px) {
   .card-description h2 {
     font-size: 100%;
@@ -341,7 +346,7 @@ span#pagina {
   }
 }
 
-/* Screens smaller than 725px */
+/* Schermi più piccoli di 725px */
 @media screen and (max-width: 725px) {
   .card-description h2 {
     font-size: 10px;
@@ -368,7 +373,7 @@ span#pagina {
   }
 }
 
-/* Screens smaller than 575px */
+/* Schermi più piccoli di 575px */
 @media screen and (max-width: 575px) {
   h1 {
     margin-top: 4%;
